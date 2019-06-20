@@ -1,12 +1,8 @@
-# [ipv6.watch](https://ipv6.watch)
-
-[![https://img.shields.io/travis/andir/ipv6.watch.svg](https://travis-ci.org/andir/ipv6.watch)]
+# [status.why-ipv6.com](https://status.why-ipv6.com)
 
 Although IPv6 has been around since 1998, some big parts of the internet are IPv4 only. Since World IPv6 Launch day on June 6 2012 the global IPv6 traffic has grown more than 500%. However, the adoption at major websites is still bad even though they should have the money, time and people to provide IPv6 connectivity.
 
 This repository contains code to check some website domains for AAAA records using multipe public available DNS resolvers and generate a static website containing the results.
-
-![](https://raw.githubusercontent.com/andir/ipv6.watch/master/misc/World_IPv6_launch_banner_512.png)
 
 ## Contributing + Dev info
 
@@ -59,7 +55,14 @@ Some websites provide their official logos and their guidelins of how to use the
 If you find no good source try to contact the website owner (for example on Twitter) and ask them if they have guidelines and if you are allowed to use their logo.   
 Please add the image source near the `icon` key and (if available) a link to the licence, guideline and/or permission. Please don't manipulate images in any way if it's forbidden.
 
-Before you add the file to the repository make sure you optimize the file size to save bandwidth and speed up the page. For PNG files have a look at `optipng`. For JPG/JPEG files have a look at `jpegoptim`. Most images can be reduced by more than 80% in file size.
+Before you add the file to the repository make sure you optimize the file size to save bandwidth and speed up the page.   
+Here is a list of tools you can use:
+
+- `optipng` for PNG files
+- `jpegoptim` for JPG/JPEG files
+- [scour](https://github.com/scour-project/scour) for SVG files
+
+Most images can be reduced by more than 80% in file size.
 
 ### Formatting config.yml
 

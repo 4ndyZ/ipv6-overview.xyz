@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>IPv6.watch</title>
+    <title>{{ .Title }}</title>
 
     <meta charset="UTF-8">
     <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -43,19 +43,14 @@
 <div class="container">
     <div class="row">
         <div class="col-12">
-            <h1><a href="/">ipv6.watch</a></h1>
+            <h1><a href="/">{{ .Title }}</a></h1>
         </div>
     </div>
     <div class="row">
         <div class="col-12">
-        It is {{ long_date }} and the IPv6 adoption of big websites is bad. Most of them have the money, time and people to provide IPv6 yet they are only reachable over IPv4.
+        It is {{ .Year }} and the IPv6 adoption of big websites is bad. Most of them have the money, time and people to provide IPv6 yet they are only reachable over IPv4.
         See the result for each website by clicking on the respective area.<br />
-        Are you missing a website? Check out <a href="https://github.com/andir/ipv6.watch" target="_blank">the GitHub repository</a> for this project and open an issue or send a pull request.
-        </div>
-    </div>
-    <div class="row mt-3">
-        <div class="col-12">
-        Are you trying to disable IPv6 on your system or network? <a href="http://howtodisableipv6.com/">Click here</a> to learn more.
+        Are you missing a website? Check out <a href="{{ .GithubRepo }}" target="_blank">the GitHub repository</a> for this project. Open an issue or create a pull request!
         </div>
     </div>
 
@@ -66,76 +61,62 @@
     </div>
     <div class="row">
         <div class="col-12">
-        {% for category in testresults|sort %}
-        <a class="btn btn-secondary m-1" href="#anchor-{{ category|replace(" ", "") }}">{{ category }}</a>
-        {% endfor %}
+        {{ range $category := .Categories }}
+        <a class="btn btn-secondary m-1" href="#anchor-{{ $category.GetHTMLAnchor }}">{{ $category.Name }}</a>
+        {{ end }}
         </div>
     </div>
 
-    {% for category in testresults|sort %}
-    <!-- Category loop: {{ loop }} -->
-    <div id="anchor-{{ category|replace(" ", "") }}" class="row mt-5 align-items-center">
+    {{ range $category := .Categories }}
+    <div id="anchor-{{ $category.GetHTMLAnchor }}" class="row mt-5 align-items-center">
             <div class="col-12">
-                <h2>{{ category }}</h2>
+                <h2>{{ $category.Name }}</h2>
                 IPv6 support:
-                    <span class="badge badge-pill badge-success">Full: {{ querystats[category]['count_full_ipv6'] }}</span>
-                    <span class="badge badge-pill badge-warning">Some: {{ querystats[category]['count_partial_ipv6'] }}</span>
-                    <span class="badge badge-pill badge-danger">None: {{ querystats[category]['count_no_ipv6'] }}</span>
+                    <span class="badge badge-pill badge-success">Full: {{ $category.CountIPv6FullSupport }}</span>
+                    <span class="badge badge-pill badge-warning">Some: {{ $category.CountIPv6PartialSupport }}</span>
+                    <span class="badge badge-pill badge-danger">None: {{ $category.CountIPv6NoSupport }}</span>
             </div>
     </div>
 
-        {% for target in testresults[category]|sort %}
-        {% set details = testresults[category][target] %}
-
-        {% if details['query-results']['summary'] == 'all' %}
-            {% set query_result_message = "Yay! IPv6 is supported!" %}
-            {% set details_border_color = "success" %}
-        {% elif details['query-results']['summary'] == 'some' %}
-            {% set query_result_message = "Well, there is some IPv6 support. Can't you do better?" %}
-            {% set details_border_color = "warning" %}
-        {% else %}
-            {% set query_result_message = "Nope. What a shame!" %}
-            {% set details_border_color = "danger" %}
-        {% endif %}
-        <!-- Target loop: {{ loop }} -->
+        {{ range $website := $category.Websites }}
         <div class="row align-items-center minheight
-            {% if details['query-results']['summary']=='all' %}test-result-full-ipv6{% elif details['query-results']['summary']=='some' %}test-result-partial-ipv6{% else %}test-result-no-ipv6{% endif %}
+            {{ $website.GetCSSBackgroundColor }}
             mt-1 rounded"
-            href="#result-div-{{ details['refname'] }}"
+            href="#result-div-{{ $website.GetHTMLAnchor }}"
             data-toggle="collapse"
             aria-expanded="false"
-            aria-controls="result-div-{{ details['refname'] }}" >
+            aria-controls="result-div-{{ .Name }}" >
 
             <div class="col-1 text-center">
-                {% if 'icon' in details %}
-                    {% if details['icon'].startswith('fa-') %}
-                        <i class="fab {{ details['icon'] }} fa-3x"></i>
-                    {% else %}
-                        <img style="max-height: 40px; max-width: 64px;" src="images/{{ details['icon'] }}">
-                    {% endif %}
-                {% endif %}
+                {{ if (ne $website.Icon "") }}
+                    {{ if $website.IsFontAwesomeIcon }}
+                        <i class="fab {{ $website.Icon }} fa-3x"></i>
+                    {{ else }}
+                        <img style="max-height: 40px; max-width: 64px;" src="images/{{ $website.Icon }}">
+                    {{ end }}
+                {{ end }}
             </div>
 
             <div class="col-2 text-left">
-                <a href="{{ details['href'] }}" class="target-link" rel="nofollow" target="_blank">
-                    <b>{{ target }}</b>
+                <a href="{{ $website.URL }}" class="target-link" rel="nofollow" target="_blank">
+                    <b>{{ $website.Name }}</b>
                 </a>
             </div>
 
             <div class="col-7 text-left">
-                {{ query_result_message }}
+                {{ $website.GetSupportMessage }}
             </div>
 
             <div class="col-2 text-right">
-                {% if details['twitter'] %}
-                    <a target="_blank" href="http://twitter.com/home/?status={{ ( messages['twitter'][details['query-results']['summary']] % ( details['twitter'] ) ) | urlencode }}">
+                {{ if (ne $website.Twitter "") }}
+                    <a target="_blank" href="http://twitter.com/home/?status={{ $website.GetTwitterMessage }}">
                         Tell 'em on <i class="fab fa-twitter" aria-hidden="true"></i>
                     </a>
-                {% endif %}
+                {{ end }}
             </div>
         </div>
 
-        <div id="result-div-{{ details['refname'] }}" class="row collapse border-right border-left border-bottom border-{{ details_border_color }} mb-2">
+        <div id="result-div-{{ $website.GetHTMLAnchor }}" class="row collapse border-right border-left border-bottom border mb-2">
             <div class="col-1"><!-- Icon spacing --></div>
             <div class="col-11">
                 <div class="row">
@@ -152,45 +133,45 @@
                     <div class="col-2 text-center"><b>Found AAAA</b></div>
                 </div>
 
-                {% for subdomain in details['query-results']['hosts'] %}
-                <div class="row {% if loop.last %}pb-2{% endif %}">
+                {{ range $domain := $website.Domains }}
+                <div class="row">
                     <div class="col-3 border-top">
-                        {{ subdomain }}
+                        {{ $domain.Domain }}
                     </div>
                     <div class="col-9">
-                        {% for dnsprovider in details['query-results']['hosts'][subdomain]|sort %}
+                        {{ range $resolverResult := $domain.ResolverResults }}
                         <div class="row border-top">
                             <div class="col-4">
-                                {{ dnsprovider }}
+                                {{ $resolverResult.ResolverProvider.Name }}
                             </div>
                             <div class="col-8">
-                                {% for resolverip in details['query-results']['hosts'][subdomain][dnsprovider] %}
+                                {{ range $resolver := $resolverResult.ResolverResults }}
                                 <div class="row">
-                                    <div class="col-8">{{ resolverip }}</div>
+                                    <div class="col-8">{{ $resolver.Resolver.Address }}</div>
                                     <div class="col-4 text-center">
-                                        {% if details['query-results']['hosts'][subdomain][dnsprovider][resolverip] == true %}
+                                        {{ if $resolver.QuadAFound }}
                                         <span class="badge badge-success">Yes</span>
-                                        {% else %}
+                                        {{ else }}
                                         <span class="badge badge-danger">No</span>
-                                        {% endif %}
+                                        {{ end }}
                                     </div>
                                 </div>
-                                {% endfor %}
+                                {{ end }}
                             </div>
                         </div>
-                        {% endfor %}
+                        {{ end }}
                     </div>
                 </div>
-                {% endfor %}
+                {{ end }}
             </div>
         </div>
-        {% endfor %}
-    {% endfor %}
+        {{ end }}
+    {{ end }}
 
     <hr/>
     <div class="row">
         <div class="col-8">
-            This page is regenerated every minute. Last update was at {{ date }} (UTC)
+            This page is generated every couple of minutes. Last update was at {{ .CreationTime }}
         </div>
         <div class="col-4 text-right">
             <a href="https://github.com/andir/ipv6.watch" title="GitHub" target="_blank">

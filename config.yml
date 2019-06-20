@@ -1,4 +1,8 @@
-nameservers:
+---
+website_title: status.why-ipv6.com
+github_repo: https://github.com/vlcty/status.why-ipv6.com
+
+resolvers:
   Google:
 #  - 8.8.8.8
   - 8.8.4.4
@@ -19,12 +23,12 @@ nameservers:
 #  - 149.112.112.112
 #  - 2620:fe::10
   - 2620:fe::fe:10
-
-messages:
-  twitter:
-    all: 'Hey %s thank you for enabling #IPv6 @ipv6watch'
-    some: 'Hey %s are you going to expand your #IPv6 support? @ipv6watch'
-    none: "Hey %s any plans to support #IPv6. Isn't it about time? @ipv6watch"
+#
+# # messages:
+# #   twitter:
+# #     all: 'Hey %s thank you for enabling #IPv6 @ipv6watch'
+# #     some: 'Hey %s are you going to expand your #IPv6 support? @ipv6watch'
+# #     none: "Hey %s any plans to support #IPv6. Isn't it about time? @ipv6watch"
 
 categories:
 - Social Network
@@ -45,7 +49,7 @@ categories:
 - E-Mail
 - Uncategorized # Never ever delete this!
 
-targets:
+websites:
   500px:
     href: https://500px.com/
     hosts:

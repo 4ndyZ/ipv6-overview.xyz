@@ -1,5 +1,0 @@
-jinja2
-pyyaml
-jsonschema
-aiodns
-htmlmin
