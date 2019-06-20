@@ -1,7 +1,9 @@
 package main
 
 import (
+    "flag"
     "fmt"
+    "io"
     "io/ioutil"
     log "github.com/sirupsen/logrus"
     "sync"
@@ -13,6 +15,8 @@ import (
 
 	"github.com/miekg/dns"
     yaml "gopkg.in/yaml.v2"
+    "github.com/tdewolff/minify"
+    "github.com/tdewolff/minify/html"
 )
 
 type IPv6_Support int
@@ -205,6 +209,9 @@ func HTMLAnchorify(toAnchor string) string {
 }
 
 func main() {
+    minifyPage := flag.Bool("minify", false, "Minfiy page")
+    flag.Parse()
+
     log.SetLevel(log.InfoLevel)
 
     yamlConfig, yamlError := LoadYAML()
@@ -247,26 +254,39 @@ func main() {
 
     htmlTemplate := template.New("index.template")
     // htmlTemplate.Funcs(funcMap)
-    _, error := htmlTemplate.ParseFiles("index.template")
-
-    if error != nil {
+    if _, error := htmlTemplate.ParseFiles("index.template"); error != nil {
         log.Fatal(error)
     } else {
-        file, _ := os.Create("dist/index.html")
-        defer file.Close()
+        renderedPage := &strings.Builder{}
 
-        executeError := htmlTemplate.Execute(file, websiteTemplate)
-
-        if executeError != nil {
+        if executeError := htmlTemplate.Execute(renderedPage, websiteTemplate); executeError != nil {
             log.Fatal(executeError)
         } else {
-            log.Info("Done!")
+            log.Info("Rendering done")
+
+            page := renderedPage.String()
+
+            if *minifyPage {
+                m := minify.New()
+                m.AddFunc("text/html", html.Minify)
+
+                minifiedRenderedPage, minifyerr := m.String("text/html", renderedPage.String())
+
+                if minifyerr != nil {
+                    log.WithField("ErrorMessage", minifyerr.Error()).Fatal("Failed to minify page")
+                } else {
+                    log.Info("Minifying done")
+                    page = minifiedRenderedPage
+                }
+            }
+
+            file,_ := os.Create("dist/index.html")
+            io.WriteString(file, page)
+            file.Close()
+
+            log.Info("Wrote page to index.html")
         }
     }
-}
-
-func trol(s string) {
-    s = s
 }
 
 func SortEveryWebsiteIntoCategory(websites[]*Website, categories []*Category) {

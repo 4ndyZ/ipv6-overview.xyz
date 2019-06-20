@@ -70,8 +70,6 @@ YAML files are sometimes hard to format properly. You can use `yamlfmt` to forma
 
 ### Minifying HTML
 
-(currently not implemented)
-
 When you generate the static page it's very huge. It consumes round about 1.3 MByte disk space and consists of many blank spaces which are good for a human developer working and debugging the generated HTML. A computer doesn't need them and only wastes ressources on it. That's why minifiers were developed. They remove unnecessary spaces, newlines etc to save up space.   
 Minifying the HTML reduces the HTML to round about 546 KByte. That's a reduction of 59%. The benefits are simple: The page loads faster and less CPU is needed for rendering it in the browser. On the other side debugging a minified HTML isn't fun.
 
