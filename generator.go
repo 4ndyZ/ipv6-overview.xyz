@@ -86,6 +86,7 @@ type Website struct {
     Categories []string
 
     IPv6SupportStatus int
+    CheckDurationInSeconds float64
 }
 
 func (website *Website) GetHTMLAnchor() string {
@@ -238,7 +239,15 @@ func main() {
     websiteTemplate.Title = yamlConfig.WebsiteTitle
     websiteTemplate.GithubRepo = yamlConfig.GithubRepo
 
-    template, error := template.ParseFiles("index.template")
+    // funcMap := template.FuncMap{
+	// 	"add": func (a,b int) int {
+    //         return a + b
+    //     },
+    // }
+
+    htmlTemplate := template.New("index.template")
+    // htmlTemplate.Funcs(funcMap)
+    _, error := htmlTemplate.ParseFiles("index.template")
 
     if error != nil {
         log.Fatal(error)
@@ -246,7 +255,7 @@ func main() {
         file, _ := os.Create("dist/index.html")
         defer file.Close()
 
-        executeError := template.Execute(file, websiteTemplate)
+        executeError := htmlTemplate.Execute(file, websiteTemplate)
 
         if executeError != nil {
             log.Fatal(executeError)
@@ -254,6 +263,10 @@ func main() {
             log.Info("Done!")
         }
     }
+}
+
+func trol(s string) {
+    s = s
 }
 
 func SortEveryWebsiteIntoCategory(websites[]*Website, categories []*Category) {
@@ -455,6 +468,8 @@ func ResolverWorker(websites <-chan *Website, resolverProviders []*ResolverProvi
     client := new(dns.Client)
 
     for website := range websites {
+        startTime := time.Now()
+
         for _, domain := range website.Domains {
             domain.ResolverResults = make([]DomainResolverResults, 0)
 
@@ -498,6 +513,8 @@ func ResolverWorker(websites <-chan *Website, resolverProviders []*ResolverProvi
                 domain.ResolverResults = append(domain.ResolverResults, domainResolverResults)
             }
         }
+
+        website.CheckDurationInSeconds = time.Now().Sub(startTime).Seconds()
 
         website.FigureOutIPv6SupportStatus()
     }

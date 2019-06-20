@@ -48,9 +48,9 @@
     </div>
     <div class="row">
         <div class="col-12">
-        It is {{ .Year }} and the IPv6 adoption of big websites is bad. Most of them have the money, time and people to provide IPv6 yet they are only reachable over IPv4.
-        See the result for each website by clicking on the respective area.<br />
-        Are you missing a website? Check out <a href="{{ .GithubRepo }}" target="_blank">the GitHub repository</a> for this project. Open an issue or create a pull request!
+        It is {{ .Year }} and the IPv6 adoption of big websites is bad. Most of them have the money, time and people to
+        support IPv6 on their websites yet they are only reachable over IPv4.<br />
+        Tipp: If you click on the websites area additional details will pop up. Are you missing a website? Check out <a href="{{ .GithubRepo }}" target="_blank">the GitHub repository</a> for this project. Open an issue or create a pull request!
         </div>
     </div>
 
@@ -81,6 +81,7 @@
         {{ range $website := $category.Websites }}
         <div class="row align-items-center minheight
             {{ $website.GetCSSBackgroundColor }}
+            border {{ $website.GetBorderColor }}
             mt-1 rounded"
             href="#result-div-{{ $website.GetHTMLAnchor }}"
             data-toggle="collapse"
@@ -116,13 +117,13 @@
             </div>
         </div>
 
-        <div id="result-div-{{ $website.GetHTMLAnchor }}" class="row collapse border-right border-left border-bottom {{ $website.GetBorderColor }} mb-2">
+        <div id="result-div-{{ $website.GetHTMLAnchor }}" class="row collapse border-right border-left border-bottom {{ $website.GetBorderColor }} mb-2 pb-2">
             <div class="col-1"><!-- Icon spacing --></div>
             <div class="col-11">
                 <div class="row">
                     <div class="col-12">
-                        A website is served from one or more domains. Each one is checked using multiple public available DNS resolvers. Each resolver has to return an AAAA record
-                        to pass the test. Here are the results:
+                        A website is served from one or more domains. Each one is checked using multiple public available DNS resolvers.
+                        Each resolver has to return at least one AAAA record to pass the test. These results were gathered in {{ printf "%.1f" $website.CheckDurationInSeconds }} seconds:
                     </div>
                 </div>
 
@@ -130,7 +131,7 @@
                     <div class="col-3"><b>Domain</b></div>
                     <div class="col-3"><b>Resolver provider</b></div>
                     <div class="col-4"><b>Resolver IPs</b></div>
-                    <div class="col-2 text-center"><b>Found AAAA</b></div>
+                    <div class="col-2 text-center"><b>Found AAAA?</b></div>
                 </div>
 
                 {{ range $domain := $website.Domains }}
@@ -184,9 +185,12 @@
     </div>
     <div class="row">
         <div class="col-12">
-            The used logos are taken from FontAwesome (if available), from Wikipedia or the respective websites media center.
-            Links to the source files and/or licences are stored in the <a href="{{ .GithubRepo }}" target="_blank">GitHub repository</a> from this project.<br />
-            If you don't want your logo to be used on this site: Don't contact a lawyer! Please open an issue on GitHub and we will surely find a solution.
+            The used logos are taken from FontAwesome (if available), from Wikipedia or the websites media center.
+            Links to the source files and/or licences are stored in the projects <a href="{{ .GithubRepo }}" target="_blank">GitHub repository</a>.<br />
+            If you don't want your logo shown on this site: Please open an issue on GitHub and we will surely find a solution.
+        </div>
+        <div class="col-12">
+            This page is a fork of <a href="https://github.com/andir/ipv6.watch" target="_blank">andir/ipv6.watch</a>
         </div>
     </div>
 </div>
