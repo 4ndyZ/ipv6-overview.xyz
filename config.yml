@@ -1,5 +1,5 @@
-website_title: status.why-ipv6.com
-github_repo: https://github.com/vlcty/status.why-ipv6.com
+website_title: status.why-ipv6.xyz
+github_repo: https://github.com/vlcty/status.why-ipv6.xyz
 
 resolvers:
   Google:
@@ -22,12 +22,7 @@ resolvers:
 #  - 149.112.112.112
 #  - 2620:fe::10
   - 2620:fe::fe:10
-#
-# # messages:
-# #   twitter:
-# #     all: 'Hey %s thank you for enabling #IPv6 @ipv6watch'
-# #     some: 'Hey %s are you going to expand your #IPv6 support? @ipv6watch'
-# #     none: "Hey %s any plans to support #IPv6. Isn't it about time? @ipv6watch"
+
 
 categories:
 - Social Network
@@ -66,6 +61,16 @@ websites:
     twitter: '@9GAGTEAM'
     categories:
     - Social Network
+
+  ARD:
+    href: https://www.ard.de
+    hosts:
+    - www.ard.de
+    - www.ardmediathek.de
+    icon: ard.svg   # https://commons.wikimedia.org/wiki/File:ARD_logo.svg
+    twitter: '@DasErste'
+    categories:
+    - News
 
   Amazon:
     href: https://www.amazon.com
@@ -127,7 +132,7 @@ websites:
     categories:
     - Search Engine
 
-  CenturyLink (formerly Level3):
+  CenturyLink:
     href: https://www.centurylink.com
     icon: CenturyLink.png # Source: http://news.centurylink.com/corporate-logos
     hosts:
@@ -395,7 +400,7 @@ websites:
 
   Imgur:
     href: https://imgur.com
-    icon: imgur.svg # Source: https://upload.wikimedia.org/wikipedia/commons/e/e9/Imgur_logo.svg
+    icon: Imgur.svg # Source: https://upload.wikimedia.org/wikipedia/commons/e/e9/Imgur_logo.svg
     # Licence: https://help.imgur.com/hc/en-us/articles/202062878-Trademark-Use-Policy
     hosts:
     - imgur.com
@@ -1037,6 +1042,8 @@ websites:
     # Licence: https://github.com/syncthing/syncthing/blob/master/LICENSE
     hosts:
     - syncthing.net
+    - docs.syncthing.net
+    - forum.syncthing.net
     twitter: '@syncthing'
 
   BBC:
@@ -1058,7 +1065,26 @@ websites:
     categories:
     - News
 
-# TODO: ARD statt tagesschau einfügen
+  Ali Express:
+    href: https://aliexpress.com
+    hosts:
+    - de.aliexpress.com
+    - login.aliexpress.com
+    - www.alibabagroup.com
+    icon: aliexpress.png   # https://www.alibabagroup.com/en/news/library#slide_logo
+    twitter: '@AliExpress_EN'
+    categories:
+    - Shopping
+
+  Gearbest:
+    href: https://www.gearbest.com
+    hosts:
+    - www.gearbest.com
+    - login.gearbest.com
+    icon: gearbest.jpg   # https://www.gearbest.com/blog/gb-feature/new-gearbest-logo-dynamic-new-vision-stunning-shopping-experience-3721
+    twitter: '@TheGearbest'
+    categories:
+    - Shopping
 
   ZDF:
     href: https://www.zdf.de/

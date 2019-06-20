@@ -116,7 +116,7 @@
             </div>
         </div>
 
-        <div id="result-div-{{ $website.GetHTMLAnchor }}" class="row collapse border-right border-left border-bottom border mb-2">
+        <div id="result-div-{{ $website.GetHTMLAnchor }}" class="row collapse border-right border-left border-bottom {{ $website.GetBorderColor }} mb-2">
             <div class="col-1"><!-- Icon spacing --></div>
             <div class="col-11">
                 <div class="row">
@@ -174,10 +174,10 @@
             This page is generated every couple of minutes. Last update was at {{ .CreationTime }}
         </div>
         <div class="col-4 text-right">
-            <a href="https://github.com/andir/ipv6.watch" title="GitHub" target="_blank">
+            <a href="{{ .GithubRepo }}" title="GitHub" target="_blank">
                 <i class="fab fa-github fa-3x" id="github-logo"></i>
             </a>
-            <a href="https://twitter.com/ipv6watch" title="Twitter" target="_blank">
+            <a href="https://twitter.com/DerVeloc1ty" title="Twitter" target="_blank">
                 <i class="fab fa-twitter fa-3x" id="twitter-logo"></i>
             </a>
         </div>
@@ -185,7 +185,7 @@
     <div class="row">
         <div class="col-12">
             The used logos are taken from FontAwesome (if available), from Wikipedia or the respective websites media center.
-            Links to the source files and/or licences are stored in the <a href="https://github.com/andir/ipv6.watch" target="_blank">GitHub repository</a> from this project.<br />
+            Links to the source files and/or licences are stored in the <a href="{{ .GithubRepo }}" target="_blank">GitHub repository</a> from this project.<br />
             If you don't want your logo to be used on this site: Don't contact a lawyer! Please open an issue on GitHub and we will surely find a solution.
         </div>
     </div>

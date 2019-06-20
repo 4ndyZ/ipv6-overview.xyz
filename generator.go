@@ -118,21 +118,30 @@ func (website *Website) GetSupportMessage() string {
     }
 }
 
+func (website *Website) GetBorderColor() string {
+    switch website.IPv6SupportStatus {
+    case IPv6_Full_Support:
+        return "border-success"
+    case IPv6_Partial_Support:
+        return "border-warning"
+    default:
+        return "border-danger"
+    }
+}
+
 func (website *Website) GetTwitterMessage() string {
-    appendix := " #ipv6 whyipv6"
     message := ""
 
     switch website.IPv6SupportStatus {
     case IPv6_Full_Support:
-        message = "Thank you %s for serving your website over IPv6!"
+        message = "Thanks for serving your website over IPv6!"
     case IPv6_Partial_Support:
-        message = ".%s Can you please improve your IPv6 support?"
+        message = "Can you please improve your IPv6 support?"
     default:
-        message = ".%s Isn't it about time to provide IPv6 on your website?"
+        message = "Isn't it about time to provide IPv6 on your website?"
     }
 
-    message += appendix
-    return fmt.Sprintf(message, website.Twitter)
+    return fmt.Sprintf(".%s %s #ipv6 #whyipv6", website.Twitter, message)
 }
 
 func (website *Website) FigureOutIPv6SupportStatus() {
@@ -467,8 +476,11 @@ func ResolverWorker(websites <-chan *Website, resolverProviders []*ResolverProvi
                     answer, _, err := client.Exchange(message, resolver.Address + ":53")
 
                     if err == nil && answer.Rcode == dns.RcodeSuccess {
-                        if len(answer.Answer) != 0 {
-                            domainResolverResult.QuadAFound = true
+                        for _, record := range answer.Answer {
+                            if _, ok := record.(*dns.AAAA); ok {
+                                domainResolverResult.QuadAFound = true
+                                break // one is enough
+                            }
                         }
                 	}
 
