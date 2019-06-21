@@ -6,6 +6,14 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/fontawesome.min.css">
+
+    <meta name="description" content="{{ .WebsiteDescription }}" />
+    <meta name="keywords" content="ipv6, ipv6 adoption" />
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="{{ .Title }}" />
+    <meta name="twitter:description" content="{{ .WebsiteDescription }}" />
+
     <style type="text/css">
     #twitter-logo {
         color: #00aced;

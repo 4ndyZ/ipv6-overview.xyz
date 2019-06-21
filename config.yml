@@ -1,5 +1,6 @@
 website_title: status.why-ipv6.xyz
 github_repo: https://github.com/vlcty/status.why-ipv6.xyz
+website_description: Overview of websites or services if they are reachable over IPv6 or not by checking their DNS records
 
 resolvers:
   Google:
