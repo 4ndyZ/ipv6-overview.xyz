@@ -1233,3 +1233,14 @@ websites:
     categories:
     - E-Mail
     - Search engine
+
+  Manjaro:
+    href: https://manjaro.org
+    hosts:
+    - manjaro.org
+    - lists.manjaro.org
+    - wiki.manjaro.org
+    icon: manjaro.svg   # https://commons.wikimedia.org/wiki/File:Manjaro-logo.svg
+    twitter: '@ManjaroLinux'
+    categories:
+    - Operating System
