@@ -563,6 +563,7 @@ websites:
     href: http://pastebin.com/
     hosts:
     - pastebin.com
+    - deals.pastebin.com
     twitter: '@pastebin'
 
   PayPal:
