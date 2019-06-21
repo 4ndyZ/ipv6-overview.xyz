@@ -26,7 +26,7 @@ const (
     IPv6_Partial_Support int = 0
     IPv6_No_Support = -1
 
-    RESOLVER_WORKER_GOROUTINE_COUNT int = 10
+    RESOLVER_WORKER_GOROUTINE_COUNT int = 15
 )
 
 type YAMLConfig struct {
@@ -214,29 +214,63 @@ func main() {
 
     log.SetLevel(log.InfoLevel)
 
-    yamlConfig, yamlError := LoadYAML()
-
-    if yamlError != nil {
-        fmt.Printf("Error reading YAML: %s", yamlError.Error())
-        return
-    }
+    yamlConfig := LoadYAML()
 
     resolverProviders := ParseResolverProviders(yamlConfig)
     categories := ParseCategories(yamlConfig)
     websites := ParseWebsites(yamlConfig)
 
-    waitForResolveAndSort := &sync.WaitGroup{}
-    waitForResolveAndSort.Add(RESOLVER_WORKER_GOROUTINE_COUNT)
-
-    go TestEveryWebsite(waitForResolveAndSort, websites, resolverProviders)
-
-    waitForResolveAndSort.Wait()
-
-    log.Info("Worker finished their tasks")
+    TestEveryWebsite(websites, resolverProviders)
 
     SortEveryWebsiteIntoCategory(websites, categories)
     GenerateCategoryCounters(categories)
     SortWebsitesInsideCategories(categories)
+
+    renderedPage := RenderPage(yamlConfig, categories)
+
+    if *minifyPage {
+        renderedPage = MinifyPage(renderedPage)
+    }
+
+    WritePageToDisk(renderedPage)
+
+    log.Info("Finished")
+}
+
+func WritePageToDisk(page string) {
+    log.Info("Writing page to disk")
+
+    file, fileerr := os.Create("dist/index.html")
+
+    if fileerr != nil {
+        log.WithField("ErrorMessage", fileerr.Error()).Fatal("Was not able to create/open dist/index.html")
+    } else {
+        io.WriteString(file, page)
+        file.Close()
+
+        log.Info("Wrote page to index.html")
+    }
+}
+
+func MinifyPage(unminified string) string {
+    log.Info("Minifying page")
+
+    m := minify.New()
+    m.AddFunc("text/html", html.Minify)
+
+    minified, minifyerr := m.String("text/html", unminified)
+
+    if minifyerr != nil {
+        log.WithField("ErrorMessage", minifyerr.Error()).Fatal("Failed to minify page")
+        return ""
+    } else {
+        log.Info("Minifying done")
+        return minified
+    }
+}
+
+func RenderPage(yamlConfig *YAMLConfig, categories []*Category) string {
+    log.Info("Rendering page")
 
     websiteTemplate := &WebsiteTemplate{}
     websiteTemplate.Categories = categories
@@ -255,36 +289,18 @@ func main() {
     htmlTemplate := template.New("index.template")
     // htmlTemplate.Funcs(funcMap)
     if _, error := htmlTemplate.ParseFiles("index.template"); error != nil {
-        log.Fatal(error)
+        log.WithField("ErrorMessage", error.Error()).Fatal("Failed to parse template")
+        return ""
     } else {
         renderedPage := &strings.Builder{}
 
         if executeError := htmlTemplate.Execute(renderedPage, websiteTemplate); executeError != nil {
-            log.Fatal(executeError)
+            log.WithField("ErrorMessage", executeError.Error()).Fatal("Failed to render template")
+            return ""
         } else {
             log.Info("Rendering done")
 
-            page := renderedPage.String()
-
-            if *minifyPage {
-                m := minify.New()
-                m.AddFunc("text/html", html.Minify)
-
-                minifiedRenderedPage, minifyerr := m.String("text/html", renderedPage.String())
-
-                if minifyerr != nil {
-                    log.WithField("ErrorMessage", minifyerr.Error()).Fatal("Failed to minify page")
-                } else {
-                    log.Info("Minifying done")
-                    page = minifiedRenderedPage
-                }
-            }
-
-            file,_ := os.Create("dist/index.html")
-            io.WriteString(file, page)
-            file.Close()
-
-            log.Info("Wrote page to index.html")
+            return renderedPage.String()
         }
     }
 }
@@ -362,23 +378,30 @@ func GenerateCategoryCounters(categories []*Category) {
     log.Info("Finished generating category overall counters")
 }
 
-func TestEveryWebsite(waitGroup *sync.WaitGroup, websites []*Website, resolverProviders []*ResolverProvider) {
+func TestEveryWebsite(websites []*Website, resolverProviders []*ResolverProvider) {
     log.Info("Testing websites")
 
     channel := make(chan *Website, 2 * RESOLVER_WORKER_GOROUTINE_COUNT)
 
+    waitForResolve := &sync.WaitGroup{}
+
     for i := 0; i < RESOLVER_WORKER_GOROUTINE_COUNT; i++ {
+        waitForResolve.Add(1)
+        go ResolverWorker(channel, resolverProviders, waitForResolve)
         log.WithField("WorkerID", i).Info("Started worker goroutine")
-        go ResolverWorker(channel, resolverProviders, waitGroup)
     }
 
     for _, website := range websites {
         channel <- website
     }
 
+    close(channel)
+
     log.Info("Finished queuing up websites")
 
-    close(channel)
+    waitForResolve.Wait()
+
+    log.Info("Workers finished their tasks")
 }
 
 func ParseResolverProviders(yamlConfig *YAMLConfig) []*ResolverProvider {
@@ -465,21 +488,21 @@ func ParseWebsites(yamlConfig *YAMLConfig) []*Website{
     return websites
 }
 
-func LoadYAML() (*YAMLConfig, error) {
+func LoadYAML() (*YAMLConfig) {
     yamlContent, fileReadError := ioutil.ReadFile("config.yml")
 
     if fileReadError != nil {
-        return nil, fileReadError
+        log.WithField("ErrorMessage", fileReadError.Error()).Fatal("Was not able to read config.yml")
+        return nil
     }
 
     yamlconfig := &YAMLConfig{}
 
-    unmarshallError := yaml.Unmarshal([]byte(yamlContent), yamlconfig)
-
-    if unmarshallError != nil {
-        return nil, unmarshallError
+    if unmarshallError := yaml.Unmarshal([]byte(yamlContent), yamlconfig); unmarshallError != nil {
+        log.WithField("ErrorMessage", unmarshallError.Error()).Fatal("Was not able to parse config.yaml")
+        return nil
     } else {
-        return yamlconfig, nil
+        return yamlconfig
     }
 }
 
