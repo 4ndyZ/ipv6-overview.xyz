@@ -26,6 +26,10 @@
         text-decoration: underline;
     }
 
+    .a-no-underline {
+        text-decoration: none;
+    }
+
     .minheight {
         min-height: 60px;
     }
@@ -50,27 +54,30 @@
 <body>
 <div class="container">
     <div class="row">
-        <div class="col-12">
-            <h1><a href="/">{{ .Title }}</a></h1>
+        <div class="col-12 text-center">
+            <h1>{{ .Title }}</h1>
         </div>
     </div>
     <div class="row">
         <div class="col-12">
         It is {{ .Year }} and the IPv6 adoption of big websites is bad. Most of them have the money, time and people to
-        support IPv6 on their websites yet they are only reachable over IPv4.<br />
-        Tipp: If you click on the websites area additional details will pop up. Are you missing a website? Check out <a href="{{ .GithubRepo }}" target="_blank">the GitHub repository</a> for this project. Open an issue or create a pull request!
+        support IPv6 on their websites yet they are only reachable over IPv4. The goal of this website is to provide an
+        overview which websites or services are reachable over IPv6 and which are not. You'll probably spot some
+        similarities, don't you?<br />
+        <br />
+        Tipp: If you click on a websites area additional details will pop up. Are you missing a website? Check out <a href="{{ .GithubRepo }}" target="_blank">the GitHub repository</a> for this project. Open an issue or create a pull request!
         </div>
     </div>
 
     <div class="row mt-3">
         <div class="col-12">
-            <b>Jump to a category:</b>
+            <h3>Jump to a category:</h3>
         </div>
     </div>
     <div class="row">
         <div class="col-12">
         {{ range $category := .Categories }}
-        <a class="btn btn-secondary m-1" href="#anchor-{{ $category.GetHTMLAnchor }}">{{ $category.Name }}</a>
+        <a class="a-no-underline btn btn-secondary m-1" href="#anchor-{{ $category.GetHTMLAnchor }}">{{ $category.Name }}</a>
         {{ end }}
         </div>
     </div>
