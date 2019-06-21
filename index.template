@@ -86,7 +86,7 @@
     <div id="anchor-{{ $category.GetHTMLAnchor }}" class="row mt-5 align-items-center">
             <div class="col-12">
                 <h2>{{ $category.Name }}</h2>
-                IPv6 support:
+                Category IPv6 support:
                     <span class="badge badge-pill badge-success">Full: {{ $category.CountIPv6FullSupport }}</span>
                     <span class="badge badge-pill badge-warning">Some: {{ $category.CountIPv6PartialSupport }}</span>
                     <span class="badge badge-pill badge-danger">None: {{ $category.CountIPv6NoSupport }}</span>
@@ -202,7 +202,7 @@
         <div class="col-12">
             The used logos are taken from FontAwesome (if available), from Wikipedia or the websites media center.
             Links to the source files and/or licences are stored in the projects <a href="{{ .GithubRepo }}" target="_blank">GitHub repository</a>.<br />
-            If you don't want your logo shown on this site: Please open an issue on GitHub and we will surely find a solution.
+            If you don't want your logo being used on this site: Please open an issue on GitHub and we will surely find a solution.
         </div>
         <div class="col-12">
             This page is a fork of <a href="https://github.com/andir/ipv6.watch" target="_blank">andir/ipv6.watch</a>
