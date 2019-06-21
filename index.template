@@ -86,7 +86,7 @@
     <div id="anchor-{{ $category.GetHTMLAnchor }}" class="row mt-5 align-items-center">
             <div class="col-12">
                 <h2>{{ $category.Name }}</h2>
-                Category IPv6 support:
+                IPv6 support:
                     <span class="badge badge-pill badge-success">Full: {{ $category.CountIPv6FullSupport }}</span>
                     <span class="badge badge-pill badge-warning">Some: {{ $category.CountIPv6PartialSupport }}</span>
                     <span class="badge badge-pill badge-danger">None: {{ $category.CountIPv6NoSupport }}</span>
