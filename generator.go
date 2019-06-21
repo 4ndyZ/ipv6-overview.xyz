@@ -315,16 +315,14 @@ func SortEveryWebsiteIntoCategory(websites[]*Website, categories []*Category) {
 
             for _, category := range categories {
                 if websiteCategory == category.Name {
-
                     category.Websites = append(category.Websites, website)
-
                     wasSorted = true
 
                     log.WithFields(log.Fields{
                        "Website": website.Name,
                        "Category": websiteCategory }).Debug("Sorted website into category")
 
-                       break
+                    break
                 }
             }
         }
@@ -363,7 +361,6 @@ func SortWebsitesInsideCategories(categories []*Category) {
             }
         })
     }
-
 
     log.Info("Sorting websites inside categories finished")
 }
