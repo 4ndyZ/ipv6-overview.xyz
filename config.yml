@@ -1244,3 +1244,14 @@ websites:
     twitter: '@ManjaroLinux'
     categories:
     - Operating System
+
+  FreeBSD:
+    href: https://www.freebsd.org
+    hosts:
+    - www.freebsd.org
+    - www.freebsdfoundation.org
+    - forums.freebsd.org
+    icon: freebsd.png   # https://www.freebsdfoundation.org/about/project/
+    twitter: '@freebsd'
+    categories:
+    - Operating System
