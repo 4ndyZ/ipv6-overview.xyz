@@ -527,13 +527,17 @@ websites:
     categories:
     - Streaming
 
-  NixOS:
-    href: https://nixos.org
+  openSUSE:
+    href: https://www.opensuse.org
     hosts:
-    - nixos.org
-    - cache.nixos.org
-    icon: nixos.png
-    twitter: '@nixos_org'
+    - www.opensuse.org
+    - software.opensuse.org
+    - en.opensuse.org
+    - doc.opensuse.org
+    - forums.opensuse.org
+    - lizards.opensuse.org
+    icon: opensuse.png # https://en.opensuse.org/openSUSE:Artwork_brand
+    twitter: '@openSUSE'
     categories:
     - Operating System
 
