@@ -1258,3 +1258,23 @@ websites:
     twitter: '@freebsd'
     categories:
     - Operating System
+
+  Ecosia:
+    href: https://www.ecosia.org
+    hosts:
+    - ecosia.org
+    icon: Ecosia.png
+    twitter: '@Ecosia'
+    categories:
+    - Search Engine
+
+  Startpage:
+    href: https://www.startpage.com/
+    hosts:
+    - www.startpage.com
+    - eu.startpage.com
+    - us.startpage.com
+    icon: Startpage.svg
+    twitter: '@StartPageSearch'
+    categories:
+    - Search Engine
