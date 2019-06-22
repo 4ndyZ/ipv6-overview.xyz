@@ -1258,3 +1258,12 @@ websites:
     twitter: '@freebsd'
     categories:
     - Operating System
+
+  Ecosia:
+    href: https://www.ecosia.org
+    hosts:
+      - ecosia.org
+    icon: Ecosia.org
+    twitter: '@Ecosia'
+    categories:
+      - Search Engine
