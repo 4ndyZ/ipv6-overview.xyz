@@ -50,6 +50,11 @@
     .target-link {
         color: black;
     }
+
+    .logo {
+        max-height: 40px;
+        max-width: 64px;
+    }
     </style>
 </head>
 <body>
@@ -109,7 +114,7 @@
                     {{ if $website.IsFontAwesomeIcon }}
                         <i class="fab {{ $website.Icon }} fa-3x"></i>
                     {{ else }}
-                        <img style="max-height: 40px; max-width: 64px;" src="images/{{ $website.Icon }}">
+                        <img class="logo" src="images/{{ $website.Icon }}">
                     {{ end }}
                 {{ end }}
             </div>
