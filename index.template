@@ -13,6 +13,7 @@
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="{{ .Title }}" />
     <meta name="twitter:description" content="{{ .WebsiteDescription }}" />
+    <meta name="twitter:creator" content="@DerVeloc1ty" />
 
     <style type="text/css">
     #twitter-logo {
@@ -98,7 +99,7 @@
             {{ $website.GetCSSBackgroundColor }}
             border {{ $website.GetBorderColor }}
             mt-1 rounded"
-            href="#result-div-{{ $website.GetHTMLAnchor }}"
+            href="#result-div-{{ $website.GetHTMLAnchor }}-{{ $category.GetHTMLAnchor }}"
             data-toggle="collapse"
             aria-expanded="false"
             aria-controls="result-div-{{ .Name }}" >
@@ -132,7 +133,7 @@
             </div>
         </div>
 
-        <div id="result-div-{{ $website.GetHTMLAnchor }}" class="row collapse border-right border-left border-bottom {{ $website.GetBorderColor }} mb-2 pb-2">
+        <div id="result-div-{{ $website.GetHTMLAnchor }}-{{ $category.GetHTMLAnchor }}" class="row collapse border-right border-left border-bottom {{ $website.GetBorderColor }} mb-2 pb-2">
             <div class="col-1"><!-- Icon spacing --></div>
             <div class="col-11">
                 <div class="row">
