@@ -102,14 +102,8 @@
     </div>
 
         {{ range $website := $category.Websites }}
-        <div class="row align-items-center minheight
-            {{ $website.GetCSSBackgroundColor }}
-            border {{ $website.GetBorderColor }}
-            mt-1 rounded"
-            href="#result-div-{{ $website.GetHTMLAnchor }}-{{ $category.GetHTMLAnchor }}"
-            data-toggle="collapse"
-            aria-expanded="false"
-            aria-controls="result-div-{{ .Name }}" >
+        <div class="row align-items-center minheight {{ $website.GetCSSBackgroundColor }} border {{ $website.GetBorderColor }} mt-1 rounded"
+            href="#result-div-{{ $website.GetHTMLAnchor }}-{{ $category.GetHTMLAnchor }}" data-toggle="collapse" aria-expanded="false" aria-controls="result-div-{{ .Name }}" >
 
             <div class="col-1 text-center">
                 {{ if (ne $website.Icon "") }}
