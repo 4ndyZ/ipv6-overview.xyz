@@ -1267,3 +1267,14 @@ websites:
     twitter: '@Ecosia'
     categories:
       - Search Engine
+
+  Startpage:
+    href: https://www.startpage.com/
+    hosts:
+      - www.startpage.com
+      - eu.startpage.com
+      - us.startpage.com
+    icon: Startpage.svg
+    twitter: '@StartPageSearch'
+    categories:
+      - Search Engine
