@@ -1263,7 +1263,7 @@ websites:
     href: https://www.ecosia.org
     hosts:
       - ecosia.org
-    icon: Ecosia.org
+    icon: Ecosia.png
     twitter: '@Ecosia'
     categories:
       - Search Engine
