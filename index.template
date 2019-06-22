@@ -107,7 +107,7 @@
         <div class="row align-items-center minheight {{ $website.GetCSSBackgroundColor }} border {{ $website.GetBorderColor }} mt-1 rounded"
             href="#result-div-{{ $website.GetHTMLAnchor }}-{{ $category.GetHTMLAnchor }}" data-toggle="collapse" aria-expanded="false" aria-controls="result-div-{{ .Name }}" >
 
-            <div class="col-1 text-center">
+            <div class="col-md-1 text-center">
                 {{ if (ne $website.Icon "") }}
                     {{ if $website.IsFontAwesomeIcon }}
                         <i class="fab {{ $website.Icon }} fa-3x"></i>
@@ -117,17 +117,17 @@
                 {{ end }}
             </div>
 
-            <div class="col-2 text-left">
+            <div class="col-md-2 text-left">
                 <a href="{{ $website.URL }}" class="target-link" rel="nofollow" target="_blank">
                     <b>{{ $website.Name }}</b>
                 </a>
             </div>
 
-            <div class="col-7 text-left">
+            <div class="col-md-7 text-left">
                 {{ $website.GetSupportMessage }}
             </div>
 
-            <div class="col-2 text-right">
+            <div class="col-md-2 text-right">
                 {{ if (ne $website.Twitter "") }}
                     <a target="_blank" href="http://twitter.com/home/?status={{ $website.GetTwitterMessage }}">
                         Tell 'em on <i class="fab fa-twitter" aria-hidden="true"></i>
@@ -147,28 +147,28 @@
                 </div>
 
                 <div class="row mt-4">
-                    <div class="col-3"><b>Domain</b></div>
-                    <div class="col-3"><b>Resolver provider</b></div>
-                    <div class="col-4"><b>Resolver IPs</b></div>
-                    <div class="col-2 text-center"><b>Found AAAA?</b></div>
+                    <div class="col-md-3"><b>Domain</b></div>
+                    <div class="col-md-3"><b>Resolver provider</b></div>
+                    <div class="col-md-4"><b>Resolver IPs</b></div>
+                    <div class="col-md-2 text-center"><b>Found AAAA?</b></div>
                 </div>
 
                 {{ range $domain := $website.Domains }}
                 <div class="row">
-                    <div class="col-3 border-top">
+                    <div class="col-md-3 border-top">
                         {{ $domain.Domain }}
                     </div>
-                    <div class="col-9">
+                    <div class="col-md-9">
                         {{ range $resolverResult := $domain.ResolverResults }}
                         <div class="row border-top">
-                            <div class="col-4">
+                            <div class="col-md-4">
                                 {{ $resolverResult.ResolverProvider.Name }}
                             </div>
-                            <div class="col-8">
+                            <div class="col-md-8">
                                 {{ range $resolver := $resolverResult.ResolverResults }}
                                 <div class="row">
-                                    <div class="col-8">{{ $resolver.Resolver.Address }}</div>
-                                    <div class="col-4 text-center">
+                                    <div class="col-md-8">{{ $resolver.Resolver.Address }}</div>
+                                    <div class="col-md-4 text-center">
                                         {{ if $resolver.QuadAFound }}
                                         <span class="badge badge-success">Yes</span>
                                         {{ else }}
