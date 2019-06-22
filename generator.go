@@ -42,6 +42,7 @@ type YAMLConfig struct {
     WebsiteTitle string `yaml:"website_title"`
     GithubRepo string `yaml:"github_repo"`
     WebsiteDescription string `yaml:"website_description"`
+    WebsiteURL string `yaml:"website_url"`
 }
 
 type Resolver struct {
@@ -198,6 +199,7 @@ type WebsiteTemplate struct {
     Title string
     GithubRepo string
     WebsiteDescription string
+    WebsiteURL string
 }
 
 func HTMLAnchorify(toAnchor string) string {
@@ -282,6 +284,7 @@ func RenderPage(yamlConfig *YAMLConfig, categories []*Category) string {
     websiteTemplate.Title = yamlConfig.WebsiteTitle
     websiteTemplate.GithubRepo = yamlConfig.GithubRepo
     websiteTemplate.WebsiteDescription = yamlConfig.WebsiteDescription
+    websiteTemplate.WebsiteURL = yamlConfig.WebsiteURL
 
     // funcMap := template.FuncMap{
 	// 	"add": func (a,b int) int {

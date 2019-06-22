@@ -16,6 +16,7 @@
     <meta name="twitter:title" content="{{ .Title }}" />
     <meta name="twitter:description" content="{{ .WebsiteDescription }}" />
     <meta name="twitter:creator" content="@DerVeloc1ty" />
+    <meta name="twitter:image" content="{{ .WebsiteURL }}/images/World_IPv6_launch_logo_128.png" />
 
     <style type="text/css">
     #twitter-logo {
