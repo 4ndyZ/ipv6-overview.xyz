@@ -518,6 +518,9 @@ websites:
     twitter: '@NetCologne_GmbH'
     categories:
     - Internet service provider
+    tags:
+    - isp-providing-ipv6-to-private-customers
+    - isp-providing-ipv6-to-business-customers
 
   Netflix:
     href: https://www.netflix.com/
@@ -551,6 +554,8 @@ websites:
     twitter: '@o2de'
     categories:
     - Internet service provider
+    tags:
+    - isp-providing-ipv6-to-private-customers
 
   Origin:
     href: https://www.origin.com
@@ -1142,6 +1147,9 @@ websites:
     twitter: '@deutschetelekom'
     categories:
     - Internet service provider
+    tags:
+    - isp-providing-ipv6-to-private-customers
+    - isp-providing-ipv6-to-business-customers
 
   1und1:
     href: https://www.1und1.de/
@@ -1153,6 +1161,8 @@ websites:
     twitter: '@1und1'
     categories:
     - Internet service provider
+    tags:
+    - isp-providing-ipv6-to-private-customers
 
   Deutsche Glasfaser:
     href: https://www.deutsche-glasfaser.de
@@ -1162,6 +1172,8 @@ websites:
     twitter: '@DtGlasfaser'
     categories:
     - Internet service provider
+    tags:
+    - isp-providing-ipv6-to-private-customers
 
   Unitymedia:
     href: https://www.unitymedia.de/
@@ -1173,6 +1185,9 @@ websites:
     twitter: '@UnitymediaHilfe'
     categories:
     - Internet service provider
+    tags:
+    - isp-providing-ipv6-to-private-customers
+    - isp-providing-ipv6-to-business-customers
 
   GMX:
     href: https://www.gmx.net

@@ -38,6 +38,7 @@ type YAMLConfig struct {
         Icon string
         Twitter string
         Categories []string
+        Tags []string
     } `yaml:"websites"`
     WebsiteTitle string `yaml:"website_title"`
     GithubRepo string `yaml:"github_repo"`
@@ -90,6 +91,7 @@ type Website struct {
     Icon string
     Twitter string
     Categories []string
+    Tags []string
 
     IPv6SupportStatus int
     CheckDurationInSeconds float64
@@ -482,6 +484,8 @@ func ParseWebsites(yamlConfig *YAMLConfig) []*Website{
         if len(website.Categories) == 0 {
             website.Categories = append(website.Categories, "Uncategorized")
         }
+
+        website.Tags = websiteConfig.Tags
 
         websites = append(websites, website)
     }

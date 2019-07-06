@@ -59,6 +59,21 @@
         max-height: 40px;
         max-width: 64px;
     }
+
+    ul.emojilist {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    li.emojilist-item::before {
+        content: "✅ ";
+    }
+
+    .infoemoji {
+        font-size:2rem;
+        width:100%;
+    }
     </style>
 </head>
 <body>
@@ -123,8 +138,16 @@
                 </a>
             </div>
 
-            <div class="col-md-7 text-left">
+            <div class="col-md-6 text-left">
                 {{ $website.GetSupportMessage }}
+            </div>
+
+            <div class="col-md-1 text-right">
+                {{ if ne (len $website.Tags) 0 }}
+                <span class="infoemoji">✳️</span>
+                {{ else }}
+                <!-- Placeholder -->
+                {{ end }}
             </div>
 
             <div class="col-md-2 text-right">
@@ -139,6 +162,7 @@
         <div id="result-div-{{ $website.GetHTMLAnchor }}-{{ $category.GetHTMLAnchor }}" class="row collapse border-right border-left border-bottom {{ $website.GetBorderColor }} mb-2 pb-2">
             <div class="col-1"><!-- Icon spacing --></div>
             <div class="col-11">
+
                 <div class="row">
                     <div class="col-12">
                         A website is served from one or more domains. Each one is checked using multiple public available DNS resolvers.
@@ -180,6 +204,24 @@
                             </div>
                         </div>
                         {{ end }}
+                    </div>
+                </div>
+                {{ end }}
+
+                {{ if ne (len $website.Tags) 0 }}
+                <div class="row mt-3">
+                    <div class="col-12">
+                        <b>Heads up! This website/provider has some special perks:</b>
+
+                        <ul class="emojilist">
+                            {{ range $tag := $website.Tags }}
+                                {{ if eq $tag "isp-providing-ipv6-to-private-customers" }}
+                                <li class="emojilist-item">ISP providing an IPv6 prefix to private customers</li>
+                                {{ else if eq $tag "isp-providing-ipv6-to-business-customers" }}
+                                <li class="emojilist-item">ISP providing an IPv6 prefix to business customers</li>
+                                {{ end }}
+                            {{ end }}
+                        </ul>
                     </div>
                 </div>
                 {{ end }}
