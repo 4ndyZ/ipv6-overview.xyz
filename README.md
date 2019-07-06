@@ -12,7 +12,7 @@ The whole application config (categories, websites, subdomains, resolvers, etc) 
 
 ### Used DNS resolvers
 
-Each key under `nameservers` represents a different DNS resolver provider. Each of them contains a list with their publicly reachable resolver IPs. Some of them (mostly the primary IPs) are commented out. There is no advantage checking against a primary and a secondary resolver. Instead every resolver provider should've one IPv4 and one IPv6.
+Each key under `resolvers` represents a different DNS resolver provider. Each of them contains a list with their publicly reachable resolver IPs. Some of them (mostly the primary IPs) are commented out. There is no advantage checking against a primary and a secondary resolver. Instead every resolver provider should've one IPv4 and one IPv6.
 
 ### Categories
 
