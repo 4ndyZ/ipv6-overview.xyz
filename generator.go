@@ -540,24 +540,29 @@ func ResolverWorker(websites <-chan *Website, resolverProviders []*ResolverProvi
 
                     answer, _, err := client.Exchange(message, resolver.Address + ":53")
 
-                    if err == nil && answer.Rcode == dns.RcodeSuccess {
+                    querylogger := log.WithFields(log.Fields {
+                        "ResolverIP": resolver.Address,
+                        "Domain": domain.Domain })
+
+                    if err != nil {
+                        querylogger.WithField("ErrorMessage", err.Error()).Error("Failed to query resolver")
+                    } else if answer.Rcode == dns.RcodeSuccess {
                         for _, record := range answer.Answer {
+                            // Check if we really got AAAA records. Some websites provide CNAMEs
+                            // They should of course not count
                             if _, ok := record.(*dns.AAAA); ok {
                                 domainResolverResult.QuadAFound = true
                                 break // one is enough
                             }
                         }
-                	}
 
-                    domainResolverResults.ResolverResults = append(domainResolverResults.ResolverResults,
-                        domainResolverResult)
+                        domainResolverResults.ResolverResults = append(domainResolverResults.ResolverResults,
+                            domainResolverResult)
 
-                    log.WithFields(log.Fields{
-                        "Website": website.Name,
-                        "Domain": domain.Domain,
-                        "ResolverProvider": resolverProvider.Name,
-                        "Resolver": resolver.Address,
-                        "QuadAFound": domainResolverResult.QuadAFound }).Debug("Resolve result received")
+                        querylogger.WithField("QuadAFound", domainResolverResult.QuadAFound).Debug("Resolved domain")
+                	} else {
+                        querylogger.Error("No transport error occured but dns answer wasn't successfull. Is the domain still active?")
+                    }
                 }
 
                 domain.ResolverResults = append(domain.ResolverResults, domainResolverResults)
