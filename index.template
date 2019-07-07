@@ -225,6 +225,8 @@
                             <li class="emojilist-item">ISP providing an IPv6 prefix to business customers</li>
                             {{ else if eq $tag "isp-providing-fixed-ipv6-prefix-to-business-customers" }}
                             <li class="emojilist-item">ISP providing a fixed IPv6 prefix to business customers</li>
+                            {{ else if eq $tag "cloud-provider-with-ipv6-support" }}
+                            <li class="emojilist-item">Cloud provider with IPv6 support</li>
                             {{ end }}
                         {{ end }}
                     </ul>

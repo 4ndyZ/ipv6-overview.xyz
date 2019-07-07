@@ -1000,6 +1000,8 @@ websites:
     twitter: '@digitalocean'
     categories:
     - Cloud
+    tags:
+    - cloud-provider-with-ipv6-support
 
   Linode:
     href: https://www.linode.com
@@ -1009,6 +1011,8 @@ websites:
     twitter: '@linode'
     categories:
     - Cloud
+    tags:
+    - cloud-provider-with-ipv6-support
 
   Microsoft:
     href: https://www.microsoft.com
@@ -1047,6 +1051,8 @@ websites:
     twitter: '@Azure'
     categories:
     - Cloud
+    tags:
+    - cloud-provider-with-ipv6-support
 
   Syncthing:
     href: https://syncthing.net/
@@ -1150,6 +1156,7 @@ websites:
     tags:
     - isp-providing-ipv6-to-private-customers
     - isp-providing-ipv6-to-business-customers
+    - isp-providing-fixed-ipv6-prefix-to-business-customers
 
   1und1:
     href: https://www.1und1.de/
@@ -1188,6 +1195,7 @@ websites:
     tags:
     - isp-providing-ipv6-to-private-customers
     - isp-providing-ipv6-to-business-customers
+    - isp-providing-fixed-ipv6-prefix-to-business-customers
 
   GMX:
     href: https://www.gmx.net
