@@ -27,6 +27,7 @@ const (
     IPv6_No_Support = -1
 
     RESOLVER_WORKER_GOROUTINE_COUNT int = 15
+    RESOLVER_RETRY_COUNTER int = 3
 )
 
 type YAMLConfig struct {
@@ -535,33 +536,53 @@ func ResolverWorker(websites <-chan *Website, resolverProviders []*ResolverProvi
                     domainResolverResult.QuadAFound = false
 
                     message := new(dns.Msg)
-                	message.RecursionDesired = true
-                	message.SetQuestion(domain.Domain + ".", dns.TypeAAAA)
+                    message.RecursionDesired = true
+                    message.SetQuestion(domain.Domain + ".", dns.TypeAAAA)
 
-                    answer, _, err := client.Exchange(message, resolver.Address + ":53")
-
-                    querylogger := log.WithFields(log.Fields {
+                    resolverLogger := log.WithFields(log.Fields {
                         "ResolverIP": resolver.Address,
-                        "Domain": domain.Domain })
+                        "Domain": domain.Domain})
 
-                    if err != nil {
-                        querylogger.WithField("ErrorMessage", err.Error()).Error("Failed to query resolver")
-                    } else if answer.Rcode == dns.RcodeSuccess {
-                        for _, record := range answer.Answer {
-                            // Check if we really got AAAA records. Some websites provide CNAMEs
-                            // They should of course not count
-                            if _, ok := record.(*dns.AAAA); ok {
-                                domainResolverResult.QuadAFound = true
-                                break // one is enough
+                    queryErrorOccured := true
+
+                    for queryTry := 0; queryTry < RESOLVER_RETRY_COUNTER && queryErrorOccured; queryTry++ {
+
+                        tryLogger := resolverLogger.WithField("Try", queryTry)
+                        tryLogger.Debug("Sending query")
+
+                        answer, _, err := client.Exchange(message, resolver.Address + ":53")
+
+                        if err != nil {
+                            queryErrorOccured = true
+                            tryLogger.WithField("ErrorMessage", err.Error()).Debug("Failed to query resolver")
+                        } else if answer.Rcode == dns.RcodeSuccess {
+                            queryErrorOccured = false
+
+                            for _, record := range answer.Answer {
+                                // Check if we really got AAAA records. Some websites provide CNAMEs
+                                // They should of course not count
+                                if _, ok := record.(*dns.AAAA); ok {
+                                    domainResolverResult.QuadAFound = true
+                                    break // one is enough
+                                }
                             }
+
+                            if domainResolverResult.QuadAFound {
+                                tryLogger.Debug("Domain resolved to AAAA record")
+                            } else {
+                                tryLogger.Debug("Domain did not resolve to AAAA record. Shame!")
+                            }
+                    	} else {
+                            queryErrorOccured = false
+                            tryLogger.Error("No transport error occured but dns answer wasn't successfull. Is the domain still active?")
                         }
+                    }
 
-                        domainResolverResults.ResolverResults = append(domainResolverResults.ResolverResults,
-                            domainResolverResult)
+                    domainResolverResults.ResolverResults = append(domainResolverResults.ResolverResults,
+                        domainResolverResult)
 
-                        querylogger.WithField("QuadAFound", domainResolverResult.QuadAFound).Debug("Resolved domain")
-                	} else {
-                        querylogger.Error("No transport error occured but dns answer wasn't successfull. Is the domain still active?")
+                    if queryErrorOccured {
+                        resolverLogger.Error("Giving up after")
                     }
                 }
 
