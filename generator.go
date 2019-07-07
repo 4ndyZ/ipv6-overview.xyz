@@ -216,11 +216,25 @@ func HTMLAnchorify(toAnchor string) string {
     return strings.ToLower(toAnchor)
 }
 
+func SetLogLevel(loglevel *string) {
+    switch *loglevel {
+    case "info":
+        log.SetLevel(log.InfoLevel)
+    case "error":
+        log.SetLevel(log.ErrorLevel)
+    case "debug":
+        log.SetLevel(log.DebugLevel)
+    default:
+        log.SetLevel(log.ErrorLevel)
+    }
+}
+
 func main() {
     minifyPage := flag.Bool("minify", false, "Minfiy page")
+    logLevel := flag.String("loglevel", "error", "What loglevel to use (info, error, debug). Default is error")
     flag.Parse()
 
-    log.SetLevel(log.InfoLevel)
+    SetLogLevel(logLevel)
 
     yamlConfig := LoadYAML()
 
