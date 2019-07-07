@@ -17,6 +17,7 @@ import (
     yaml "gopkg.in/yaml.v2"
     "github.com/tdewolff/minify"
     "github.com/tdewolff/minify/html"
+    "golang.org/x/net/idna"
 )
 
 type IPv6_Support int
@@ -522,6 +523,18 @@ func ResolverWorker(websites <-chan *Website, resolverProviders []*ResolverProvi
         startTime := time.Now()
 
         for _, domain := range website.Domains {
+
+            punicodeEncodedDomain, punicodeError := idna.ToASCII(domain.Domain)
+
+            if punicodeError != nil {
+                log.WithFields(log.Fields {
+                    "Domain": domain.Domain,
+                    "ErrorMessage": punicodeError.Error(),
+                }).Error("Failed to convert domain to punycode")
+
+                continue
+            }
+
             domain.ResolverResults = make([]DomainResolverResults, 0)
 
             for _, resolverProvider := range resolverProviders {
@@ -537,7 +550,7 @@ func ResolverWorker(websites <-chan *Website, resolverProviders []*ResolverProvi
 
                     message := new(dns.Msg)
                     message.RecursionDesired = true
-                    message.SetQuestion(domain.Domain + ".", dns.TypeAAAA)
+                    message.SetQuestion(punicodeEncodedDomain + ".", dns.TypeAAAA)
 
                     resolverLogger := log.WithFields(log.Fields {
                         "ResolverIP": resolver.Address,
