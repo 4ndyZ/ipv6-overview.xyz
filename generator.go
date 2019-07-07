@@ -559,6 +559,9 @@ func ResolverWorker(websites <-chan *Website, resolverProviders []*ResolverProvi
                     queryErrorOccured := true
 
                     for queryTry := 0; queryTry < RESOLVER_RETRY_COUNTER && queryErrorOccured; queryTry++ {
+                        // Increment sleep time every time a resolver try is done. First try is undelayed
+                        // tanks to simple math
+                        time.Sleep(time.Duration(queryTry * 100) * time.Millisecond)
 
                         tryLogger := resolverLogger.WithField("Try", queryTry)
                         tryLogger.Debug("Sending query")
@@ -595,7 +598,7 @@ func ResolverWorker(websites <-chan *Website, resolverProviders []*ResolverProvi
                         domainResolverResult)
 
                     if queryErrorOccured {
-                        resolverLogger.Error("Giving up after")
+                        resolverLogger.WithField("Tries", RESOLVER_RETRY_COUNTER).Error("Giving up resolving domain")
                     }
                 }
 
