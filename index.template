@@ -67,7 +67,7 @@
     }
 
     li.emojilist-item::before {
-        content: "👍🏻 ";
+        content: "✅ ";
     }
 
     .infoemoji {
