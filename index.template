@@ -223,6 +223,8 @@
                             <li class="emojilist-item">ISP providing an IPv6 prefix to private customers</li>
                             {{ else if eq $tag "isp-providing-ipv6-to-business-customers" }}
                             <li class="emojilist-item">ISP providing an IPv6 prefix to business customers</li>
+                            {{ else if eq $tag "isp-providing-fixed-ipv6-prefix-to-business-customers" }}
+                            <li class="emojilist-item">ISP providing a fixed IPv6 prefix to business customers</li>
                             {{ end }}
                         {{ end }}
                     </ul>
