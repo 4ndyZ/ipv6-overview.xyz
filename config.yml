@@ -1174,7 +1174,7 @@ websites:
     icon: DG_Logo.png # https://commons.wikimedia.org/wiki/File:DG_Logo.png
     hosts:
     - www.deutsche-glasfaser.de
-    twitter: '@DtGlasfaser'
+    twitter: '@DtGlasfaser @DG_Glasfaser'
     categories:
     - Internet service provider
     tags:
