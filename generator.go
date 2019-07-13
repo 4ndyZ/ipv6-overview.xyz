@@ -18,6 +18,7 @@ import (
     "github.com/tdewolff/minify"
     "github.com/tdewolff/minify/html"
     "golang.org/x/net/idna"
+    hornhook "github.com/vlcty/logrus-integram-horn-hook"
 )
 
 type IPv6_Support int
@@ -230,11 +231,18 @@ func SetLogLevel(loglevel *string) {
 }
 
 func main() {
+    log.SetFormatter(&log.TextFormatter{
+		DisableColors: true,
+	})
+
     minifyPage := flag.Bool("minify", false, "Minfiy page")
     logLevel := flag.String("loglevel", "error", "What loglevel to use (info, error, debug). Default is error")
+    sendToTelegram := flag.Bool("telegram", false, "Send log messages to Integram")
+    integramWebhook := flag.String("webhookid", "", "Integram webhook id")
     flag.Parse()
 
     SetLogLevel(logLevel)
+    AddLogrusTelegramHook(sendToTelegram, integramWebhook)
 
     yamlConfig := LoadYAML()
 
@@ -257,6 +265,19 @@ func main() {
     WritePageToDisk(renderedPage)
 
     log.Info("Finished")
+}
+
+func AddLogrusTelegramHook(sendToTelegram *bool, webhookid *string) {
+    if *sendToTelegram && len(*webhookid) > 0 {
+        hook := hornhook.New(*webhookid)
+        hook.Appname = "status-why-ipv6"
+        hook.AddLevel(log.ErrorLevel)
+        hook.AddLevel(log.FatalLevel)
+
+        log.AddHook(hook)
+
+        log.Info("Added integram hook")
+    }
 }
 
 func WritePageToDisk(page string) {
