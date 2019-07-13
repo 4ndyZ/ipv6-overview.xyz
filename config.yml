@@ -111,6 +111,7 @@ websites:
     icon: ArsTechnica.svg # Source: https://commons.wikimedia.org/wiki/File:Ars_Technica_logo_(2016).svg
     hosts:
     - arstechnica.com
+    - cdn.arstechnica.net
     twitter: '@arstechnica'
     categories:
     - News
