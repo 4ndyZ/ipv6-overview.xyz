@@ -77,6 +77,18 @@ websites:
     tags:
     - cloud-provider-with-ipv6-support
 
+  Indiegogo:
+    href: https://www.indiegogo.com
+    hosts:
+    - www.indiegogo.com
+    - support.indiegogo.com
+    - entrepreneur.indiegogo.com
+    - learn.indiegogo.com
+    twitter: '@Indiegogo'
+    icon: indiegogo.png   # https://learn.indiegogo.com/brand-asset-downloads/
+    categories:
+    - Crowdfunding
+
   Startnext:
     href: https://www.startnext.com
     hosts:
