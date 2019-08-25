@@ -75,6 +75,15 @@ websites:
     categories:
     - Cloud
 
+  Startnext:
+    href: https://www.startnext.com
+    hosts:
+    - www.startnext.com
+    twitter: '@startnext'
+    icon: startnext.png # https://www.startnext.com/info/styleguide.html
+    categories:
+    - Crowdfunding
+
   9GAG:
     href: http://9gag.com
     icon: 9GAG.svg # https://commons.wikimedia.org/wiki/File:9GAG_new_logo.svg
