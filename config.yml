@@ -65,6 +65,16 @@ websites:
     categories:
     - Crowdfunding
 
+  vultr:
+    href: https://www.vultr.com
+    hosts:
+    - www.vultr.com
+    - my.vultr.com
+    twitter: '@Vultr'
+    icon: vultr.svg   # https://www.vultr.com/company/brand-assets/
+    categories:
+    - Cloud
+
   9GAG:
     href: http://9gag.com
     icon: 9GAG.svg # https://commons.wikimedia.org/wiki/File:9GAG_new_logo.svg
