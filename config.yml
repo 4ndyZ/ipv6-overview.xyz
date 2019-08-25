@@ -116,6 +116,16 @@ websites:
     categories:
     - Social Network
 
+  EpicGames:
+    href: https://www.epicgames.com
+    hosts:
+    - www.epicgames.com
+    - accounts.epicgames.com
+    icon: EpicGames.svg   # https://commons.wikimedia.org/wiki/File:Epic_Games_logo.svg
+    twitter: '@EpicGamesDE'
+    categories:
+    - Gaming
+
   ARD:
     href: https://www.ard.de
     hosts:
