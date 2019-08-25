@@ -89,6 +89,15 @@ websites:
     categories:
     - Crowdfunding
 
+  GoFundMe:
+    href: https://www.gofundme.com
+    hosts:
+    - www.gofundme.com
+    - support.gofundme.com
+    twitter: '@gofundme'
+    categories:
+    - Crowdfunding
+
   Startnext:
     href: https://www.startnext.com
     hosts:
