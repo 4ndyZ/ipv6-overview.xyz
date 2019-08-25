@@ -37,6 +37,7 @@ categories:
 - News
 - Social bookmarks
 - Chat
+- Crowdfunding
 - VoIP
 - Cloud
 - Banking
@@ -54,6 +55,15 @@ websites:
     twitter: '@500px'
     categories:
     - Social Network
+
+  kickstarter:
+    href: https://www.kickstarter.com
+    hosts:
+    - www.kickstarter.com
+    icon: fa-kickstarter
+    twitter: '@kickstarter'
+    categories:
+    - Crowdfunding
 
   9GAG:
     href: http://9gag.com
