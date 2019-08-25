@@ -56,7 +56,7 @@ websites:
     categories:
     - Social Network
 
-  kickstarter:
+  Kickstarter:
     href: https://www.kickstarter.com
     hosts:
     - www.kickstarter.com
@@ -65,7 +65,7 @@ websites:
     categories:
     - Crowdfunding
 
-  vultr:
+  Vultr:
     href: https://www.vultr.com
     hosts:
     - www.vultr.com
