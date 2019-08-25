@@ -74,6 +74,8 @@ websites:
     icon: vultr.svg   # https://www.vultr.com/company/brand-assets/
     categories:
     - Cloud
+    tags:
+    - cloud-provider-with-ipv6-support
 
   Startnext:
     href: https://www.startnext.com
