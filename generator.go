@@ -34,15 +34,8 @@ const (
 
 type YAMLConfig struct {
     Resolvers map[string][]string `yaml:"resolvers"`
-    Categories []string `yaml:"categories"`
-    Websites map[string]struct {
-        Href string
-        Hosts []string
-        Icon string
-        Twitter string
-        Categories []string
-        Tags []string
-    } `yaml:"websites"`
+    Categories []*Category `yaml:"categories"`
+    Websites []*Website `yaml:"websites"`
     WebsiteTitle string `yaml:"website_title"`
     GithubRepo string `yaml:"github_repo"`
     WebsiteDescription string `yaml:"website_description"`
@@ -90,6 +83,7 @@ func (category *Category) DoTheCounting() {
 type Website struct {
     Name string
     URL string
+    RawDomains []string `yaml:"hosts"`
     Domains []*Domain
     Icon string
     Twitter string
@@ -247,16 +241,16 @@ func main() {
     yamlConfig := LoadYAML()
 
     resolverProviders := ParseResolverProviders(yamlConfig)
-    categories := ParseCategories(yamlConfig)
-    websites := ParseWebsites(yamlConfig)
+    SortCategories(yamlConfig.Categories)
+    ParseDomainsInsideWebsites(yamlConfig)
 
-    TestEveryWebsite(websites, resolverProviders)
+    TestEveryWebsite(yamlConfig.Websites, resolverProviders)
 
-    SortEveryWebsiteIntoCategory(websites, categories)
-    GenerateCategoryCounters(categories)
-    SortWebsitesInsideCategories(categories)
+    SortEveryWebsiteIntoCategory(yamlConfig.Websites, yamlConfig.Categories)
+    GenerateCategoryCounters(yamlConfig.Categories)
+    SortWebsitesInsideCategories(yamlConfig.Categories)
 
-    renderedPage := RenderPage(yamlConfig, categories)
+    renderedPage := RenderPage(yamlConfig, yamlConfig.Categories)
 
     if *minifyPage {
         renderedPage = MinifyPage(renderedPage)
@@ -373,7 +367,14 @@ func SortEveryWebsiteIntoCategory(websites[]*Website, categories []*Category) {
         }
 
         if ! wasSorted {
-            log.WithField("Website", website.Name).Error("Website was not sorted into a category. Check the spelling!")
+            for _, category := range categories {
+                if category.Name == "Uncategorized" {
+                    category.Websites = append(category.Websites, website)
+                    break
+                }
+            }
+
+            log.WithField("Website", website.Name).Warn("Website was not sorted into a category. Sorted into Uncategorized!")
         }
     }
 
@@ -474,62 +475,20 @@ func ParseResolverProviders(yamlConfig *YAMLConfig) []*ResolverProvider {
     return resolverProviders
 }
 
-func ParseCategories(yamlConfig *YAMLConfig) []*Category {
-    log.Info("Parsing categories from YAML config")
+func ParseDomainsInsideWebsites(yamlConfig *YAMLConfig) {
+    log.Info("Parse domains inside websites")
 
-    categories := make([]*Category, 0)
-
-    for _, categoryName := range yamlConfig.Categories {
-        category := &Category{ Name: categoryName }
-        categories = append(categories, category)
-
-        log.WithField("CategoryName", categoryName).Debug("Parsed category")
-    }
-
-    log.WithField("count", len(categories)).Info("Finished parsing categories")
-
-    SortCategories(categories)
-
-    return categories
-}
-
-func ParseWebsites(yamlConfig *YAMLConfig) []*Website{
-    log.Info("Parsing websites from YAML config")
-
-    websites := make([]*Website, 0)
-
-    for websiteName, websiteConfig := range yamlConfig.Websites {
-        log.WithField("Website", websiteName).Debug("Found website")
-
-        website := &Website{}
-        website.Name = websiteName
-        website.URL = websiteConfig.Href
+    for _, website := range yamlConfig.Websites {
+        log.WithField("Website", website.Name).Debug("Found website")
 
         website.Domains = make([]*Domain, 0)
 
-        for _, domain := range websiteConfig.Hosts {
-            log.WithField("Domain", domain).WithField("Website", websiteName).Debug("Found Domain for website")
+        for _, domain := range website.RawDomains {
+            log.WithField("Domain", domain).WithField("Website", website.Name).Debug("Found domain for website")
 
-            domain := &Domain{ Domain: domain }
-            website.Domains = append(website.Domains, domain)
+            website.Domains = append(website.Domains, &Domain{ Domain: domain })
         }
-
-        website.Icon = websiteConfig.Icon
-        website.Twitter = websiteConfig.Twitter
-        website.Categories = websiteConfig.Categories
-
-        if len(website.Categories) == 0 {
-            website.Categories = append(website.Categories, "Uncategorized")
-        }
-
-        website.Tags = websiteConfig.Tags
-
-        websites = append(websites, website)
     }
-
-    log.WithField("count", len(websites)).Info("Finished parsing websites")
-
-    return websites
 }
 
 func LoadYAML() (*YAMLConfig) {
