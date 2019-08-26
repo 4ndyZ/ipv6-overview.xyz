@@ -1373,3 +1373,16 @@ websites:
     twitter: '@Raspberry_Pi'
     categories:
     - SBC
+
+  Pine64:
+    href: https://www.pine64.org
+    hosts:
+    - www.pine64.org
+    - store.pine64.org
+    - support.pine64.org
+    - forum.pine64.org
+    - wiki.pine64.org
+    icon: pine64.jpg
+    twitter: '@thepine64'
+    categories:
+    - SBC
