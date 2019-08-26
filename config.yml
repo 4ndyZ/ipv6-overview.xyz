@@ -4,21 +4,21 @@ github_repo: https://github.com/vlcty/status.why-ipv6.xyz
 website_description: Overview of websites and services showing their IPv6 support
 
 resolvers:
-  Google:
-#  - 8.8.8.8
-  - 8.8.4.4
-#  - 2001:4860:4860::8888
-  - 2001:4860:4860::8844
-  OpenDNS:
-#  - 208.67.220.220
-  - 208.67.222.222
-#  - 2620:119:35::35
-  - 2620:119:53::53
-  Cloudflare:
-#  - 1.0.0.1
-  - 1.1.1.1
-#  - 2606:4700:4700::1111
-  - 2606:4700:4700::1001
+#   Google:
+# #  - 8.8.8.8
+#   - 8.8.4.4
+# #  - 2001:4860:4860::8888
+#   - 2001:4860:4860::8844
+#   OpenDNS:
+# #  - 208.67.220.220
+#   - 208.67.222.222
+# #  - 2620:119:35::35
+#   - 2620:119:53::53
+#   Cloudflare:
+# #  - 1.0.0.1
+#   - 1.1.1.1
+# #  - 2606:4700:4700::1111
+#   - 2606:4700:4700::1001
   Quad9:
   - 9.9.9.9
 #  - 149.112.112.112
@@ -44,6 +44,7 @@ categories:
 - Streaming
 - Gaming
 - E-Mail
+- SBC
 - Uncategorized # Never ever delete this!
 
 websites:
@@ -1362,3 +1363,13 @@ websites:
     twitter: '@StartPageSearch'
     categories:
     - Search Engine
+
+  Raspberry Pi:
+    href: https://www.raspberrypi.org
+    hosts:
+    - www.raspberrypi.org
+    - projects.raspberrypi.org
+    icon: RaspberryPi.png   # https://www.raspberrypi.org/trademark-rules/
+    twitter: '@Raspberry_Pi'
+    categories:
+    - SBC
