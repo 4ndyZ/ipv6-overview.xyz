@@ -1386,3 +1386,12 @@ websites:
     twitter: '@thepine64'
     categories:
     - SBC
+
+  BeagleBord:
+    href: https://beagleboard.org
+    hosts:
+    - beagleboard.org
+    icon: beagleboard.svg   # https://beagleboard.org/logo
+    twitter: '@beagleboardorg'
+    categories:
+    - SBC
