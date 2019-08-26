@@ -90,7 +90,9 @@
         overview which websites or services are reachable over IPv6 and which are not. You'll probably spot some
         similarities, don't you?<br />
         <br />
-        Tipp: If you click on a websites area additional details will pop up. Are you missing a website? Check out <a href="{{ .GithubRepo }}" target="_blank">the GitHub repository</a> for this project. Open an issue or create a pull request!
+        <span class="d-none d-sm-block">
+            Tipp: If you click on a websites area additional details will pop up. Are you missing a website? Check out <a href="{{ .GithubRepo }}" target="_blank">the GitHub repository</a> for this project. Open an issue or create a pull request!
+        </span>
         </div>
     </div>
 
@@ -171,7 +173,7 @@
                         </div>
                     </div>
 
-                    <div class="row mt-4">
+                    <div class="row mt-4 d-none d-md-flex">
                         <div class="col-md-3"><b>Domain</b></div>
                         <div class="col-md-3"><b>Resolver provider</b></div>
                         <div class="col-md-4"><b>Resolver IPs</b></div>
@@ -179,7 +181,7 @@
                     </div>
 
                     {{ range $domain := $website.Domains }}
-                    <div class="row">
+                    <div class="row d-none d-md-flex">
                         <div class="col-md-3 border-top">
                             {{ $domain.Domain }}
                         </div>
