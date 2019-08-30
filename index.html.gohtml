@@ -113,6 +113,11 @@
     <div id="anchor-{{ $category.GetHTMLAnchor }}" class="row mt-5 align-items-center">
             <div class="col-12">
                 <h2>{{ $category.Name }}</h2>
+                {{ if ( ne $category.Description "" ) }}
+                <p>
+                    {{ $category.Description }}
+                </p>
+                {{ end }}
                 IPv6 support:
                     <span class="badge badge-pill badge-success">Full: {{ $category.CountIPv6FullSupport }}</span>
                     <span class="badge badge-pill badge-warning">Some: {{ $category.CountIPv6PartialSupport }}</span>

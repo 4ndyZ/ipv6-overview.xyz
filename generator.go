@@ -55,6 +55,7 @@ type ResolverProvider struct {
 type Category struct {
     Name string
     Websites []*Website
+    Description string
 
     CountIPv6FullSupport uint
     CountIPv6PartialSupport uint
