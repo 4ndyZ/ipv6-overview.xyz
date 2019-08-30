@@ -325,9 +325,9 @@ func RenderPage(yamlConfig *YAMLConfig, categories []*Category) string {
     //     },
     // }
 
-    htmlTemplate := template.New("index.template")
+    htmlTemplate := template.New("index.html.gohtml")
     // htmlTemplate.Funcs(funcMap)
-    if _, error := htmlTemplate.ParseFiles("index.template"); error != nil {
+    if _, error := htmlTemplate.ParseFiles("index.html.gohtml"); error != nil {
         log.WithField("ErrorMessage", error.Error()).Fatal("Failed to parse template")
         return ""
     } else {
