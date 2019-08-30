@@ -28,7 +28,7 @@ const (
     IPv6_Partial_Support int = 0
     IPv6_No_Support = -1
 
-    RESOLVER_WORKER_GOROUTINE_COUNT int = 15
+    RESOLVER_WORKER_GOROUTINE_COUNT int = 30
     RESOLVER_RETRY_COUNTER int = 3
 )
 
@@ -84,6 +84,7 @@ func (category *Category) DoTheCounting() {
 type Website struct {
     Name string
     URL string
+    Description string
     RawDomains []string `yaml:"hosts"`
     Domains []*Domain
     Icon string

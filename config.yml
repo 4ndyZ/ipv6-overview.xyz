@@ -64,6 +64,12 @@ websites:
   - Crowdfunding
 
 - name: Vultr
+  description: Vultr provides you with infrastructure and software hosting. You can
+    rent virtual private servers with different sizes hourly or montly. It follows
+    a debit system where you first put in some money and can then spend it how you
+    like it. Check their coupons to get some extra bucks. They provide small VPS servers
+    with IPv4 and IPv6 servers. And in some locations, they provide really cheap IPv6
+    only servers.
   href: https://www.vultr.com
   hosts:
   - www.vultr.com
@@ -125,6 +131,8 @@ websites:
   - Gaming
 
 - name: ARD
+  description: |
+    ARD ("Erstes deutsches Fernsehen" translates roughly to "first public broadcast service") is one of the two big public service TV and radio broadcaster. They are funded by the state and each citizen with a regular income has to pay a fee to keep it running. The goal is to provide state internal and international independand content and news. Each production can be view on live TV or as video on demand.
   href: https://www.ard.de
   hosts:
   - www.ard.de
@@ -157,6 +165,8 @@ websites:
   - Software
 
 - name: Arch Linux
+  description: |
+    Archlinux is a rolling release linux distribution. New software versions are released as soon as the developers marks it as stable. It's perfectly suited for personal devices but you can also use it on servers. This website for example is served from an archlinux LXC container running on an archlinux host.
   href: https://www.archlinux.org
   hosts:
   - www.archlinux.org
@@ -177,6 +187,8 @@ websites:
   - News
 
 - name: Bitbucket
+  description: |
+    Bitbucket is a code hosting site. It's run by Atlassian and it's direct competitors are GitHub and GitLab.
   href: https://bitbucket.org
   hosts:
   - bitbucket.org
@@ -186,6 +198,8 @@ websites:
   - Coding
 
 - name: Bing
+  description: |
+    Bing is run by Microsoft and is a competitor to Google. The results are bad but the pictures on the front page are really nice! :-)
   href: https://bing.com
   icon: Bing.png   # https://advertiseonbing.blob.core.windows.net/blob/bingads/media/library/docs/bing-marketing-guidelines.pdf
   hosts:
@@ -231,6 +245,8 @@ websites:
   - Coding
 
 - name: Debian
+  description: |
+    Debian is one of the most used linux distributions. Before a new release is pushed out there is a software freeze. In that time frame only bugfixes are applied. After release there are only major bugfixes and security patches applied. So you get some reliability but more or less outdated software.
   href: https://www.debian.org
   hosts:
   - www.debian.org
@@ -767,6 +783,8 @@ websites:
   - News
 
 - name: The Register
+  description: |
+    The Register slogan is "Biting the hand that feeds IT". They write clickbait titles but the content is straight on point. Most of the time at least. However new technology bites The Register, because even well tested ones like IPv6 is not supported by them. And of course they are "working on it :-)
   href: https://www.theregister.co.uk
   hosts:
   - www.theregister.co.uk

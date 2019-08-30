@@ -173,8 +173,13 @@
 
                     <div class="row">
                         <div class="col-12">
+                            {{ if ( ne $website.Description "" ) }}
+                            {{ $website.Description }}
+                            {{ else }}
                             A website is served from one or more domains. Each one is checked using multiple public available DNS resolvers.
-                            Each resolver has to return at least one AAAA record to pass the test. These results were gathered in {{ printf "%.1f" $website.CheckDurationInSeconds }} seconds:
+                            Each resolver has to return at least one AAAA record to pass the test.
+                            {{ end }}
+                            <br />These results were gathered in {{ printf "%.1f" $website.CheckDurationInSeconds }} seconds:
                         </div>
                     </div>
 
