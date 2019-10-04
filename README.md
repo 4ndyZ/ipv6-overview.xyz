@@ -12,7 +12,7 @@ The whole application config (categories, websites, subdomains, resolvers, etc) 
 
 ### Used DNS resolvers
 
-Each key under `nameservers` represents a different DNS resolver provider. Each of them contains a list with their publicly reachable resolver IPs. Some of them (mostly the primary IPs) are commented out. There is no advantage checking against a primary and a secondary resolver. Instead every resolver provider should've one IPv4 and one IPv6.
+Each key under `resolvers` represents a different DNS resolver provider. Each of them contains a list with their publicly reachable resolver IPs. Some of them (mostly the primary IPs) are commented out. There is no advantage checking against a primary and a secondary resolver. Instead every resolver provider should've one IPv4 and one IPv6.
 
 ### Categories
 
@@ -31,6 +31,7 @@ The following keys are optional:
 - `icon`: Link to a FontAwesome glyph or a picture. See section `Adding icons` for more details
 - `twitter`: If the website has one or more twitter handles you can add them here. Don't forget to add quotes! Multiple twitter handles are separated by whitespaces.
 - `categories`: Contains a list with category names. This is used to render a host into the respective categories. A target can be part of multiple categories. If this key is missing the target will be automatically grouped into the category `Uncategorized`
+- `tags`: Tag the website. See section `Tags`.
 
 ### Adding icons
 
@@ -71,3 +72,7 @@ When you generate the static page it's very huge. It consumes round about 1.3 MB
 Minifying the HTML reduces the HTML to round about 546 KByte. That's a reduction of 59%. The benefits are simple: The page loads faster and less CPU is needed for rendering it in the browser. On the other side debugging a minified HTML isn't fun.
 
 By default the HTML is not minified. If you pass `-minify` to the application the output will be minified. Use the normal version for developing and the minified version for production.
+
+### Tags
+
+I found out that some german internet providers websites or services are not reachable over IPv6 but they provide IPv6 to customers. To lift the blame a bit I've implemented the tag system which acts like categories. With tags you can add additional informations. Websites with tags attached will get the ✳️ emoji on the overview page. More details will be provided on the detail pane then. See the `config.yml` file to see it in action.

@@ -17,6 +17,8 @@ import (
     yaml "gopkg.in/yaml.v2"
     "github.com/tdewolff/minify"
     "github.com/tdewolff/minify/html"
+    "golang.org/x/net/idna"
+    hornhook "github.com/vlcty/logrus-integram-horn-hook"
 )
 
 type IPv6_Support int
@@ -27,18 +29,13 @@ const (
     IPv6_No_Support = -1
 
     RESOLVER_WORKER_GOROUTINE_COUNT int = 15
+    RESOLVER_RETRY_COUNTER int = 3
 )
 
 type YAMLConfig struct {
     Resolvers map[string][]string `yaml:"resolvers"`
-    Categories []string `yaml:"categories"`
-    Websites map[string]struct {
-        Href string
-        Hosts []string
-        Icon string
-        Twitter string
-        Categories []string
-    } `yaml:"websites"`
+    Categories []*Category `yaml:"categories"`
+    Websites []*Website `yaml:"websites"`
     WebsiteTitle string `yaml:"website_title"`
     GithubRepo string `yaml:"github_repo"`
     WebsiteDescription string `yaml:"website_description"`
@@ -86,10 +83,12 @@ func (category *Category) DoTheCounting() {
 type Website struct {
     Name string
     URL string
+    RawDomains []string `yaml:"hosts"`
     Domains []*Domain
     Icon string
     Twitter string
     Categories []string
+    Tags []string
 
     IPv6SupportStatus int
     CheckDurationInSeconds float64
@@ -212,25 +211,46 @@ func HTMLAnchorify(toAnchor string) string {
     return strings.ToLower(toAnchor)
 }
 
+func SetLogLevel(loglevel *string) {
+    switch *loglevel {
+    case "info":
+        log.SetLevel(log.InfoLevel)
+    case "error":
+        log.SetLevel(log.ErrorLevel)
+    case "debug":
+        log.SetLevel(log.DebugLevel)
+    default:
+        log.SetLevel(log.ErrorLevel)
+    }
+}
+
 func main() {
+    log.SetFormatter(&log.TextFormatter{
+		DisableColors: true,
+	})
+
     minifyPage := flag.Bool("minify", false, "Minfiy page")
+    logLevel := flag.String("loglevel", "error", "What loglevel to use (info, error, debug). Default is error")
+    sendToTelegram := flag.Bool("telegram", false, "Send log messages to Integram")
+    integramWebhook := flag.String("webhookid", "", "Integram webhook id")
     flag.Parse()
 
-    log.SetLevel(log.InfoLevel)
+    SetLogLevel(logLevel)
+    AddLogrusTelegramHook(sendToTelegram, integramWebhook)
 
     yamlConfig := LoadYAML()
 
     resolverProviders := ParseResolverProviders(yamlConfig)
-    categories := ParseCategories(yamlConfig)
-    websites := ParseWebsites(yamlConfig)
+    SortCategories(yamlConfig.Categories)
+    ParseDomainsInsideWebsites(yamlConfig)
 
-    TestEveryWebsite(websites, resolverProviders)
+    TestEveryWebsite(yamlConfig.Websites, resolverProviders)
 
-    SortEveryWebsiteIntoCategory(websites, categories)
-    GenerateCategoryCounters(categories)
-    SortWebsitesInsideCategories(categories)
+    SortEveryWebsiteIntoCategory(yamlConfig.Websites, yamlConfig.Categories)
+    GenerateCategoryCounters(yamlConfig.Categories)
+    SortWebsitesInsideCategories(yamlConfig.Categories)
 
-    renderedPage := RenderPage(yamlConfig, categories)
+    renderedPage := RenderPage(yamlConfig, yamlConfig.Categories)
 
     if *minifyPage {
         renderedPage = MinifyPage(renderedPage)
@@ -239,6 +259,19 @@ func main() {
     WritePageToDisk(renderedPage)
 
     log.Info("Finished")
+}
+
+func AddLogrusTelegramHook(sendToTelegram *bool, webhookid *string) {
+    if *sendToTelegram && len(*webhookid) > 0 {
+        hook := hornhook.New(*webhookid)
+        hook.Appname = "status-why-ipv6"
+        hook.AddLevel(log.ErrorLevel)
+        hook.AddLevel(log.FatalLevel)
+
+        log.AddHook(hook)
+
+        log.Info("Added integram hook")
+    }
 }
 
 func WritePageToDisk(page string) {
@@ -334,7 +367,14 @@ func SortEveryWebsiteIntoCategory(websites[]*Website, categories []*Category) {
         }
 
         if ! wasSorted {
-            log.WithField("Website", website.Name).Error("Website was not sorted into a category. Check the spelling!")
+            for _, category := range categories {
+                if category.Name == "Uncategorized" {
+                    category.Websites = append(category.Websites, website)
+                    break
+                }
+            }
+
+            log.WithField("Website", website.Name).Warn("Website was not sorted into a category. Sorted into Uncategorized!")
         }
     }
 
@@ -435,60 +475,20 @@ func ParseResolverProviders(yamlConfig *YAMLConfig) []*ResolverProvider {
     return resolverProviders
 }
 
-func ParseCategories(yamlConfig *YAMLConfig) []*Category {
-    log.Info("Parsing categories from YAML config")
+func ParseDomainsInsideWebsites(yamlConfig *YAMLConfig) {
+    log.Info("Parse domains inside websites")
 
-    categories := make([]*Category, 0)
-
-    for _, categoryName := range yamlConfig.Categories {
-        category := &Category{ Name: categoryName }
-        categories = append(categories, category)
-
-        log.WithField("CategoryName", categoryName).Debug("Parsed category")
-    }
-
-    log.WithField("count", len(categories)).Info("Finished parsing categories")
-
-    SortCategories(categories)
-
-    return categories
-}
-
-func ParseWebsites(yamlConfig *YAMLConfig) []*Website{
-    log.Info("Parsing websites from YAML config")
-
-    websites := make([]*Website, 0)
-
-    for websiteName, websiteConfig := range yamlConfig.Websites {
-        log.WithField("Website", websiteName).Debug("Found website")
-
-        website := &Website{}
-        website.Name = websiteName
-        website.URL = websiteConfig.Href
+    for _, website := range yamlConfig.Websites {
+        log.WithField("Website", website.Name).Debug("Found website")
 
         website.Domains = make([]*Domain, 0)
 
-        for _, domain := range websiteConfig.Hosts {
-            log.WithField("Domain", domain).WithField("Website", websiteName).Debug("Found Domain for website")
+        for _, domain := range website.RawDomains {
+            log.WithField("Domain", domain).WithField("Website", website.Name).Debug("Found domain for website")
 
-            domain := &Domain{ Domain: domain }
-            website.Domains = append(website.Domains, domain)
+            website.Domains = append(website.Domains, &Domain{ Domain: domain })
         }
-
-        website.Icon = websiteConfig.Icon
-        website.Twitter = websiteConfig.Twitter
-        website.Categories = websiteConfig.Categories
-
-        if len(website.Categories) == 0 {
-            website.Categories = append(website.Categories, "Uncategorized")
-        }
-
-        websites = append(websites, website)
     }
-
-    log.WithField("count", len(websites)).Info("Finished parsing websites")
-
-    return websites
 }
 
 func LoadYAML() (*YAMLConfig) {
@@ -517,6 +517,18 @@ func ResolverWorker(websites <-chan *Website, resolverProviders []*ResolverProvi
         startTime := time.Now()
 
         for _, domain := range website.Domains {
+
+            punicodeEncodedDomain, punicodeError := idna.ToASCII(domain.Domain)
+
+            if punicodeError != nil {
+                log.WithFields(log.Fields {
+                    "Domain": domain.Domain,
+                    "ErrorMessage": punicodeError.Error(),
+                }).Error("Failed to convert domain to punycode")
+
+                continue
+            }
+
             domain.ResolverResults = make([]DomainResolverResults, 0)
 
             for _, resolverProvider := range resolverProviders {
@@ -531,29 +543,57 @@ func ResolverWorker(websites <-chan *Website, resolverProviders []*ResolverProvi
                     domainResolverResult.QuadAFound = false
 
                     message := new(dns.Msg)
-                	message.RecursionDesired = true
-                	message.SetQuestion(domain.Domain + ".", dns.TypeAAAA)
+                    message.RecursionDesired = true
+                    message.SetQuestion(punicodeEncodedDomain + ".", dns.TypeAAAA)
 
-                    answer, _, err := client.Exchange(message, resolver.Address + ":53")
+                    resolverLogger := log.WithFields(log.Fields {
+                        "ResolverIP": resolver.Address,
+                        "Domain": domain.Domain})
 
-                    if err == nil && answer.Rcode == dns.RcodeSuccess {
-                        for _, record := range answer.Answer {
-                            if _, ok := record.(*dns.AAAA); ok {
-                                domainResolverResult.QuadAFound = true
-                                break // one is enough
+                    queryErrorOccured := true
+
+                    for queryTry := 0; queryTry < RESOLVER_RETRY_COUNTER && queryErrorOccured; queryTry++ {
+                        // Increment sleep time every time a resolver try is done. First try is undelayed
+                        // tanks to simple math
+                        time.Sleep(time.Duration(queryTry * 100) * time.Millisecond)
+
+                        tryLogger := resolverLogger.WithField("Try", queryTry)
+                        tryLogger.Debug("Sending query")
+
+                        answer, _, err := client.Exchange(message, resolver.Address + ":53")
+
+                        if err != nil {
+                            queryErrorOccured = true
+                            tryLogger.WithField("ErrorMessage", err.Error()).Debug("Failed to query resolver")
+                        } else if answer.Rcode == dns.RcodeSuccess {
+                            queryErrorOccured = false
+
+                            for _, record := range answer.Answer {
+                                // Check if we really got AAAA records. Some websites provide CNAMEs
+                                // They should of course not count
+                                if _, ok := record.(*dns.AAAA); ok {
+                                    domainResolverResult.QuadAFound = true
+                                    break // one is enough
+                                }
                             }
+
+                            if domainResolverResult.QuadAFound {
+                                tryLogger.Debug("Domain resolved to AAAA record")
+                            } else {
+                                tryLogger.Debug("Domain did not resolve to AAAA record. Shame!")
+                            }
+                    	} else {
+                            queryErrorOccured = false
+                            tryLogger.Error("No transport error occured but dns answer wasn't successfull. Is the domain still active?")
                         }
-                	}
+                    }
 
                     domainResolverResults.ResolverResults = append(domainResolverResults.ResolverResults,
                         domainResolverResult)
 
-                    log.WithFields(log.Fields{
-                        "Website": website.Name,
-                        "Domain": domain.Domain,
-                        "ResolverProvider": resolverProvider.Name,
-                        "Resolver": resolver.Address,
-                        "QuadAFound": domainResolverResult.QuadAFound }).Debug("Resolve result received")
+                    if queryErrorOccured {
+                        resolverLogger.WithField("Tries", RESOLVER_RETRY_COUNTER).Error("Giving up resolving domain")
+                    }
                 }
 
                 domain.ResolverResults = append(domain.ResolverResults, domainResolverResults)

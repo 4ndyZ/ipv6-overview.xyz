@@ -59,6 +59,21 @@
         max-height: 40px;
         max-width: 64px;
     }
+
+    ul.emojilist {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    li.emojilist-item::before {
+        content: "✅ ";
+    }
+
+    .infoemoji {
+        font-size:2rem;
+        width:100%;
+    }
     </style>
 </head>
 <body>
@@ -75,7 +90,9 @@
         overview which websites or services are reachable over IPv6 and which are not. You'll probably spot some
         similarities, don't you?<br />
         <br />
-        Tipp: If you click on a websites area additional details will pop up. Are you missing a website? Check out <a href="{{ .GithubRepo }}" target="_blank">the GitHub repository</a> for this project. Open an issue or create a pull request!
+        <span class="d-none d-sm-block">
+            Tipp: If you click on a websites area additional details will pop up. Are you missing a website? Check out <a href="{{ .GithubRepo }}" target="_blank">the GitHub repository</a> for this project. Open an issue or create a pull request!
+        </span>
         </div>
     </div>
 
@@ -123,13 +140,21 @@
                 </a>
             </div>
 
-            <div class="col-md-7 text-left">
+            <div class="col-md-6 text-left">
                 {{ $website.GetSupportMessage }}
+            </div>
+
+            <div class="col-md-1 text-right">
+                {{ if ne (len $website.Tags) 0 }}
+                <span class="infoemoji">✳️</span>
+                {{ else }}
+                <!-- Placeholder -->
+                {{ end }}
             </div>
 
             <div class="col-md-2 text-right">
                 {{ if (ne $website.Twitter "") }}
-                    <a target="_blank" href="http://twitter.com/home/?status={{ $website.GetTwitterMessage }}">
+                    <a target="_blank" href="https://twitter.com/intent/tweet?text={{ $website.GetTwitterMessage }}">
                         Tell 'em on <i class="fab fa-twitter" aria-hidden="true"></i>
                     </a>
                 {{ end }}
@@ -137,53 +162,79 @@
         </div>
 
         <div id="result-div-{{ $website.GetHTMLAnchor }}-{{ $category.GetHTMLAnchor }}" class="row collapse border-right border-left border-bottom {{ $website.GetBorderColor }} mb-2 pb-2">
-            <div class="col-1"><!-- Icon spacing --></div>
-            <div class="col-11">
-                <div class="row">
-                    <div class="col-12">
-                        A website is served from one or more domains. Each one is checked using multiple public available DNS resolvers.
-                        Each resolver has to return at least one AAAA record to pass the test. These results were gathered in {{ printf "%.1f" $website.CheckDurationInSeconds }} seconds:
-                    </div>
-                </div>
+            <div class="row w-100">
+                <div class="col-1"><!-- Icon spacing --></div>
+                <div class="col-11">
 
-                <div class="row mt-4">
-                    <div class="col-md-3"><b>Domain</b></div>
-                    <div class="col-md-3"><b>Resolver provider</b></div>
-                    <div class="col-md-4"><b>Resolver IPs</b></div>
-                    <div class="col-md-2 text-center"><b>Found AAAA?</b></div>
-                </div>
-
-                {{ range $domain := $website.Domains }}
-                <div class="row">
-                    <div class="col-md-3 border-top">
-                        {{ $domain.Domain }}
-                    </div>
-                    <div class="col-md-9">
-                        {{ range $resolverResult := $domain.ResolverResults }}
-                        <div class="row border-top">
-                            <div class="col-md-4">
-                                {{ $resolverResult.ResolverProvider.Name }}
-                            </div>
-                            <div class="col-md-8">
-                                {{ range $resolver := $resolverResult.ResolverResults }}
-                                <div class="row">
-                                    <div class="col-md-8">{{ $resolver.Resolver.Address }}</div>
-                                    <div class="col-md-4 text-center">
-                                        {{ if $resolver.QuadAFound }}
-                                        <span class="badge badge-success">Yes</span>
-                                        {{ else }}
-                                        <span class="badge badge-danger">No</span>
-                                        {{ end }}
-                                    </div>
-                                </div>
-                                {{ end }}
-                            </div>
+                    <div class="row">
+                        <div class="col-12">
+                            A website is served from one or more domains. Each one is checked using multiple public available DNS resolvers.
+                            Each resolver has to return at least one AAAA record to pass the test. These results were gathered in {{ printf "%.1f" $website.CheckDurationInSeconds }} seconds:
                         </div>
-                        {{ end }}
                     </div>
+
+                    <div class="row mt-4 d-none d-md-flex">
+                        <div class="col-md-3"><b>Domain</b></div>
+                        <div class="col-md-3"><b>Resolver provider</b></div>
+                        <div class="col-md-4"><b>Resolver IPs</b></div>
+                        <div class="col-md-2 text-center"><b>Found AAAA?</b></div>
+                    </div>
+
+                    {{ range $domain := $website.Domains }}
+                    <div class="row d-none d-md-flex">
+                        <div class="col-md-3 border-top">
+                            {{ $domain.Domain }}
+                        </div>
+                        <div class="col-md-9">
+                            {{ range $resolverResult := $domain.ResolverResults }}
+                            <div class="row border-top">
+                                <div class="col-md-4">
+                                    {{ $resolverResult.ResolverProvider.Name }}
+                                </div>
+                                <div class="col-md-8">
+                                    {{ range $resolver := $resolverResult.ResolverResults }}
+                                    <div class="row">
+                                        <div class="col-md-8">{{ $resolver.Resolver.Address }}</div>
+                                        <div class="col-md-4 text-center">
+                                            {{ if $resolver.QuadAFound }}
+                                            <span class="badge badge-success">Yes</span>
+                                            {{ else }}
+                                            <span class="badge badge-danger">No</span>
+                                            {{ end }}
+                                        </div>
+                                    </div>
+                                    {{ end }}
+                                </div>
+                            </div>
+                            {{ end }}
+                        </div>
+                    </div>
+                    {{ end }}
                 </div>
-                {{ end }}
             </div>
+
+            {{ if ne (len $website.Tags) 0 }}
+            <div class="row mt-3 w-100">
+                <div class="col-md-1"><!-- Placeholder --></div>
+                <div class="col-md-11 alert alert-secondary">
+                    <b>Heads up! This website/provider has some special perks:</b>
+
+                    <ul class="emojilist">
+                        {{ range $tag := $website.Tags }}
+                            {{ if eq $tag "isp-providing-ipv6-to-private-customers" }}
+                            <li class="emojilist-item">ISP providing an IPv6 prefix to private customers</li>
+                            {{ else if eq $tag "isp-providing-ipv6-to-business-customers" }}
+                            <li class="emojilist-item">ISP providing an IPv6 prefix to business customers</li>
+                            {{ else if eq $tag "isp-providing-fixed-ipv6-prefix-to-business-customers" }}
+                            <li class="emojilist-item">ISP providing a fixed IPv6 prefix to business customers</li>
+                            {{ else if eq $tag "cloud-provider-with-ipv6-support" }}
+                            <li class="emojilist-item">Cloud provider with IPv6 support</li>
+                            {{ end }}
+                        {{ end }}
+                    </ul>
+                </div>
+            </div>
+            {{ end }}
         </div>
         {{ end }}
     {{ end }}
