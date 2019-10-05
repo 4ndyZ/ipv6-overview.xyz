@@ -1441,3 +1441,14 @@ websites:
   twitter: '@Bundestag'
   categories:
   - Government
+
+- name: Bundesnetzagentur
+  href: https://www.bundesnetzagentur.de
+  hosts:
+  - www.bundesnetzagentur.de
+  - vmail2.bnetza.de
+  - vmail1.bnetza.de
+  icon: bundesnetzagentur.svg # https://de.wikipedia.org/wiki/Datei:Bundesnetzagentur_logo.svg
+  twitter: '@bnetza'
+  categories:
+  - Government
