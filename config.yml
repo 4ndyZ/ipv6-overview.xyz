@@ -1431,13 +1431,12 @@ websites:
   categories:
   - Government
 
-- name: Deutscher Bundestag                                
-  href: https://www.bundestag.de/       
+- name: Deutscher Bundestag
+  href: https://www.bundestag.de/
   hosts:
-  - www.bundestag.de              
-  icon: bundestag.svg # https://de.wikipedia.org/wiki/Datei:Logo_of_the_Deutscher_Bundestag.svg     
+  - www.bundestag.de
+  - webtv.bundestag.de
+  icon: bundestag.svg # https://de.wikipedia.org/wiki/Datei:Logo_of_the_Deutscher_Bundestag.svg
   twitter: '@Bundestag'
   categories:
-  - Government 
-
-
+  - Government
