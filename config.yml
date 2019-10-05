@@ -1484,11 +1484,20 @@ websites:
 
 - name: European Parliament
   href: https://europarl.europa.eu
-  twitter: "@Europarl_EN"
+  twitter: '@Europarl_EN'
   icon: european-parliament.png # https://europarl.europa.eu/downloadcentre/en/visual-identity
   hosts:
   - europarl.europa.eu
   - mail110.ep.europa.eu
   - mail115.ep.europa.eu
+  categories:
+  - Government
+
+- name: European Commission
+  href: https://ec.europa.eu
+  twitter: '@EU_Commission'
+  icon: european-commission.jpg # https://ec.europa.eu/info/resources-partners/european-commission-visual-identity_en
+  hosts:
+  - ec.europa.eu
   categories:
   - Government
