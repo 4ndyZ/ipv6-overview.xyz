@@ -267,7 +267,6 @@ func AddLogrusTelegramHook(sendToTelegram *bool, webhookid *string) {
     if *sendToTelegram && len(*webhookid) > 0 {
         hook := hornhook.New(*webhookid)
         hook.Appname = "status-why-ipv6"
-        hook.AddLevel(log.ErrorLevel)
         hook.AddLevel(log.FatalLevel)
 
         log.AddHook(hook)
