@@ -155,6 +155,8 @@ websites:
   - Streaming
 
 - name: Apple
+  description: |
+    Apple is a hard- and software manufacturer most known for their pricy laptops and smartphones. While their laptops are in general very good and worth the money all over products are just overpriced.
   href: https://www.apple.com
   hosts:
   - apple.com
