@@ -1427,6 +1427,8 @@ websites:
   hosts:
   - www.bsi.bund.de
   - www.allianz-fuer-cybersicherheit.de
+  - mx1.bund.de
+  - mx2.bund.de
   icon: bsi.svg # https://de.wikipedia.org/wiki/Datei:Bundesamt_f%C3%BCr_Sicherheit_in_der_Informationstechnik_Logo.svg
   twitter: '@BSI_Bund'
   categories:
@@ -1437,6 +1439,8 @@ websites:
   hosts:
   - www.bundestag.de
   - webtv.bundestag.de
+  - mail1.dbtg.de
+  - mail2.dbtg.de
   icon: bundestag.svg # https://de.wikipedia.org/wiki/Datei:Logo_of_the_Deutscher_Bundestag.svg
   twitter: '@Bundestag'
   categories:
