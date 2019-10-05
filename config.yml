@@ -540,14 +540,14 @@ websites:
   categories:
   - Chat
 
-- name: MaxCDN
-  href: https://www.maxcdn.com
+- name: StackPath
+  href: https://www.stackpath.com
   hosts:
-  - maxcdn.com
-  - www.maxcdn.com
-  - maxcdn.bootstrapcdn.com
-  icon: fa-maxcdn
-  twitter: '@maxcdn'
+  - control.stackpath.com
+  - www.stackpath.com
+  - partners.stackpath.com
+  icon: stackpath.svg # https://www.stackpath.com/legal/brand-usage-guidelines/
+  twitter: '@StackPath'
   categories:
   - Cloud
 
