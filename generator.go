@@ -24,9 +24,10 @@ import (
 type IPv6_Support int
 
 const (
-    IPv6_Full_Support int = 1
-    IPv6_Partial_Support int = 0
-    IPv6_No_Support = -1
+    IPv6_SUPPORT_FULL int = 1
+    IPv6_SUPPORT_PARTIAL int = 0
+    IPv6_SUPPORT_NONE = -1
+    IPv6_SUPPORT_NOT_CHECKED = 2
 
     RESOLVER_WORKER_GOROUTINE_COUNT int = 30
     RESOLVER_RETRY_COUNTER int = 5
@@ -69,10 +70,10 @@ func (category *Category) GetHTMLAnchor() string {
 func (category *Category) DoTheCounting() {
     for _, website := range category.Websites {
         switch website.IPv6SupportStatus {
-        case IPv6_Full_Support:
+        case IPv6_SUPPORT_FULL:
             category.CountIPv6FullSupport++
 
-        case IPv6_Partial_Support:
+        case IPv6_SUPPORT_PARTIAL:
             category.CountIPv6PartialSupport++
 
         default:
@@ -102,9 +103,11 @@ func (website *Website) GetHTMLAnchor() string {
 
 func (website *Website) GetCSSBackgroundColor() string {
     switch website.IPv6SupportStatus {
-    case IPv6_Full_Support:
+    case IPv6_SUPPORT_NOT_CHECKED:
+        return "test-result-not-checked"
+    case IPv6_SUPPORT_FULL:
         return "test-result-full-ipv6"
-    case IPv6_Partial_Support:
+    case IPv6_SUPPORT_PARTIAL:
         return "test-result-partial-ipv6"
     default:
         return "test-result-no-ipv6"
@@ -117,9 +120,11 @@ func (website *Website) IsFontAwesomeIcon() bool {
 
 func (website *Website) GetSupportMessage() string {
     switch website.IPv6SupportStatus {
-    case IPv6_Full_Support:
+    case IPv6_SUPPORT_NOT_CHECKED:
+        return "Not checked!"
+    case IPv6_SUPPORT_FULL:
         return "Yay! Full IPv6 Support!"
-    case IPv6_Partial_Support:
+    case IPv6_SUPPORT_PARTIAL:
         return "You can do better!"
     default:
         return "Shame on you!"
@@ -128,9 +133,11 @@ func (website *Website) GetSupportMessage() string {
 
 func (website *Website) GetBorderColor() string {
     switch website.IPv6SupportStatus {
-    case IPv6_Full_Support:
+    case IPv6_SUPPORT_NOT_CHECKED:
+        return "border-dark"
+    case IPv6_SUPPORT_FULL:
         return "border-success"
-    case IPv6_Partial_Support:
+    case IPv6_SUPPORT_PARTIAL:
         return "border-warning"
     default:
         return "border-danger"
@@ -141,25 +148,28 @@ func (website *Website) GetTwitterMessage() string {
     message := ""
 
     switch website.IPv6SupportStatus {
-    case IPv6_Full_Support:
+    case IPv6_SUPPORT_FULL:
         message = "Thanks for serving your website over IPv6!"
-    case IPv6_Partial_Support:
+    case IPv6_SUPPORT_PARTIAL:
         message = "Can you please improve your IPv6 support?"
     default:
         message = "Isn't it about time to provide IPv6 on your website?"
     }
 
-    return fmt.Sprintf(".%s %s #ipv6 #whyipv6", website.Twitter, message)
+    return fmt.Sprintf(".%s %s #ipv6 #whyipv6 @DerVeloc1ty", website.Twitter, message)
 }
 
 func (website *Website) FigureOutIPv6SupportStatus() {
     countIPv6Found := 0
     countIPv6NotFOund := 0
+    countNotChecked := 0
 
     for _, domain := range website.Domains {
         for _, results := range domain.ResolverResults {
             for _, result := range results.ResolverResults {
-                if result.QuadAFound {
+                if result.ActuallyChecked == false {
+                    countNotChecked++
+                } else if result.QuadAFound {
                     countIPv6Found++
                 } else {
                     countIPv6NotFOund++
@@ -168,13 +178,25 @@ func (website *Website) FigureOutIPv6SupportStatus() {
         }
     }
 
-    if countIPv6Found > 0 && countIPv6NotFOund == 0 {
-        website.IPv6SupportStatus = IPv6_Full_Support
+    if countNotChecked > 0 {
+        website.IPv6SupportStatus = IPv6_SUPPORT_NOT_CHECKED
+    } else if countIPv6Found > 0 && countIPv6NotFOund == 0 {
+        website.IPv6SupportStatus = IPv6_SUPPORT_FULL
     } else if countIPv6Found == 0 && countIPv6NotFOund > 0 {
-        website.IPv6SupportStatus = IPv6_No_Support
+        website.IPv6SupportStatus = IPv6_SUPPORT_NONE
     } else {
-        website.IPv6SupportStatus = IPv6_Partial_Support
+        website.IPv6SupportStatus = IPv6_SUPPORT_PARTIAL
     }
+}
+
+func (website *Website) IsInCategory(category string) bool {
+    for _, currentCategory := range website.Categories {
+        if currentCategory == category {
+            return true
+        }
+    }
+
+    return false
 }
 
 type Domain struct {
@@ -190,6 +212,7 @@ type DomainResolverResults struct {
 type DomainResolverResult struct {
     Resolver *Resolver
     QuadAFound bool
+    ActuallyChecked bool
     // Result string
 }
 
@@ -235,6 +258,7 @@ func main() {
     logLevel := flag.String("loglevel", "error", "What loglevel to use (info, error, debug). Default is error")
     sendToTelegram := flag.Bool("telegram", false, "Send log messages to Integram")
     integramWebhook := flag.String("webhookid", "", "Integram webhook id")
+    categoryLimit := flag.String("category-limit", "none", "Limit to a specific category")
     flag.Parse()
 
     SetLogLevel(logLevel)
@@ -246,7 +270,7 @@ func main() {
     SortCategories(yamlConfig.Categories)
     ParseDomainsInsideWebsites(yamlConfig)
 
-    TestEveryWebsite(yamlConfig.Websites, resolverProviders)
+    TestEveryWebsite(yamlConfig.Websites, resolverProviders, *categoryLimit)
 
     SortEveryWebsiteIntoCategory(yamlConfig.Websites, yamlConfig.Categories)
     GenerateCategoryCounters(yamlConfig.Categories)
@@ -422,7 +446,7 @@ func GenerateCategoryCounters(categories []*Category) {
     log.Info("Finished generating category overall counters")
 }
 
-func TestEveryWebsite(websites []*Website, resolverProviders []*ResolverProvider) {
+func TestEveryWebsite(websites []*Website, resolverProviders []*ResolverProvider, categoryLimit string) {
     log.Info("Testing websites")
 
     channel := make(chan *Website, 2 * RESOLVER_WORKER_GOROUTINE_COUNT)
@@ -431,7 +455,7 @@ func TestEveryWebsite(websites []*Website, resolverProviders []*ResolverProvider
 
     for i := 0; i < RESOLVER_WORKER_GOROUTINE_COUNT; i++ {
         waitForResolve.Add(1)
-        go ResolverWorker(channel, resolverProviders, waitForResolve)
+        go ResolverWorker(channel, resolverProviders, waitForResolve, categoryLimit)
         log.WithField("WorkerID", i).Info("Started worker goroutine")
     }
 
@@ -510,7 +534,7 @@ func LoadYAML() (*YAMLConfig) {
     }
 }
 
-func ResolverWorker(websites <-chan *Website, resolverProviders []*ResolverProvider, waitGroup *sync.WaitGroup) {
+func ResolverWorker(websites <-chan *Website, resolverProviders []*ResolverProvider, waitGroup *sync.WaitGroup, categoryLimit string) {
 
     client := new(dns.Client)
 
@@ -542,59 +566,64 @@ func ResolverWorker(websites <-chan *Website, resolverProviders []*ResolverProvi
                     domainResolverResult := DomainResolverResult{}
                     domainResolverResult.Resolver = resolver
                     domainResolverResult.QuadAFound = false
+                    domainResolverResult.ActuallyChecked = true
 
-                    message := new(dns.Msg)
-                    message.RecursionDesired = true
-                    message.SetQuestion(punicodeEncodedDomain + ".", dns.TypeAAAA)
+                    if categoryLimit != "none" && ! website.IsInCategory(categoryLimit) {
+                        domainResolverResult.ActuallyChecked = false
+                    } else {
+                        message := new(dns.Msg)
+                        message.RecursionDesired = true
+                        message.SetQuestion(punicodeEncodedDomain + ".", dns.TypeAAAA)
 
-                    resolverLogger := log.WithFields(log.Fields {
-                        "ResolverIP": resolver.Address,
-                        "Domain": domain.Domain})
+                        resolverLogger := log.WithFields(log.Fields {
+                            "ResolverIP": resolver.Address,
+                            "Domain": domain.Domain})
 
-                    queryErrorOccured := true
+                        queryErrorOccured := true
 
-                    for queryTry := 0; queryTry < RESOLVER_RETRY_COUNTER && queryErrorOccured; queryTry++ {
-                        // Increment sleep time every time a resolver try is done. First try is undelayed
-                        // tanks to simple math
-                        time.Sleep(time.Duration(queryTry * 100) * time.Millisecond)
+                        for queryTry := 0; queryTry < RESOLVER_RETRY_COUNTER && queryErrorOccured; queryTry++ {
+                            // Increment sleep time every time a resolver try is done. First try is undelayed
+                            // tanks to simple math
+                            time.Sleep(time.Duration(queryTry * 100) * time.Millisecond)
 
-                        tryLogger := resolverLogger.WithField("Try", queryTry)
-                        tryLogger.Debug("Sending query")
+                            tryLogger := resolverLogger.WithField("Try", queryTry)
+                            tryLogger.Debug("Sending query")
 
-                        answer, _, err := client.Exchange(message, resolver.Address + ":53")
+                            answer, _, err := client.Exchange(message, resolver.Address + ":53")
 
-                        if err != nil {
-                            queryErrorOccured = true
-                            tryLogger.WithField("ErrorMessage", err.Error()).Debug("Failed to query resolver")
-                        } else if answer.Rcode == dns.RcodeSuccess {
-                            queryErrorOccured = false
+                            if err != nil {
+                                queryErrorOccured = true
+                                tryLogger.WithField("ErrorMessage", err.Error()).Debug("Failed to query resolver")
+                            } else if answer.Rcode == dns.RcodeSuccess {
+                                queryErrorOccured = false
 
-                            for _, record := range answer.Answer {
-                                // Check if we really got AAAA records. Some websites provide CNAMEs
-                                // They should of course not count
-                                if _, ok := record.(*dns.AAAA); ok {
-                                    domainResolverResult.QuadAFound = true
-                                    break // one is enough
+                                for _, record := range answer.Answer {
+                                    // Check if we really got AAAA records. Some websites provide CNAMEs
+                                    // They should of course not count
+                                    if _, ok := record.(*dns.AAAA); ok {
+                                        domainResolverResult.QuadAFound = true
+                                        break // one is enough
+                                    }
                                 }
-                            }
 
-                            if domainResolverResult.QuadAFound {
-                                tryLogger.Debug("Domain resolved to AAAA record")
-                            } else {
-                                tryLogger.Debug("Domain did not resolve to AAAA record. Shame!")
+                                if domainResolverResult.QuadAFound {
+                                    tryLogger.Debug("Domain resolved to AAAA record")
+                                } else {
+                                    tryLogger.Debug("Domain did not resolve to AAAA record. Shame!")
+                                }
+                        	} else {
+                                queryErrorOccured = false
+                                tryLogger.Error("No transport error occured but dns answer wasn't successfull. Is the domain still active?")
                             }
-                    	} else {
-                            queryErrorOccured = false
-                            tryLogger.Error("No transport error occured but dns answer wasn't successfull. Is the domain still active?")
+                        }
+
+                        if queryErrorOccured {
+                            resolverLogger.WithField("Tries", RESOLVER_RETRY_COUNTER).Error("Giving up resolving domain")
                         }
                     }
 
                     domainResolverResults.ResolverResults = append(domainResolverResults.ResolverResults,
                         domainResolverResult)
-
-                    if queryErrorOccured {
-                        resolverLogger.WithField("Tries", RESOLVER_RETRY_COUNTER).Error("Giving up resolving domain")
-                    }
                 }
 
                 domain.ResolverResults = append(domain.ResolverResults, domainResolverResults)
