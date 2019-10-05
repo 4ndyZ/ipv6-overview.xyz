@@ -1466,3 +1466,18 @@ websites:
   twitter: '@vodafoneservice'
   categories:
   - Internet service provider
+
+- name: R-KOM / Glasfaser Ostbayern
+  href: https://www.glasfaser-ostbayern.de
+  icon: glasfaser-ostbayern.png
+  hosts:
+  - www.glasfaser-ostbayern.de
+  - www.r-kom.de
+  - wm.r-kom.de
+  - kundenportal.r-kom.de
+  categories:
+  - Internet service provider
+  tags:
+  - isp-providing-ipv6-to-private-customers
+  - isp-providing-ipv6-to-business-customers
+  - isp-providing-fixed-ipv6-prefix-to-business-customers

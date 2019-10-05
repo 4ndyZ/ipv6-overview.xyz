@@ -227,7 +227,7 @@ type WebsiteTemplate struct {
 }
 
 func HTMLAnchorify(toAnchor string) string {
-    replaceChars := []string { " ", ".", ",", "ä", "ö", "ü" }
+    replaceChars := []string { " ", ".", ",", "ä", "ö", "ü", "/" }
 
     for _, char := range replaceChars {
         toAnchor = strings.Replace(toAnchor, char, "", -1)
