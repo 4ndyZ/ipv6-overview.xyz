@@ -36,6 +36,7 @@ categories:
 - name: Gaming
 - name: E-Mail
 - name: SBC
+- name: Government
 - name: Uncategorized # Never ever delete this!
 
 websites:
@@ -1386,3 +1387,33 @@ websites:
   twitter: '@beagleboardorg'
   categories:
   - SBC
+
+- name: Bundesnetzagentur
+  href: https://www.bundesnetzagentur.de
+  hosts:
+  - www.bundesnetzagentur.de
+  - www.netzausbau.de
+  icon: bnetza.svg # https://upload.wikimedia.org/wikipedia/commons/b/b4/Bundesnetzagentur_logo.svg
+  twitter: '@bnetza'
+  categories:
+  - Goverment
+
+- name: Bundesamt für Sicherheit in der Informationstechnik
+  href: https://www.bsi.bund.de
+  hosts:
+  - www.bsi.bund.de
+  icon: bsi.svg # https://de.wikipedia.org/wiki/Datei:Bundesamt_f%C3%BCr_Sicherheit_in_der_Informationstechnik_Logo.svg
+  twitter: '@BSI_Bund'
+  categories:
+  - Government
+
+- name: Deutscher Bundestag                                
+  href: https://www.bundestag.de/       
+  hosts:
+  - www.bundestag.de              
+  icon: bundestag.svg # https://de.wikipedia.org/wiki/Datei:Logo_of_the_Deutscher_Bundestag.svg     
+  twitter: '@Bundestag'
+  categories:
+  - Government 
+
+
