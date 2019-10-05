@@ -1481,3 +1481,14 @@ websites:
   - isp-providing-ipv6-to-private-customers
   - isp-providing-ipv6-to-business-customers
   - isp-providing-fixed-ipv6-prefix-to-business-customers
+
+- name: European Parliament
+  href: https://europarl.europa.eu
+  twitter: "@Europarl_EN"
+  icon: european-parliament.png # https://europarl.europa.eu/downloadcentre/en/visual-identity
+  hosts:
+  - europarl.europa.eu
+  - mail110.ep.europa.eu
+  - mail115.ep.europa.eu
+  categories:
+  - Government
