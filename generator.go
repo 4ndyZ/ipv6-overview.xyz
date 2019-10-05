@@ -29,7 +29,7 @@ const (
     IPv6_No_Support = -1
 
     RESOLVER_WORKER_GOROUTINE_COUNT int = 30
-    RESOLVER_RETRY_COUNTER int = 3
+    RESOLVER_RETRY_COUNTER int = 5
 )
 
 type YAMLConfig struct {
