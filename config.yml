@@ -917,6 +917,7 @@ websites:
   - mobile.yahoo.com
   - groups.yahoo.com
   - answers.yahoo.com
+  - mta6.am0.yahoodns.net
   icon: fa-yahoo
   twitter: '@Yahoo'
   categories:
@@ -1285,6 +1286,7 @@ websites:
   - www.gmx.net
   - dl.gmx.net
   - meinaccount.gmx.net
+  - mx01.emig.gmx.net
   twitter: '@gmxmail'
   categories:
   - E-Mail
@@ -1297,6 +1299,8 @@ websites:
   - web.de
   - dl.web.de
   - newsroom.web.de
+  - mx-ha02.web.de
+  - mx-ha03.web.de
   twitter: '@WEBDE'
   categories:
   - E-Mail
@@ -1323,6 +1327,8 @@ websites:
   hosts:
   - protonmail.com
   - careers.protonmail.com
+  - mail.protonmail.ch
+  - mailsec.protonmail.ch
   icon: Protonmail.svg     # Source + licence: https://protonmail.com/media-kit
   twitter: '@ProtonMail'
   categories:
@@ -1334,6 +1340,7 @@ websites:
   - yandex.ru
   - yastatic.net
   - mail.yandex.com
+  - mx.yandex.ru
   icon: Yandex.png
   twitter: '@yandex'
   categories:
