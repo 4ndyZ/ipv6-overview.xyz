@@ -1456,3 +1456,13 @@ websites:
   twitter: '@Bundestag'
   categories:
   - Government
+
+- name: Vodafone
+  href: https://vodafone.de
+  hosts:
+  - vodafone.de
+  - dyn.vodafone.de
+  - zuhauseplus.vodafone.de
+  twitter: '@vodafoneservice'
+  categories:
+  - Internet service provider
