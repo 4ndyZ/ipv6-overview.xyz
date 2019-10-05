@@ -1501,3 +1501,10 @@ websites:
   - ec.europa.eu
   categories:
   - Government
+
+- name: BREKO Bundesverband Breitbandkommunikation e.V.
+  href: https://brekoverband.de
+  twitter: '@BREKOverband'
+  icon: breko.png # https://brekoverband.de/presse
+  hosts:
+  - brekoverband.de
