@@ -89,13 +89,13 @@
     </div>
     <div class="row">
         <div class="col-12">
-        It is {{ .Year }} and the IPv6 adoption of big websites is bad. Most of them have the money, time and people to
-        support IPv6 on their websites yet they are only reachable over IPv4. The goal of this website is to provide an
-        overview which websites or services are reachable over IPv6 and which are not. You'll probably spot some
-        similarities, don't you?<br />
-        <br />
+            IPv4 has two major disadvantages: The usable address space is exhausted and network address translation (short: NAT). In the good old days, every device got its own publicly routed IPv4 address. There are round about 4 billion addresses in the whole IPv4 space but way more devices participating on the internet.<br />
+            That's why NAT was invented. A simplified video explaining what NAT is <a href="https://www.youtube.com/watch?v=FTUV0t6JaDA" target="_blank">can be found here</a>. A more technical video <a href="https://www.youtube.com/watch?v=01ajHxPLxAw" target="_blank">can be found here</a>. But NAT breaks one of the core functionality: End to end communication between two devices. Especially when the ISPs also start to do that. Because of NAT some software implemented NAT hole punching to overcome this problem. For example games without dedicated gameservers. Smart people recognized this flaw a long time ago and invented IPv6. For round about 10 years now it's production-ready. With IPv6, each device can have a publicly routed IP address and true end to end communication is possible again.<br />
+            <br />
+            Yet in {{ .Year }} there are still websites and services not reachable over the current internet protocol. Most of them have the money, time and people for their migration. The goal of this website is to provide an overview of IPv6 ready websites and services. They are grouped into categories. As you can see: Some parts of the industry are collectively neglecting IPv6.<br />
+            <br />
         <span class="d-none d-sm-block">
-            Tipp: If you click on a websites area additional details will pop up. Are you missing a website? Check out <a href="{{ .GithubRepo }}" target="_blank">the GitHub repository</a> for this project. Open an issue or create a pull request!
+            Tipp: If you click on a websites panel, additional details will appear. Are you missing a website? Check out <a href="{{ .GithubRepo }}" target="_blank">the GitHub repository</a> for this project. Open an issue or create a pull request!
         </span>
         </div>
     </div>
