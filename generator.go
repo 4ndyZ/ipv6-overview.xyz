@@ -84,7 +84,7 @@ func (category *Category) DoTheCounting() {
 
 type Website struct {
     Name string
-    URL string
+    URL string `yaml:"href"`
     Description string
     RawDomains []string `yaml:"hosts"`
     Domains []*Domain
