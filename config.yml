@@ -355,6 +355,8 @@ websites:
   - Shopping
 
 - name: Facebook
+  description: |
+    The dying social network
   href: https://www.facebook.com
   hosts:
   - www.facebook.com
