@@ -1510,3 +1510,15 @@ websites:
   icon: breko.png # https://brekoverband.de/presse
   hosts:
   - brekoverband.de
+
+- name: UpCloud
+  href: https://upcloud.com
+  twitter: '@UpCloud'
+  icon: upcloud.png # Source and permission gathered from Twitter DM. They say they will publish public logo guidelines soon
+  hosts:
+  - upcloud.com
+  - hub.upcloud.com
+  categories:
+  - Cloud
+  tags:
+  - cloud-provider-with-ipv6-support
