@@ -1566,3 +1566,14 @@ websites:
   - Cloud
   tags:
   - cloud-provider-with-ipv6-support
+
+- name: Strato
+  href: https://www.strato.de
+  twitter: '@STRATO_AG'
+  icon: strato.jpg # https://www.strato.de/press/#pressebilder
+  hosts:
+  - www.strato.de
+  categories:
+  - Cloud
+  tags:
+  - cloud-provider-with-ipv6-support
