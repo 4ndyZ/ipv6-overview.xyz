@@ -1522,3 +1522,17 @@ websites:
   - Cloud
   tags:
   - cloud-provider-with-ipv6-support
+
+- name: Heroku
+  href: https://www.heroku.com
+  twitter: '@heroku'
+  icon: heroku.svg # https://brand.heroku.com/
+  hosts:
+  - www.heroku.com
+  - elements.heroku.com
+  - devcenter.heroku.com
+  - blog.heroku.com
+  - help.heroku.com
+  - brand.heroku.com
+  categories:
+  - Cloud
