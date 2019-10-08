@@ -774,6 +774,8 @@ websites:
   hosts:
   - telegram.org
   - web.telegram.org
+  - core.telegram.org
+  - api.telegram.org
   icon: fa-telegram
   twitter: '@telegram'
   categories:
