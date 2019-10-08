@@ -1553,3 +1553,16 @@ websites:
   - Cloud
   tags:
   - cloud-provider-with-ipv6-support
+
+- name: OVH
+  href: https://www.ovh.de
+  twitter: '@OVH @ovh_support_en'
+  icon: ovh.svg   # https://commons.wikimedia.org/wiki/File:Logo-OVH.svg
+  hosts:
+  - www.ovh.de
+  - www.soyoustart.com
+  - docs.ovh.com
+  categories:
+  - Cloud
+  tags:
+  - cloud-provider-with-ipv6-support
