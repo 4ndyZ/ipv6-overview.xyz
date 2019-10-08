@@ -1536,3 +1536,18 @@ websites:
   - brand.heroku.com
   categories:
   - Cloud
+
+- name: Hetzner
+  href: https://www.hetzner.de
+  twitter: '@Hetzner_Online'
+  # Icon via Twitter angefragt: https://twitter.com/DerVeloc1ty/status/1181677613703745541
+  hosts:
+  - www.hetzner.de
+  - wiki.hetzner.de
+  - mail.hetzner.company
+  - accounts.hetzner.com
+  - konsoleh.your-server.de
+  categories:
+  - Cloud
+  tags:
+  - cloud-provider-with-ipv6-support
