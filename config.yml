@@ -148,7 +148,7 @@ websites:
   hosts:
   - amazon.com
   - www.amazon.com
-  icon: amazon.png
+  icon: fa-amazon
   twitter: '@amazon'
   categories:
   - Shopping
@@ -188,6 +188,17 @@ websites:
   twitter: '@arstechnica'
   categories:
   - News
+
+- name: Amazon Web Services
+  description: |
+    Amazon Web Services (AWS) is one of the leading on-demand cloud computing platforms.
+  href: https://aws.amazon.com
+  hosts:
+  - aws.amazon.com
+  icon: fa-aws
+  twitter: '@awscloud'
+  categories:
+  - Cloud
 
 - name: Bitbucket
   description: |
@@ -346,7 +357,7 @@ websites:
 
 - name: eBay
   href: http://www.ebay.com/
-  icon: ebay.svg   # https://de.wikipedia.org/wiki/Datei:EBay_logo.svg
+  icon: fa-ebay
   hosts:
   - www.ebay.com
   - ebay.com
@@ -371,7 +382,7 @@ websites:
   hosts:
   - getfedora.org
   - fedoraproject.org
-  icon: fedora.png
+  icon: fa-fedora
   twitter: '@fedora'
   categories:
   - Operating System
@@ -420,7 +431,7 @@ websites:
   hosts:
   - gitlab.com
   - about.gitlab.com
-  icon: gitlab.svg
+  icon: fa-gitlab
   twitter: '@gitlab'
   categories:
   - Coding
@@ -429,7 +440,7 @@ websites:
   href: https://www.google.com
   hosts:
   - google.com
-  icon: google.png
+  icon: fa-google
   twitter: '@Google'
   categories:
   - Search Engine
@@ -548,7 +559,7 @@ websites:
   - control.stackpath.com
   - www.stackpath.com
   - partners.stackpath.com
-  icon: stackpath.svg # https://www.stackpath.com/legal/brand-usage-guidelines/
+  icon: fa-stackpath
   twitter: '@StackPath'
   categories:
   - Cloud
@@ -623,7 +634,7 @@ websites:
   - doc.opensuse.org
   - forums.opensuse.org
   - lizards.opensuse.org
-  icon: opensuse.png   # https://en.opensuse.org/openSUSE:Artwork_brand
+  icon: fa-suse
   twitter: '@openSUSE'
   categories:
   - Operating System
@@ -858,7 +869,7 @@ websites:
   href: https://www.ubuntu.com
   hosts:
   - www.ubuntu.com
-  icon: ubuntu.png
+  icon: fa-ubuntu
   twitter: '@ubuntu'
   categories:
   - Operating System
@@ -886,7 +897,7 @@ websites:
   href: https://www.wikipedia.org
   hosts:
   - www.wikipedia.org
-  icon: wikipedia.png
+  icon: fa-wikipedia
   twitter: '@Wikipedia'
 
 - name: Wordpress
@@ -1069,7 +1080,7 @@ websites:
 
 - name: TeamSpeak
   href: https://teamspeak.com
-  icon: teamspeak.png   # Source + Licence: https://www.teamspeak.com/en/more/media-pack/
+  icon: fa-teamspeak
   hosts:
   - teamspeak.com
   twitter: '@teamspeak'
@@ -1219,8 +1230,7 @@ websites:
 
 - name: CentOS
   href: https://www.centos.org
-    # Icon licence: https://wiki.centos.org/ArtWork/Brand/Logo
-  icon: centos.svg
+  icon: fa-centos
   hosts:
   - www.centos.org
   - wiki.centos.org
@@ -1345,7 +1355,7 @@ websites:
   - yastatic.net
   - mail.yandex.com
   - mx.yandex.ru
-  icon: Yandex.png
+  icon: fa-yandex-international
   twitter: '@yandex'
   categories:
   - E-Mail
@@ -1368,7 +1378,7 @@ websites:
   - www.freebsd.org
   - www.freebsdfoundation.org
   - forums.freebsd.org
-  icon: freebsd.png     # https://www.freebsdfoundation.org/about/project/
+  icon: fa-freebsd
   twitter: '@freebsd'
   categories:
   - Operating System
@@ -1398,7 +1408,7 @@ websites:
   hosts:
   - www.raspberrypi.org
   - projects.raspberrypi.org
-  icon: RaspberryPi.png     # https://www.raspberrypi.org/trademark-rules/
+  icon: fa-raspberry-pi
   twitter: '@Raspberry_Pi'
   categories:
   - SBC
@@ -1577,3 +1587,16 @@ websites:
   - Cloud
   tags:
   - cloud-provider-with-ipv6-support
+
+- name: RocketChat
+  description: |
+    Rocket.Chat is a free and Open Source team chat software solution.
+  href: https://rocket.chat
+  icon: fa-rocketchat
+  hosts:
+  - rocket.chat
+  - cloud.rocket.chat
+  - open.rocket.chat
+  twitter: '@rocketchat'
+  categories:
+  - Chat
