@@ -1204,6 +1204,7 @@ websites:
 
 - name: ZDF
   href: https://www.zdf.de/
+  icon: 'zdf.svg' # https://commons.wikimedia.org/wiki/File:ZDF_logo.svg
   hosts:
   - www.zdf.de
   twitter: '@ZDF'
