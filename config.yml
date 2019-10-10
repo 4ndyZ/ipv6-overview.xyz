@@ -897,10 +897,9 @@ websites:
 
 - name: Wikipedia
   href: https://www.wikipedia.org
-  icon: wikipedia.svg # https://commons.wikimedia.org/wiki/File:Wikipedia_wordmark.svg
+  icon: fa-wikipedia  # https://commons.wikimedia.org/wiki/File:Wikipedia_wordmark.svg
   hosts:
   - www.wikipedia.org
-  icon: fa-wikipedia
   twitter: '@Wikipedia'
 
 - name: Wordpress
@@ -1206,7 +1205,7 @@ websites:
 
 - name: ZDF
   href: https://www.zdf.de/
-  icon: 'zdf.svg' # https://commons.wikimedia.org/wiki/File:ZDF_logo.svg
+  icon: zdf.svg   # https://commons.wikimedia.org/wiki/File:ZDF_logo.svg
   hosts:
   - www.zdf.de
   twitter: '@ZDF'
