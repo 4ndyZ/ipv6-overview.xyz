@@ -75,7 +75,7 @@ By default the HTML is not minified. If you pass `-minify` to the application th
 
 ### Tags
 
-I found out that some german internet providers websites or services are not reachable over IPv6 but they provide IPv6 to customers. To lift the blame a bit I've implemented the tag system which acts like categories. With tags you can add additional informations. Websites with tags attached will get the ✳️ emoji on the overview page. More details will be provided on the detail pane then. See the `config.yml` file to see it in action.
+I found out that some german internet providers websites or services are not reachable over IPv6 but they provide IPv6 to customers. To lift the blame a bit I've implemented the tag system which acts like categories. With tags you can add additional informations. Websites with tags attached will get the 🏷️ emoji on the overview page. More details will be provided on the detail pane then. See the `config.yml` file to see it in action.
 
 ### Category limit
 
