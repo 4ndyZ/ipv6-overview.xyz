@@ -1,6 +1,6 @@
-website_url: https://status.why-ipv6.xyz
-website_title: status.why-ipv6.xyz
-github_repo: https://github.com/vlcty/status.why-ipv6.xyz
+website_url: https://ipv6-overview.xyz
+website_title: ipv6-overview.xyz
+github_repo: https://github.com/vlcty/ipv6-overview.xyz
 website_description: Overview of websites and services showing their IPv6 support
 
 resolvers:
