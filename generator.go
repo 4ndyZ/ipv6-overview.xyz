@@ -13,7 +13,7 @@ import (
     "time"
     "sort"
 
-	"github.com/miekg/dns"
+    "github.com/miekg/dns"
     yaml "gopkg.in/yaml.v2"
     "github.com/tdewolff/minify"
     "github.com/tdewolff/minify/html"

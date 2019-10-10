@@ -148,7 +148,7 @@ websites:
   hosts:
   - amazon.com
   - www.amazon.com
-  icon: amazon.png
+  icon: fa-amazon
   twitter: '@amazon'
   categories:
   - Shopping
@@ -188,6 +188,17 @@ websites:
   twitter: '@arstechnica'
   categories:
   - News
+
+- name: Amazon Web Services
+  description: |
+    Amazon Web Services (AWS) is one of the leading on-demand cloud computing platforms.
+  href: https://aws.amazon.com
+  hosts:
+  - aws.amazon.com
+  icon: fa-aws
+  twitter: '@awscloud'
+  categories:
+  - Cloud
 
 - name: Bitbucket
   description: |
@@ -336,9 +347,9 @@ websites:
   - Cloud
 
 - name: Duckduckgo
-  href: https://Duckduckgo.com
+  href: https://duckduckgo.com
   hosts:
-  - Duckduckgo.com
+  - duckduckgo.com
   icon: duckduckgo.png
   twitter: '@duckduckgo'
   categories:
@@ -346,7 +357,7 @@ websites:
 
 - name: eBay
   href: http://www.ebay.com/
-  icon: ebay.svg   # https://de.wikipedia.org/wiki/Datei:EBay_logo.svg
+  icon: fa-ebay
   hosts:
   - www.ebay.com
   - ebay.com
@@ -371,7 +382,7 @@ websites:
   hosts:
   - getfedora.org
   - fedoraproject.org
-  icon: fedora.png
+  icon: fa-fedora
   twitter: '@fedora'
   categories:
   - Operating System
@@ -420,7 +431,7 @@ websites:
   hosts:
   - gitlab.com
   - about.gitlab.com
-  icon: gitlab.svg
+  icon: fa-gitlab
   twitter: '@gitlab'
   categories:
   - Coding
@@ -429,10 +440,12 @@ websites:
   href: https://www.google.com
   hosts:
   - google.com
-  icon: google.png
+  - gstatic.com
+  icon: fa-google
   twitter: '@Google'
   categories:
   - Search Engine
+  - E-Mail
   - Cloud
 
 - name: Gravatar
@@ -548,7 +561,7 @@ websites:
   - control.stackpath.com
   - www.stackpath.com
   - partners.stackpath.com
-  icon: stackpath.svg # https://www.stackpath.com/legal/brand-usage-guidelines/
+  icon: fa-stackpath
   twitter: '@StackPath'
   categories:
   - Cloud
@@ -623,7 +636,7 @@ websites:
   - doc.opensuse.org
   - forums.opensuse.org
   - lizards.opensuse.org
-  icon: opensuse.png   # https://en.opensuse.org/openSUSE:Artwork_brand
+  icon: fa-suse
   twitter: '@openSUSE'
   categories:
   - Operating System
@@ -644,7 +657,7 @@ websites:
   icon: Origin.svg   # Source: https://commons.wikimedia.org/wiki/File:Origin.svg
   hosts:
   - www.origin.com
-  twitter: '@AskEASupport'
+  twitter: '@askeasupport'
   categories:
   - Gaming
 
@@ -660,7 +673,7 @@ websites:
   hosts:
   - www.paypal.com
   icon: fa-paypal
-  twitter: '@AskPayPal'
+  twitter: '@askpaypal'
   categories:
   - Banking
 
@@ -767,7 +780,7 @@ websites:
   hosts:
   - strava.com
   icon: fa-strava
-  twitter: '@Strava'
+  twitter: '@strava'
 
 - name: Telegram Messenger
   href: https://telegram.org
@@ -858,7 +871,7 @@ websites:
   href: https://www.ubuntu.com
   hosts:
   - www.ubuntu.com
-  icon: ubuntu.png
+  icon: fa-ubuntu
   twitter: '@ubuntu'
   categories:
   - Operating System
@@ -886,7 +899,7 @@ websites:
   href: https://www.wikipedia.org
   hosts:
   - www.wikipedia.org
-  icon: wikipedia.png
+  icon: fa-wikipedia
   twitter: '@Wikipedia'
 
 - name: Wordpress
@@ -1069,7 +1082,7 @@ websites:
 
 - name: TeamSpeak
   href: https://teamspeak.com
-  icon: teamspeak.png   # Source + Licence: https://www.teamspeak.com/en/more/media-pack/
+  icon: fa-teamspeak
   hosts:
   - teamspeak.com
   twitter: '@teamspeak'
@@ -1219,8 +1232,7 @@ websites:
 
 - name: CentOS
   href: https://www.centos.org
-    # Icon licence: https://wiki.centos.org/ArtWork/Brand/Logo
-  icon: centos.svg
+  icon: fa-centos
   hosts:
   - www.centos.org
   - wiki.centos.org
@@ -1345,7 +1357,7 @@ websites:
   - yastatic.net
   - mail.yandex.com
   - mx.yandex.ru
-  icon: Yandex.png
+  icon: fa-yandex-international
   twitter: '@yandex'
   categories:
   - E-Mail
@@ -1368,7 +1380,7 @@ websites:
   - www.freebsd.org
   - www.freebsdfoundation.org
   - forums.freebsd.org
-  icon: freebsd.png     # https://www.freebsdfoundation.org/about/project/
+  icon: fa-freebsd
   twitter: '@freebsd'
   categories:
   - Operating System
@@ -1398,7 +1410,7 @@ websites:
   hosts:
   - www.raspberrypi.org
   - projects.raspberrypi.org
-  icon: RaspberryPi.png     # https://www.raspberrypi.org/trademark-rules/
+  icon: fa-raspberry-pi
   twitter: '@Raspberry_Pi'
   categories:
   - SBC
@@ -1577,3 +1589,92 @@ websites:
   - Cloud
   tags:
   - cloud-provider-with-ipv6-support
+
+- name: RocketChat
+  description: |
+    Rocket.Chat is a free and Open Source team chat software solution.
+  href: https://rocket.chat
+  icon: fa-rocketchat
+  hosts:
+  - rocket.chat
+  - cloud.rocket.chat
+  - open.rocket.chat
+  twitter: '@rocketchat'
+  categories:
+  - Chat
+
+- name: Battle.net
+  description: |
+    Battle.net is the online gaming platform of Blizzard Entertainment.
+  href: https://battle.net
+  icon: fa-battle-net
+  hosts:
+  - battle.net
+  - blizzard.com
+  - shop.blizzard.com
+  twitter: '@blizzard_ent'
+  categories:
+  - Gaming
+
+- name: Heise online
+  description: |
+    Heise online is a German IT-News site which also publishes the famous ct journal.
+  href: https://www.heise.de
+  hosts:
+  - wwww.heise.de
+  twitter: '@heiseonline'
+  categories:
+  - News
+
+- name: Odroid
+  description: |
+    Hardkernel is a South Korean manufacturer of single-board computers. They are very well known for their ODROID series of SBCs.
+  href: https://www.hardkernel.com
+  hosts:
+  - www.hardkernel.com
+  - forum.odroid.com
+  - wiki.odroid.com
+  - magazine.odroid.com
+  twitter: '@odroid5'
+  categories:
+  - SBC
+
+- name: Akamai
+  description: |
+    Akamai is one of the leading providers of CDN services.
+  href: https://www.akamai.com
+  icon: akamai.png # https://www.akamai.com/de/de/multimedia/documents/media-resources/akamai-logo-guidelines.pdf
+  hosts:
+  - www.akamai.com
+  - content.akamai.com
+  twitter: '@akamai'
+  categories:
+  - Cloud
+
+- name: Cloudflare
+  description: |
+    Cloudflare is a web infrastructure and website security company, providing content delivery network services, DDoS mitigation, Internet security, and distributed domain name server services.
+  href: https://www.cloudflare.com
+  icon: cloudflare.svg   # https://www.cloudflare.com/logo/
+  hosts:
+  - wwww.cloudflare.com
+  - cdnjs.cloudflare.com
+  - support.cloudflare.com
+  - community.cloudflare.com
+  twitter: '@cloudflare'
+  categories:
+  - Cloud
+
+- name: Uplay
+  description: |
+    Uplay is the game distribution service and gaming platform of Ubisoft.
+  href: https://uplay.ubisoft.com/
+  icon: uplay.png   # https://commons.wikimedia.org/wiki/File:Uplay_Logo.png
+  hosts:
+  - www.ubisoft.com
+  - uplay.ubisoft.com
+  - store.ubi.com
+  - forums.ubi.com
+  twitter: '@ubisoftsupport'
+  categories:
+  - Gaming
