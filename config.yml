@@ -897,6 +897,7 @@ websites:
 
 - name: Wikipedia
   href: https://www.wikipedia.org
+  icon: wikipedia.svg # https://commons.wikimedia.org/wiki/File:Wikipedia_wordmark.svg
   hosts:
   - www.wikipedia.org
   icon: fa-wikipedia
