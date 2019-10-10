@@ -1,4 +1,4 @@
-This repository contains the backend code for [status.why-ipv6.xyz](https://status.why-ipv6.xyz). The application checks multiple websites and their subdomains agains public DNS resolvers for AAAA records. Afterwards a static HTML page is generated to display the result.
+This repository contains the backend code for [ipv6-overview.xyz](https://ipv6-overview.xyz). The application checks multiple websites and their subdomains agains public DNS resolvers for AAAA records. Afterwards a static HTML page is generated to display the result.
 
 ## Contributing + Dev info
 
