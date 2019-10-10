@@ -1175,6 +1175,7 @@ websites:
 
 - name: AlJazeera
   href: https://www.aljazeera.com
+  icon: aljazeera.svg # https://en.wikipedia.org/wiki/File:Aljazeera.svg
   hosts:
   - www.aljazeera.com
   twitter: '@AJEnglish'
