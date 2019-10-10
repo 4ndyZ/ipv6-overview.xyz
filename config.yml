@@ -440,6 +440,7 @@ websites:
   href: https://www.google.com
   hosts:
   - google.com
+  - gstatic.com
   icon: fa-google
   twitter: '@Google'
   categories:
@@ -656,7 +657,7 @@ websites:
   icon: Origin.svg   # Source: https://commons.wikimedia.org/wiki/File:Origin.svg
   hosts:
   - www.origin.com
-  twitter: '@AskEASupport'
+  twitter: '@askeasupport'
   categories:
   - Gaming
 
@@ -672,7 +673,7 @@ websites:
   hosts:
   - www.paypal.com
   icon: fa-paypal
-  twitter: '@AskPayPal'
+  twitter: '@askpaypal'
   categories:
   - Banking
 
@@ -779,7 +780,7 @@ websites:
   hosts:
   - strava.com
   icon: fa-strava
-  twitter: '@Strava'
+  twitter: '@strava'
 
 - name: Telegram Messenger
   href: https://telegram.org
@@ -1637,3 +1638,43 @@ websites:
   twitter: '@odroid5'
   categories:
   - SBC
+
+- name: Akamai
+  description: |
+    Akamai is one of the leading providers of CDN services.
+  href: https://www.akamai.com
+  icon: akamai.png # https://www.akamai.com/de/de/multimedia/documents/media-resources/akamai-logo-guidelines.pdf
+  hosts:
+  - www.akamai.com
+  - content.akamai.com
+  twitter: '@akamai'
+  categories:
+  - Cloud
+
+- name: Cloudflare
+  description: |
+    Cloudflare is a web infrastructure and website security company, providing content delivery network services, DDoS mitigation, Internet security, and distributed domain name server services.
+  href: https://www.cloudflare.com
+  icon: cloudflare.svg   # https://www.cloudflare.com/logo/
+  hosts:
+  - wwww.cloudflare.com
+  - cdnjs.cloudflare.com
+  - support.cloudflare.com
+  - community.cloudflare.com
+  twitter: '@cloudflare'
+  categories:
+  - Cloud
+
+- name: Uplay
+  description: |
+    Uplay is the game distribution service and gaming platform of Ubisoft.
+  href: https://uplay.ubisoft.com/
+  icon: uplay.png   # https://commons.wikimedia.org/wiki/File:Uplay_Logo.png
+  hosts:
+  - www.ubisoft.com
+  - uplay.ubisoft.com
+  - store.ubi.com
+  - forums.ubi.com
+  twitter: '@ubisoftsupport'
+  categories:
+  - Gaming
