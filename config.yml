@@ -347,9 +347,9 @@ websites:
   - Cloud
 
 - name: Duckduckgo
-  href: https://Duckduckgo.com
+  href: https://duckduckgo.com
   hosts:
-  - Duckduckgo.com
+  - duckduckgo.com
   icon: duckduckgo.png
   twitter: '@duckduckgo'
   categories:
@@ -1600,3 +1600,39 @@ websites:
   twitter: '@rocketchat'
   categories:
   - Chat
+
+- name: Battle.net
+  description: |
+    Battle.net is the online gaming platform of Blizzard Entertainment.
+  href: https://battle.net
+  icon: fa-battle-net
+  hosts:
+  - battle.net
+  - blizzard.com
+  - shop.blizzard.com
+  twitter: '@blizzard_ent'
+  categories:
+  - Gaming
+
+- name: Heise online
+  description: |
+    Heise online is a German IT-News site which also publishes the famous ct journal.
+  href: https://www.heise.de
+  hosts:
+  - wwww.heise.de
+  twitter: '@heiseonline'
+  categories:
+  - News
+
+- name: Odroid
+  description: |
+    Hardkernel is a South Korean manufacturer of single-board computers. They are very well known for their ODROID series of SBCs.
+  href: https://www.hardkernel.com
+  hosts:
+  - www.hardkernel.com
+  - forum.odroid.com
+  - wiki.odroid.com
+  - magazine.odroid.com
+  twitter: '@odroid5'
+  categories:
+  - SBC
