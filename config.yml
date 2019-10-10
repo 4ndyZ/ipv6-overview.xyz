@@ -1478,6 +1478,7 @@ websites:
 
 - name: Vodafone
   href: https://vodafone.de
+  icon: vodafone.jpg # https://www.vodafone.co.uk/about-us/for-the-media/image-library/logos/
   hosts:
   - vodafone.de
   - dyn.vodafone.de
