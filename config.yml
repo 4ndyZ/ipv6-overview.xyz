@@ -245,7 +245,7 @@ websites:
   href: https://coreos.com
   hosts:
   - coreos.com
-  icon: coreos.svg # https://commons.wikimedia.org/wiki/File:CoreOS.svg
+  icon: coreos.svg # http://coreos.com/about/
   twitter: '@coreos'
   categories:
   - Operating System
@@ -561,7 +561,7 @@ websites:
   - control.stackpath.com
   - www.stackpath.com
   - partners.stackpath.com
-  icon: fa-stackpath
+  icon: stackpath.svg # https://www.stackpath.com/company/logo-and-branding/
   twitter: '@StackPath'
   categories:
   - Cloud
@@ -738,7 +738,7 @@ websites:
   href: https://soundcloud.com
   hosts:
   - soundcloud.com
-  icon: fa-soundcloud
+  icon: soundcloud.svg # https://commons.wikimedia.org/wiki/File:Soundcloud_logo.svg https://developers.soundcloud.com/docs/api/buttons-logos
   twitter: '@soundcloud'
   categories:
   - Streaming
@@ -747,7 +747,7 @@ websites:
   href: https://www.spotify.com
   hosts:
   - www.spotify.com
-  icon: fa-spotify
+  icon: spotify.svg # https://newsroom.spotify.com/media-kit/logo-and-brand-assets/
   twitter: '@spotify'
   categories:
   - Streaming
@@ -835,7 +835,7 @@ websites:
   href: https://trello.com
   hosts:
   - trello.com
-  icon: fa-trello
+  icon: trello.svg # https://trello.com/de/about/logo
   twitter: '@trello'
 
 - name: Tumblr
@@ -851,7 +851,7 @@ websites:
   href: https://www.twitch.tv
   hosts:
   - www.twitch.com
-  icon: fa-twitch
+  icon: twitch.svg # https://www.twitch.tv/p/de-de/legal/trademark/
   twitter: '@Twitch @TwitchSupport'
   categories:
   - Streaming
@@ -910,7 +910,7 @@ websites:
   - de.wordpress.org
   - codex.wordpress.org
   - make.wordpress.org
-  icon: fa-wordpress
+  icon: wordpress.svg # https://commons.wikimedia.org/wiki/File:WordPress_logo.svg https://wordpress.org/about/logos/
   twitter: '@wordpress'
   categories:
   - Software
@@ -946,7 +946,7 @@ websites:
   href: https://www.youtube.com
   hosts:
   - www.youtube.com
-  icon: fa-youtube
+  icon: youtube.svg # https://www.youtube.com/about/brand-resources/#logos-icons-colors
   twitter: '@youtube'
   categories:
   - Streaming
@@ -1065,7 +1065,7 @@ websites:
 
 - name: Mastercard
   href: https://www.mastercard.com
-  icon: fa-cc-mastercard
+  icon: mastercard.svg # https://brand.mastercard.com/brandcenter-de/mastercard-brand-mark.html
   hosts:
   - www.mastercard.com
   twitter: '@Mastercard'
@@ -1074,7 +1074,7 @@ websites:
 
 - name: Visa
   href: https://www.visa.com
-  icon: fa-cc-visa
+  icon: visa.svg # https://commons.wikimedia.org/wiki/File:Visa_2014_logo_detail.svg
   hosts:
   - www.visa.com
   twitter: '@Visa'
@@ -1104,7 +1104,7 @@ websites:
 
 - name: Linode
   href: https://www.linode.com
-  icon: fa-linode
+  icon: linode.svg # https://www.linode.com/company/press/
   hosts:
   - www.linode.com
   twitter: '@linode'
