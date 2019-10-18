@@ -897,10 +897,9 @@ websites:
 
 - name: Wikipedia
   href: https://www.wikipedia.org
-  icon: wikipedia.svg   # https://commons.wikimedia.org/wiki/File:Wikipedia_wordmark.svg
+  icon: wikipedia.svg   # https://de.wikipedia.org/wiki/Datei:Wikipedia_logo_(svg).svg
   hosts:
   - www.wikipedia.org
-  icon: fa-wikipedia
   twitter: '@Wikipedia'
 
 - name: Wordpress
@@ -1625,7 +1624,7 @@ websites:
     Heise online is a German IT-News site which also publishes the famous ct journal.
   href: https://www.heise.de
   hosts:
-  - wwww.heise.de
+  - www.heise.de
   twitter: '@heiseonline'
   categories:
   - News
@@ -1662,7 +1661,7 @@ websites:
   href: https://www.cloudflare.com
   icon: cloudflare.svg   # https://www.cloudflare.com/logo/
   hosts:
-  - wwww.cloudflare.com
+  - www.cloudflare.com
   - cdnjs.cloudflare.com
   - support.cloudflare.com
   - community.cloudflare.com
