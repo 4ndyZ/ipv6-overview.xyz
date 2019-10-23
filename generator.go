@@ -18,7 +18,7 @@ import (
     "github.com/tdewolff/minify"
     "github.com/tdewolff/minify/html"
     "golang.org/x/net/idna"
-    hornhook "github.com/vlcty/logrus-integram-horn-hook"
+	hornhook "github.com/vlcty/logrus-integram-horn-hook"
 )
 
 type IPv6_Support int
@@ -104,13 +104,13 @@ func (website *Website) GetHTMLAnchor() string {
 func (website *Website) GetCSSBackgroundColor() string {
     switch website.IPv6SupportStatus {
     case IPv6_SUPPORT_NOT_CHECKED:
-        return "test-result-not-checked"
+        return "border-left-secondary"
     case IPv6_SUPPORT_FULL:
-        return "test-result-full-ipv6"
+        return "border-left-success"
     case IPv6_SUPPORT_PARTIAL:
-        return "test-result-partial-ipv6"
+        return "border-left-warning"
     default:
-        return "test-result-no-ipv6"
+        return "border-left-danger"
     }
 }
 

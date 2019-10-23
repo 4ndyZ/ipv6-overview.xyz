@@ -114,7 +114,7 @@ websites:
 
 - name: 9GAG
   href: http://9gag.com
-  icon: 9GAG.svg   # https://commons.wikimedia.org/wiki/File:9GAG_new_logo.svg
+  icon: 9gag.svg   # https://commons.wikimedia.org/wiki/File:9GAG_new_logo.svg
   hosts:
   - 9gag.com
   twitter: '@9GAGTEAM'
@@ -126,7 +126,7 @@ websites:
   hosts:
   - www.epicgames.com
   - accounts.epicgames.com
-  icon: EpicGames.svg     # https://commons.wikimedia.org/wiki/File:Epic_Games_logo.svg
+  icon: epicgames.svg     # https://commons.wikimedia.org/wiki/File:Epic_Games_logo.svg
   twitter: '@EpicGamesDE'
   categories:
   - Gaming
@@ -138,7 +138,7 @@ websites:
   hosts:
   - www.ard.de
   - www.ardmediathek.de
-  icon: ard.svg     # https://commons.wikimedia.org/wiki/File:ARD_logo.svg
+  icon: ard.svg   # https://commons.wikimedia.org/wiki/File:ARD_logo.svg
   twitter: '@DasErste'
   categories:
   - News
@@ -148,7 +148,7 @@ websites:
   hosts:
   - amazon.com
   - www.amazon.com
-  icon: fa-amazon
+  icon: amazon.svg # https://de.wikipedia.org/wiki/Datei:Amazon_logo_plain.svg#/media/Datei:Amazon_logo.svg
   twitter: '@amazon'
   categories:
   - Shopping
@@ -181,7 +181,7 @@ websites:
 
 - name: Ars Technica
   href: https://arstechnica.com
-  icon: ArsTechnica.svg   # Source: https://commons.wikimedia.org/wiki/File:Ars_Technica_logo_(2016).svg
+  icon: arstechnica.svg   # Source: https://commons.wikimedia.org/wiki/File:Ars_Technica_logo_(2016).svg
   hosts:
   - arstechnica.com
   - cdn.arstechnica.net
@@ -195,7 +195,7 @@ websites:
   href: https://aws.amazon.com
   hosts:
   - aws.amazon.com
-  icon: fa-aws
+  icon: aws.svg # https://commons.wikimedia.org/wiki/File:Amazon_Web_Services_Logo.svg
   twitter: '@awscloud'
   categories:
   - Cloud
@@ -206,7 +206,7 @@ websites:
   href: https://bitbucket.org
   hosts:
   - bitbucket.org
-  icon: fa-bitbucket
+  icon: bitbucket.svg # https://www.atlassian.com/de/company/news/press-kit
   twitter: '@bitbucket'
   categories:
   - Coding
@@ -215,7 +215,7 @@ websites:
   description: |
     Bing is run by Microsoft and is a competitor to Google. The results are bad but the pictures on the front page are really nice! :-)
   href: https://bing.com
-  icon: Bing.png   # https://advertiseonbing.blob.core.windows.net/blob/bingads/media/library/docs/bing-marketing-guidelines.pdf
+  icon: bing.svg   # https://de.wikipedia.org/wiki/Datei:Bing_logo.svg#/media/Datei:Bing_logo_(2016).svg https://advertiseonbing.blob.core.windows.net/blob/bingads/media/library/docs/bing-marketing-guidelines.pdf
   hosts:
   - bing.com
   - www.bing.com
@@ -236,7 +236,7 @@ websites:
   href: https://codepen.io
   hosts:
   - codepen.io
-  icon: fa-codepen
+  icon: codepen.svg # https://blog.codepen.io/documentation/brand-assets/logos/
   twitter: '@codepen'
   categories:
   - Coding
@@ -245,7 +245,7 @@ websites:
   href: https://coreos.com
   hosts:
   - coreos.com
-  icon: coreos.png
+  icon: coreos.svg # http://coreos.com/about/
   twitter: '@coreos'
   categories:
   - Operating System
@@ -254,7 +254,7 @@ websites:
   href: https://coveralls.io/
   hosts:
   - coveralls.io
-  twitter: '@CoverallsApp'
+  twitter: '@coverallsapp'
   categories:
   - Coding
 
@@ -265,7 +265,7 @@ websites:
   hosts:
   - www.debian.org
   - security.debian.org
-  icon: debian.png
+  icon: debian.svg   # https://www.debian.org/logos/
   twitter: '@debian'
   categories:
   - Operating System
@@ -310,7 +310,7 @@ websites:
   href: https://discordapp.com/
   hosts:
   - discordapp.com
-  icon: fa-discord
+  icon: discord.svg # https://discordapp.com/branding
   twitter: '@discordapp'
   categories:
   - Chat
@@ -350,7 +350,7 @@ websites:
   href: https://duckduckgo.com
   hosts:
   - duckduckgo.com
-  icon: duckduckgo.png
+  icon: duckduckgo.svg # https://duckduckgo.com/press
   twitter: '@duckduckgo'
   categories:
   - Search Engine
@@ -382,7 +382,7 @@ websites:
   hosts:
   - getfedora.org
   - fedoraproject.org
-  icon: fa-fedora
+  icon: fedora.svg   # https://commons.wikimedia.org/wiki/File:Fedora_logo.svg#/media/File:Fedora_logo.svg https://fedoraproject.org/wiki/Logo/UsageGuidelines
   twitter: '@fedora'
   categories:
   - Operating System
@@ -410,7 +410,7 @@ websites:
   hosts:
   - www.gentoo.org
   - distfiles.gentoo.org
-  icon: gentoo.png
+  icon: gentoo.svg   # https://www.gentoo.org/inside-gentoo/artwork/gentoo-logo.html https://www.gentoo.org/inside-gentoo/foundation/name-logo-guidelines.html
   twitter: '@gentoo'
   categories:
   - Operating System
@@ -421,7 +421,7 @@ websites:
   - github.com
   - www.github.com
   - gist.github.com
-  icon: fa-github
+  icon: github.svg   # https://github.com/logos
   twitter: '@GitHub'
   categories:
   - Coding
@@ -431,7 +431,7 @@ websites:
   hosts:
   - gitlab.com
   - about.gitlab.com
-  icon: fa-gitlab
+  icon: gitlab.svg   # https://about.gitlab.com/press/press-kit/
   twitter: '@gitlab'
   categories:
   - Coding
@@ -441,7 +441,7 @@ websites:
   hosts:
   - google.com
   - gstatic.com
-  icon: fa-google
+  icon: google.svg  # https://en.wikipedia.org/wiki/Google_logo#/media/File:Google_2015_logo.svg
   twitter: '@Google'
   categories:
   - Search Engine
@@ -561,7 +561,7 @@ websites:
   - control.stackpath.com
   - www.stackpath.com
   - partners.stackpath.com
-  icon: fa-stackpath
+  icon: stackpath.svg # https://www.stackpath.com/company/logo-and-branding/
   twitter: '@StackPath'
   categories:
   - Cloud
@@ -597,7 +597,7 @@ websites:
 - name: N26
   href: https://n26.com
     # Licence: https://de.wikipedia.org/wiki/Datei:N26_logo.svg
-  icon: N26.svg
+  icon: n26.svg
   hosts:
   - my.number26.de
   - n26.com
@@ -636,7 +636,7 @@ websites:
   - doc.opensuse.org
   - forums.opensuse.org
   - lizards.opensuse.org
-  icon: fa-suse
+  icon: opensuse.svg # https://commons.wikimedia.org/wiki/File:OpenSUSE_Logo.svg https://www.suse.com/brandcentral/suse/identity.php
   twitter: '@openSUSE'
   categories:
   - Operating System
@@ -654,7 +654,7 @@ websites:
 
 - name: Origin
   href: https://www.origin.com
-  icon: Origin.svg   # Source: https://commons.wikimedia.org/wiki/File:Origin.svg
+  icon: origin.svg   # Source: https://commons.wikimedia.org/wiki/File:Origin.svg
   hosts:
   - www.origin.com
   twitter: '@askeasupport'
@@ -672,7 +672,7 @@ websites:
   href: https://www.paypal.com
   hosts:
   - www.paypal.com
-  icon: fa-paypal
+  icon: paypal.svg # https://commons.wikimedia.org/wiki/File:PayPal_logo.svg https://www.paypal.com/de/webapps/mpp/logo-center
   twitter: '@askpaypal'
   categories:
   - Banking
@@ -710,7 +710,7 @@ websites:
   href: https://www.skype.com
   hosts:
   - www.skype.com
-  icon: fa-skype
+  icon: skype.svg # https://www.skype.com/de/legal/brand-guidelines/
   twitter: '@skype'
   categories:
   - Chat
@@ -720,7 +720,7 @@ websites:
   href: https://slack.com
   hosts:
   - slack.com
-  icon: fa-slack
+  icon: slack.svg # https://brandfolder.com/slack/logos https://slack.com/intl/de-de/media-kit
   twitter: '@slackhq'
   categories:
   - Chat
@@ -738,7 +738,7 @@ websites:
   href: https://soundcloud.com
   hosts:
   - soundcloud.com
-  icon: fa-soundcloud
+  icon: soundcloud.svg # https://commons.wikimedia.org/wiki/File:Soundcloud_logo.svg https://developers.soundcloud.com/docs/api/buttons-logos
   twitter: '@soundcloud'
   categories:
   - Streaming
@@ -747,7 +747,7 @@ websites:
   href: https://www.spotify.com
   hosts:
   - www.spotify.com
-  icon: fa-spotify
+  icon: spotify.svg # https://newsroom.spotify.com/media-kit/logo-and-brand-assets/
   twitter: '@spotify'
   categories:
   - Streaming
@@ -789,7 +789,7 @@ websites:
   - web.telegram.org
   - core.telegram.org
   - api.telegram.org
-  icon: fa-telegram
+  icon: telegram.svg # https://commons.wikimedia.org/wiki/File:Telegram_logo.svg
   twitter: '@telegram'
   categories:
   - Chat
@@ -814,7 +814,7 @@ websites:
 
 - name: TIDAL
   href: http://tidal.com
-  icon: Tidal.svg   # Source: https://en.wikipedia.org/wiki/File:Tidal_(service)_logo.svg
+  icon: tidal.svg   # Source: https://en.wikipedia.org/wiki/File:Tidal_(service)_logo.svg
   hosts:
   - tidal.com
   - listen.tidal.com
@@ -835,7 +835,7 @@ websites:
   href: https://trello.com
   hosts:
   - trello.com
-  icon: fa-trello
+  icon: trello.svg # https://trello.com/de/about/logo
   twitter: '@trello'
 
 - name: Tumblr
@@ -851,7 +851,7 @@ websites:
   href: https://www.twitch.tv
   hosts:
   - www.twitch.com
-  icon: fa-twitch
+  icon: twitch.svg # https://www.twitch.tv/p/de-de/legal/trademark/
   twitter: '@Twitch @TwitchSupport'
   categories:
   - Streaming
@@ -871,7 +871,7 @@ websites:
   href: https://www.ubuntu.com
   hosts:
   - www.ubuntu.com
-  icon: fa-ubuntu
+  icon: fa-ubuntu # https://ubuntu.com/blog/press-centre
   twitter: '@ubuntu'
   categories:
   - Operating System
@@ -890,14 +890,14 @@ websites:
   hosts:
   - www.whatsapp.com
   - web.whatsapp.com
-  icon: fa-whatsapp
+  icon: whatsapp.svg # https://whatsappbrand.com/ https://whatsappbrand.com/wp-content/themes/whatsapp-brc/downloads/WhatsApp-Brand-Guidelines-Optimized.pdf
   twitter: '@whatsapp'
   categories:
   - Chat
 
 - name: Wikipedia
   href: https://www.wikipedia.org
-  icon: fa-wikipedia  # https://commons.wikimedia.org/wiki/File:Wikipedia_wordmark.svg
+  icon: wikipedia.svg   # https://de.wikipedia.org/wiki/Datei:Wikipedia_logo_(svg).svg
   hosts:
   - www.wikipedia.org
   twitter: '@Wikipedia'
@@ -909,7 +909,7 @@ websites:
   - de.wordpress.org
   - codex.wordpress.org
   - make.wordpress.org
-  icon: fa-wordpress
+  icon: wordpress.svg # https://commons.wikimedia.org/wiki/File:WordPress_logo.svg https://wordpress.org/about/logos/
   twitter: '@wordpress'
   categories:
   - Software
@@ -945,7 +945,7 @@ websites:
   href: https://www.youtube.com
   hosts:
   - www.youtube.com
-  icon: fa-youtube
+  icon: youtube.svg # https://www.youtube.com/about/brand-resources/#logos-icons-colors
   twitter: '@youtube'
   categories:
   - Streaming
@@ -1026,7 +1026,7 @@ websites:
 
 - name: TikTok
   href: https://www.tiktok.com
-  icon: TikTok.svg   # Source: https://en.wikipedia.org/wiki/File:Tiktok_logo.svg
+  icon: tiktok.svg   # Source: https://commons.wikimedia.org/wiki/File:Logo_Tik_Tok.svg
     # Licence: https://support.tiktok.com/en/privacy-safety/community-policy-en
   hosts:
   - www.tiktok.com
@@ -1064,7 +1064,7 @@ websites:
 
 - name: Mastercard
   href: https://www.mastercard.com
-  icon: fa-cc-mastercard
+  icon: mastercard.svg # https://brand.mastercard.com/brandcenter-de/mastercard-brand-mark.html
   hosts:
   - www.mastercard.com
   twitter: '@Mastercard'
@@ -1073,7 +1073,7 @@ websites:
 
 - name: Visa
   href: https://www.visa.com
-  icon: fa-cc-visa
+  icon: visa.svg # https://commons.wikimedia.org/wiki/File:Visa_2014_logo_detail.svg
   hosts:
   - www.visa.com
   twitter: '@Visa'
@@ -1082,7 +1082,7 @@ websites:
 
 - name: TeamSpeak
   href: https://teamspeak.com
-  icon: fa-teamspeak
+  icon: teamspeak.svg # https://www.teamspeak.com/en/more/media-pack/
   hosts:
   - teamspeak.com
   twitter: '@teamspeak'
@@ -1103,7 +1103,7 @@ websites:
 
 - name: Linode
   href: https://www.linode.com
-  icon: fa-linode
+  icon: linode.svg # https://www.linode.com/company/press/
   hosts:
   - www.linode.com
   twitter: '@linode'
@@ -1130,7 +1130,7 @@ websites:
   href: https://onedrive.live.com
     # Source: https://commons.wikimedia.org/wiki/File:OneDrive_logo_and_wordmark.svg
     # Licence: https://partner.microsoft.com/en-US/marketing/branding?tpqid=300-000004
-  icon: OneDrive.svg
+  icon: onedrive.svg
   hosts:
   - onedrive.live.com
   - login.live.com
@@ -1142,7 +1142,7 @@ websites:
   href: https://azure.microsoft.com
     # Icon source: https://commons.wikimedia.org/wiki/File:Microsoft_Azure_Logo.svg
     # Icon permission: https://partner.microsoft.com/en-US/marketing/branding?tpqid=300-000004
-  icon: Microsoft_Azure_Logo.svg
+  icon: microsoft_azure.svg
   hosts:
   - azure.microsoft.com
   - login.live.com
@@ -1164,7 +1164,7 @@ websites:
 
 - name: BBC
   href: https://www.bbc.com
-  icon: BBC.svg   # Source: https://commons.wikimedia.org/wiki/File:BBC.svg
+  icon: bbc.svg   # Source: https://commons.wikimedia.org/wiki/File:BBC.svg
   hosts:
   - www.bbc.com
   - static.bbci.co.uk
@@ -1234,19 +1234,19 @@ websites:
 
 - name: CentOS
   href: https://www.centos.org
-  icon: fa-centos
+  icon: centos.svg # https://wiki.centos.org/ArtWork/Brand/Logo
   hosts:
   - www.centos.org
   - wiki.centos.org
   - planet.centos.org
   - docs.centos.org
-  twitter: '@CentOSProject'
+  twitter: '@centosproject'
   categories:
   - Operating System
 
 - name: Deutsche Telekom
   href: https://www.telekom.de
-  icon: Telekom.svg   # https://commons.wikimedia.org/wiki/File:Telekom_Logo_2013.svg
+  icon: telekom.svg   # https://commons.wikimedia.org/wiki/File:Telekom_Logo_2013.svg
   hosts:
   - www.telekom.de
   twitter: '@deutschetelekom'
@@ -1259,7 +1259,7 @@ websites:
 
 - name: 1und1
   href: https://www.1und1.de/
-  icon: 1und1.jpg   # https://www.united-internet.de/newsroom/download-center.html
+  icon: 1und1.svg   # https://commons.wikimedia.org/wiki/File:1%261_logo.svg https://www.united-internet.de/newsroom/download-center.html
   hosts:
   - www.1und1.de
   - mobile.1und1.de
@@ -1334,7 +1334,7 @@ websites:
   hosts:
   - golang.org
   - blog.golang.org
-  icon: Golang.svg     # Source: https://blog.golang.org/go-brand
+  icon: golang.svg     # Source: https://blog.golang.org/go-brand
       # Licence: https://golang.org/s/brandbook
   twitter: '@golang'
   categories:
@@ -1347,7 +1347,7 @@ websites:
   - careers.protonmail.com
   - mail.protonmail.ch
   - mailsec.protonmail.ch
-  icon: Protonmail.svg     # Source + licence: https://protonmail.com/media-kit
+  icon: protonmail.svg     # Source + licence: https://protonmail.com/media-kit
   twitter: '@ProtonMail'
   categories:
   - E-Mail
@@ -1359,7 +1359,7 @@ websites:
   - yastatic.net
   - mail.yandex.com
   - mx.yandex.ru
-  icon: fa-yandex-international
+  icon: yandex.svg # https://commons.wikimedia.org/wiki/File:Yandex_logo_en.svg https://yandex.com/company/general_info/logotype_rules/
   twitter: '@yandex'
   categories:
   - E-Mail
@@ -1382,7 +1382,7 @@ websites:
   - www.freebsd.org
   - www.freebsdfoundation.org
   - forums.freebsd.org
-  icon: fa-freebsd
+  icon: fa-freebsd # https://www.freebsdfoundation.org/about/project/
   twitter: '@freebsd'
   categories:
   - Operating System
@@ -1402,8 +1402,8 @@ websites:
   - www.startpage.com
   - eu.startpage.com
   - us.startpage.com
-  icon: Startpage.svg
-  twitter: '@StartPageSearch'
+  icon: startpage.svg
+  twitter: '@startpagesearch'
   categories:
   - Search Engine
 
@@ -1412,7 +1412,7 @@ websites:
   hosts:
   - www.raspberrypi.org
   - projects.raspberrypi.org
-  icon: fa-raspberry-pi
+  icon: raspberrypi.svg # https://www.raspberrypi.org/trademark-rules/ https://www.raspberrypi.org/files/Raspberry_Pi_Visual_Guidelines_2018.pdf
   twitter: '@Raspberry_Pi'
   categories:
   - SBC
@@ -1504,7 +1504,7 @@ websites:
 - name: European Parliament
   href: https://europarl.europa.eu
   twitter: '@Europarl_EN'
-  icon: european-parliament.png # https://europarl.europa.eu/downloadcentre/en/visual-identity
+  icon: european-parliament.svg # https://commons.wikimedia.org/wiki/File:European_Parliament_logo.svg https://europarl.europa.eu/downloadcentre/en/visual-identity
   hosts:
   - europarl.europa.eu
   - mail110.ep.europa.eu
@@ -1515,7 +1515,7 @@ websites:
 - name: European Commission
   href: https://ec.europa.eu
   twitter: '@EU_Commission'
-  icon: european-commission.jpg # https://ec.europa.eu/info/resources-partners/european-commission-visual-identity_en
+  icon: european-commission.svg # https://ec.europa.eu/info/resources-partners/european-commission-visual-identity_en
   hosts:
   - ec.europa.eu
   categories:
@@ -1524,7 +1524,7 @@ websites:
 - name: BREKO Bundesverband Breitbandkommunikation e.V.
   href: https://brekoverband.de
   twitter: '@BREKOverband'
-  icon: breko.png # https://brekoverband.de/presse
+  icon: breko.svg # https://brekoverband.de/presse
   hosts:
   - brekoverband.de
 
@@ -1597,7 +1597,7 @@ websites:
   description: |
     Rocket.Chat is a free and Open Source team chat software solution.
   href: https://rocket.chat
-  icon: fa-rocketchat
+  icon: rocketchat.svg # https://github.com/RocketChat/Rocket.Chat.Artwork/blob/master/Logos/icon.svg https://rocket.chat/press
   hosts:
   - rocket.chat
   - cloud.rocket.chat
@@ -1610,7 +1610,7 @@ websites:
   description: |
     Battle.net is the online gaming platform of Blizzard Entertainment.
   href: https://battle.net
-  icon: fa-battle-net
+  icon: blizzard.svg # https://www.blizzard.com/de-de/legal/8bcb0794-6641-4ce3-a573-8eb243bab342/blizzard-entertainment-logo-and-trademark-guidelines
   hosts:
   - battle.net
   - blizzard.com
@@ -1624,7 +1624,7 @@ websites:
     Heise online is a German IT-News site which also publishes the famous ct journal.
   href: https://www.heise.de
   hosts:
-  - wwww.heise.de
+  - www.heise.de
   twitter: '@heiseonline'
   categories:
   - News
@@ -1633,6 +1633,7 @@ websites:
   description: |
     Hardkernel is a South Korean manufacturer of single-board computers. They are very well known for their ODROID series of SBCs.
   href: https://www.hardkernel.com
+  icon: odroid.svg
   hosts:
   - www.hardkernel.com
   - forum.odroid.com
@@ -1644,7 +1645,7 @@ websites:
 
 - name: Akamai
   description: |
-    Akamai is one of the leading providers of CDN services.
+    Akamai Technologiesis a content delivery network and cloud service provider.
   href: https://www.akamai.com
   icon: akamai.png # https://www.akamai.com/de/de/multimedia/documents/media-resources/akamai-logo-guidelines.pdf
   hosts:
@@ -1660,7 +1661,7 @@ websites:
   href: https://www.cloudflare.com
   icon: cloudflare.svg   # https://www.cloudflare.com/logo/
   hosts:
-  - wwww.cloudflare.com
+  - www.cloudflare.com
   - cdnjs.cloudflare.com
   - support.cloudflare.com
   - community.cloudflare.com
@@ -1672,7 +1673,7 @@ websites:
   description: |
     Uplay is the game distribution service and gaming platform of Ubisoft.
   href: https://uplay.ubisoft.com/
-  icon: uplay.png   # https://commons.wikimedia.org/wiki/File:Uplay_Logo.png
+  icon: uplay.png   # https://www.ubisoft.com/en-us/company/press.aspx
   hosts:
   - www.ubisoft.com
   - uplay.ubisoft.com
@@ -1681,3 +1682,15 @@ websites:
   twitter: '@ubisoftsupport'
   categories:
   - Gaming
+
+- name: Threema
+  description: |
+    Threema is a proprietary, end-to-end encrypted instant messaging application for iOS and Android.
+  href: https://threema.ch
+  icon: threema.svg # https://threema.ch/en/press
+  hosts:
+  - threema.ch
+  - web.threema.ch
+  twitter: '@threemaapp'
+  categories:
+  - Chat
