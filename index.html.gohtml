@@ -11,9 +11,14 @@
 	<!-- Icons -->
 	<link rel="icon" type="image/png" href="images/IPv6_logo.png">
 	<link rel="shortcut icon" type="image/png" href="images/IPv6_logo.png">
+	<!-- Preload -->
+	<link rel="preload" href="css/custom.css" as="style">
+	<link rel="preload" href="css/fontawesome.min.css" as="style">
+	<link rel="preload" href="js/jquery-3.3.1.slim.min.js" as="script">
+	<link rel="preload" href="js/popper.min.js" as="script">
+	<link rel="preload" href="js/bootstrap.min.js" as="script">
 	<!-- CSS -->
-	<link rel="stylesheet" href="css/fontawesome.min.css">
-	<link rel="stylesheet" href="css/custom.css">
+	<link rel="stylesheet" type="text/css" href="css/custom.css">
 	<!-- Twitter Meta -->
 	<meta name="twitter:card" content="summary" />
 	<meta name="twitter:title" content="{{ .Title }}" />
@@ -92,15 +97,21 @@
 												<div class="card {{ $website.GetCSSBackgroundColor }} shadow" href="#result-{{ $website.GetHTMLAnchor }}-{{ $category.GetHTMLAnchor }}" data-toggle="collapse" aria-expanded="false" aria-controls="result-{{ $website.GetHTMLAnchor }}-{{ $category.GetHTMLAnchor }}">
 													<div class="card-body">
 														<div class="row" style="min-height: 50px">
-															<div class="col-md-1 text-center" style="background-image:url(images/{{ $website.Icon }}); background-size: contain; background-position: center; background-repeat: no-repeat;">
-																{{ if (ne $website.Icon "") }}
-																{{ if $website.IsFontAwesomeIcon }}
+															{{ if (ne $website.Icon "") }}
+															{{ if $website.IsFontAwesomeIcon }}
+															<div class="col-md-1 text-center">
 																<i class="fab {{ $website.Icon }} fa-3x"></i>
-																{{ else }}
-																<p style="opacity: 0.0;">Logo</p>
-																{{ end }}
-																{{ end }}
 															</div>
+															{{ else }}
+															<div class="col-md-1 text-center" style="background-image:url(images/{{ $website.Icon }}); background-size: contain; background-position: center; background-repeat: no-repeat;">
+																<p style="opacity: 0.0;">Logo</p>
+															</div>
+															{{ end }}
+															{{ else }}
+															<div class="col-md-1 text-center">
+																<p style="opacity: 0.0;">Logo</p>
+															</div>
+															{{ end }}
 															<div class="col-md-3 text-center my-auto font-weight-bold">
 																<a href="{{ $website.URL }}" rel="nofollow" target="_blank">{{ $website.Name }}</a>
 															</div>
@@ -240,9 +251,11 @@
 		</div>
 		<!-- End of Wrapper -->
 	</div>
+	<!-- CSS -->
+	<link rel="stylesheet" type="text/css" href="css/fontawesome.min.css">
 	<!-- JavaScript -->
-	<script src="js/jquery-3.3.1.slim.min.js"></script>
-	<script src="js/popper.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
+	<script src="js/jquery-3.3.1.slim.min.js" type="text/javascript" defer></script>
+	<script src="js/popper.min.js" type="text/javascript" defer></script>
+	<script src="js/bootstrap.min.js" type="text/javascript" defer></script>
 </body>
 </html>
