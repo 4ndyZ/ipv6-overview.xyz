@@ -104,13 +104,13 @@ func (website *Website) GetHTMLAnchor() string {
 func (website *Website) GetCSSBackgroundColor() string {
     switch website.IPv6SupportStatus {
     case IPv6_SUPPORT_NOT_CHECKED:
-        return "border-left-secondary"
+        return "border-left-secondary border-secondary"
     case IPv6_SUPPORT_FULL:
-        return "border-left-success"
+        return "border-left-success border-success"
     case IPv6_SUPPORT_PARTIAL:
-        return "border-left-warning"
+        return "border-left-warning border-warning"
     default:
-        return "border-left-danger"
+        return "border-left-danger border-danger"
     }
 }
 
