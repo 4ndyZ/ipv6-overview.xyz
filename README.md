@@ -80,3 +80,9 @@ I found out that some german internet providers websites or services are not rea
 ### Category limit
 
 By passing `-category-limit yourcategoryhere` you can limit the checks to a single category. Websites not part of the cateogry are rendered with a white background and a "not checked" message. This will speed up the development and reduces stress on the resolvers.
+
+## Updating third party sources
+
+### Start Bootstrap
+
+The site uses a startbootstrap theme called sb-admin-2. The source file can be [found here](https://startbootstrap.com/themes/sb-admin-2/). Make sure you copy the minified version.
