@@ -851,6 +851,9 @@ websites:
   href: https://www.twitch.tv
   hosts:
   - www.twitch.com
+  - api.twitch.tv
+  - static.twitchcdn.net
+  - irc-ws.chat.twitch.tv
   icon: twitch.svg # https://www.twitch.tv/p/de-de/legal/trademark/
   twitter: '@Twitch @TwitchSupport'
   categories:
