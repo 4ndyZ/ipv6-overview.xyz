@@ -98,15 +98,15 @@
 													<div class="card-body">
 														<div class="row" style="min-height: 50px">
 															{{ if (ne $website.Icon "") }}
-															{{ if $website.IsFontAwesomeIcon }}
-															<div class="col-md-1 text-center">
-																<i class="fab {{ $website.Icon }} fa-3x"></i>
-															</div>
-															{{ else }}
-															<div class="col-md-1 text-center" style="background-image:url(images/{{ $website.Icon }}); background-size: contain; background-position: center; background-repeat: no-repeat;">
-																<p style="opacity: 0.0;">Logo</p>
-															</div>
-															{{ end }}
+																{{ if $website.IsFontAwesomeIcon }}
+																<div class="col-md-1 text-center">
+																	<i class="fab {{ $website.Icon }} fa-3x"></i>
+																</div>
+																{{ else }}
+																<div class="col-md-1 text-center" style="background-image:url(images/{{ $website.Icon }}); background-size: contain; background-position: center; background-repeat: no-repeat;">
+																	<p style="opacity: 0.0;">Logo</p>
+																</div>
+																{{ end }}
 															{{ else }}
 															<div class="col-md-1 text-center">
 																<p style="opacity: 0.0;">Logo</p>
