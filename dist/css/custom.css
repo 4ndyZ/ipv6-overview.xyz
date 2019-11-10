@@ -1,3 +1,7 @@
+ul.emojilist {
+	padding-left: 0px;
+}
+
 li.emojilist-item {
 	list-style-type: none;
 }
