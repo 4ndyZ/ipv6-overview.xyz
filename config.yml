@@ -387,14 +387,6 @@ websites:
   categories:
   - Operating System
 
-- name: Fiducia
-  href: https://www.fiduciagad.de
-  hosts:
-  - finanzportal.fiducia.de
-  twitter: '@fiducia_gad'
-  categories:
-  - Banking
-
 - name: Foursquare
   href: https://www.foursquare.com
   hosts:
