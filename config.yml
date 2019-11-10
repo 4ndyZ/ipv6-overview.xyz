@@ -747,7 +747,7 @@ websites:
   href: https://www.spotify.com
   hosts:
   - www.spotify.com
-  icon: spotify.svg # https://newsroom.spotify.com/media-kit/logo-and-brand-assets/
+  icon: spotify.png # https://newsroom.spotify.com/media-kit/logo-and-brand-assets/
   twitter: '@spotify'
   categories:
   - Streaming
@@ -854,7 +854,8 @@ websites:
   - api.twitch.tv
   - static.twitchcdn.net
   - irc-ws.chat.twitch.tv
-  icon: twitch.svg # https://www.twitch.tv/p/de-de/legal/trademark/
+  icon: fa-twitch # https://www.twitch.tv/p/de-de/legal/trademark/
+  # I fucking tried to find the official logo ressources again ... I got redirected to brand.twitch.tv and all they got is some scrollspy shit system. So font awesome must provide it ...
   twitter: '@Twitch @TwitchSupport'
   categories:
   - Streaming
