@@ -9,3 +9,9 @@ li.emojilist-item {
 li.emojilist-item::before {
 	content: "✅ ";
 }
+
+.website-logo {
+	background-size: contain;
+	background-position: center;
+	background-repeat: no-repeat;
+}
