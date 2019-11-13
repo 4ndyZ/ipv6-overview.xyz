@@ -1693,10 +1693,12 @@ websites:
 
 - name: Bunq
   href: https://www.bunq.com
+  icon: bunq.svg # Press Kit https://www.bunq.com/press
   hosts:
   - www.bunq.com
   - together.bunq.com
   - apps.bunq.com
+  - api.bunq.com
   twitter: '@bunq'
   categories:
   - Banking
