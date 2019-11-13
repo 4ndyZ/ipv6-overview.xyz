@@ -1690,3 +1690,34 @@ websites:
   twitter: '@threemaapp'
   categories:
   - Chat
+
+- name: Bunq
+  href: https://www.bunq.com
+  hosts:
+  - www.bunq.com
+  - together.bunq.com
+  - apps.bunq.com
+  twitter: '@bunq'
+  categories:
+  - Banking
+
+- name: Commerzbank
+  href: https://www.commerzbank.de
+  icon: commerzbank.jpg # Source: https://www.commerzbank.de/de/hauptnavigation/presse/mediathek/bilddaten/brand/brand_1.html
+  hosts:
+  - www.commerzbank.de
+  - kunden.commerzbank.de
+  twitter: '@commerzbank'
+  categories:
+  - Banking
+
+- name: Zalando
+  href: https://www.zalando.de/
+  icon: zalando.png # https://corporate.zalando.com/de/newsroom/pressematerial
+  hosts:
+  - www.zalando.de
+  - corporate.zalando.de
+  - jobs.zalando.com
+  twitter: '@Zalando'
+  categories:
+  - Shopping
