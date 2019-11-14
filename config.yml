@@ -1746,3 +1746,16 @@ websites:
   - iot.mozilla.org
   categories:
   - Software
+
+- name: Opera
+  href: https://www.opera.com
+  icon: opera.png # https://brand.opera.com/1472-2/opera-logos/
+  hosts:
+  - www.opera.com
+  - brand.opera.com
+  - addons.opera.com
+  - auth.opera.com
+  - dev.opera.com
+  - blogs.opera.com
+  categories:
+  - Software
