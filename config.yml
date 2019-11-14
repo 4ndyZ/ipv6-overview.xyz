@@ -35,6 +35,8 @@ categories:
   description: |
     Cloud is a very vague term. Cloud providers mostly divided into three groups: Infrastructure as a Service (Iaas), Plattform as a Service (Paas) and Software as a Service (SaaS).
 - name: Banking
+  description: |
+    Some banks are so old, their core systems are written in COBOL and run on old mainframes. If the system malfunctions, they need to call an retired engineer to create the right punch card fixing the system. Frankly I'm not sure if COBOL even knows what IPv4 is. Jokes aside. There are also hipser banks running in the cloud. So at least they should know what IPv6 is and use it.
 - name: Streaming
 - name: Gaming
 - name: E-Mail
