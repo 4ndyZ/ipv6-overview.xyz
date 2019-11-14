@@ -34,7 +34,7 @@ categories:
 - name: VoIP
 - name: Cloud
   description: |
-    Cloud is a very vague term. I'd describe the cloud as a service hosted by another company which you can use. It mainly consists out of two typed: Infrastructure as a service (IaaS) and software as a service (SaaS). The basic business model is: You insert some coins and a VPS or Wordpress blog falls out. Because there are so many sytems IPv6 is necessary to provide each system with a publicly reachable address.
+    Cloud is a very vague term. Cloud providers mostly divided into three groups: Infrastructure as a Service (Iaas), Plattform as a Service (Paas) and Software as a Service (SaaS).
 - name: Banking
 - name: Streaming
 - name: Gaming
@@ -43,7 +43,7 @@ categories:
 - name: Government
 - name: Uncategorized # Never ever delete this!
   description: |
-    Everything that's not really fitting in another category is stored here.
+    Everything that doesn't fit into another category goes here.
 
 websites:
 - name: 500px
