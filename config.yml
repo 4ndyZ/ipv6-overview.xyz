@@ -1759,3 +1759,15 @@ websites:
   - blogs.opera.com
   categories:
   - Software
+
+- name: Vivaldi
+  href: https://vivaldi.com
+  icon: vivaldi.png # https://vivaldi.com/de/press/
+  hosts:
+  - vivaldi.com
+  - vivaldi.net
+  - help.vivaldi.com
+  - forum.vivaldi.net
+  - store.vivaldi.com
+  categories:
+  - Software
