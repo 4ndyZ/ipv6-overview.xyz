@@ -1784,3 +1784,12 @@ websites:
   - preview.disneyplus.com
   categories:
   - Streaming
+
+- name: Deezer
+  href: https://www.deezer.com
+  icon: deezer.svg # https://deezerbrand.com/d/9wmMErzrRuiH/brand-elements
+  hosts:
+  - www.deezer.com
+  - developers.deezer.com
+  categories:
+  - Streaming
