@@ -1723,3 +1723,14 @@ websites:
   twitter: '@Zalando'
   categories:
   - Shopping
+
+- name: VK
+  href: https://vk.com
+  icon: vk.svg # https://vk.com/brand
+  hosts:
+  - vk.com
+  - vk.cc
+  - mx.vk.com
+  twitter: '@vkontakte'
+  categories:
+  - Social Network
