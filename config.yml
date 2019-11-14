@@ -1734,3 +1734,15 @@ websites:
   twitter: '@vkontakte'
   categories:
   - Social Network
+
+- name: Mozilla
+  href: https://www.mozilla.org
+  icon: mozilla.svg # https://mozilla.design/mozilla/
+  hosts:
+  - www.mozilla.org
+  - mozilla.design
+  - hubs.mozilla.com
+  - voice.mozilla.org
+  - iot.mozilla.org
+  categories:
+  - Software
