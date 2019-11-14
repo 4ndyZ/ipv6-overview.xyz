@@ -1092,6 +1092,7 @@ websites:
   hosts:
   - www.digitalocean.com
   - assets.digitalocean.com
+  - ideas.digitalocean.com
   twitter: '@digitalocean'
   categories:
   - Cloud
