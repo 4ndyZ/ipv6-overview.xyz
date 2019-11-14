@@ -1793,3 +1793,12 @@ websites:
   - developers.deezer.com
   categories:
   - Streaming
+
+- name: Dazn
+  href: https://www.dazn.com
+  twitter: '@DAZN_DE'
+  hosts:
+  - www.dazn.com
+  - watch.dazn.com
+  categories:
+  - Streaming
