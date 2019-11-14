@@ -1748,6 +1748,7 @@ websites:
   - hubs.mozilla.com
   - voice.mozilla.org
   - iot.mozilla.org
+  twitter: '@mozilla'
   categories:
   - Software
 
@@ -1761,6 +1762,7 @@ websites:
   - auth.opera.com
   - dev.opera.com
   - blogs.opera.com
+  twitter: '@opera'
   categories:
   - Software
 
@@ -1773,6 +1775,7 @@ websites:
   - help.vivaldi.com
   - forum.vivaldi.net
   - store.vivaldi.com
+  twitter: '@vivaldibrowser'
   categories:
   - Software
 
@@ -1782,6 +1785,7 @@ websites:
   hosts:
   - www.disneyplus.com
   - preview.disneyplus.com
+  twitter: '@disneyplus'
   categories:
   - Streaming
 
@@ -1791,6 +1795,7 @@ websites:
   hosts:
   - www.deezer.com
   - developers.deezer.com
+  twitter: '@DeezerHelp'
   categories:
   - Streaming
 
