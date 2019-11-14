@@ -40,6 +40,8 @@ categories:
 - name: Gaming
 - name: E-Mail
 - name: SBC
+  description: |
+    Single board computers (short: SBC) are small computer systems. Most of them are slightly bigger than a credit card, cost around 40 USD and are powerd with an USB charger. Most of them provide GPIO (General purpose input output) pins which can be used in your projects to control LEDs, servos and other stuff.
 - name: Government
 - name: Uncategorized # Never ever delete this!
   description: |
