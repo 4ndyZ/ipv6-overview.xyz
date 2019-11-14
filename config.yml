@@ -28,7 +28,6 @@ categories:
   description: |
     The internet is made out of millions so called autonomous networks. Each of them can exist on its own. The connetions between them is the so called internet. Without these connections you could only reach services hosted in your ISPs network. So it's a must that every ISP provides IPv6 to their customers for the best experience.
 - name: News
-- name: Social bookmarks
 - name: Chat
 - name: Crowdfunding
 - name: VoIP
@@ -273,15 +272,6 @@ websites:
   categories:
   - Operating System
 
-- name: Delicious
-  href: https://del.icio.us
-  hosts:
-  - del.icio.us
-  icon: fa-delicious
-  twitter: '@delicious'
-  categories:
-  - Social bookmarks
-
 - name: Deutsche Welle
   href: https://www.dw.com
   hosts:
@@ -306,8 +296,6 @@ websites:
   - digg.com
   icon: fa-digg
   twitter: '@digg'
-  categories:
-  - Social bookmarks
 
 - name: Discord
   href: https://discordapp.com/
