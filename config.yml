@@ -1775,3 +1775,12 @@ websites:
   - store.vivaldi.com
   categories:
   - Software
+
+- name: Disney+
+  href: https://preview.disneyplus.com
+  icon: disneyplus.jpg # https://dtcimedia.disney.com/disney-plus/images
+  hosts:
+  - www.disneyplus.com
+  - preview.disneyplus.com
+  categories:
+  - Streaming
