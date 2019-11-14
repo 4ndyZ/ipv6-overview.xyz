@@ -977,12 +977,6 @@ websites:
   categories:
   - Streaming
 
-- name: Mozilla Observatory
-  href: https://observatory.mozilla.org
-  hosts:
-  - observatory.mozilla.org
-  twitter: '@mozilla'
-
 - name: Codeship
   href: https://codeship.com
     # icon:
@@ -1736,6 +1730,7 @@ websites:
   - hubs.mozilla.com
   - voice.mozilla.org
   - iot.mozilla.org
+  - observatory.mozilla.org
   twitter: '@mozilla'
   categories:
   - Software
