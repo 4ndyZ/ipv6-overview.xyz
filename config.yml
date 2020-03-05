@@ -1802,3 +1802,13 @@ websites:
   - b2b.dab-bank.de
   categories:
   - Banking
+
+- name: Flatex
+  href: https://www.flatex.de
+  twitter: '@flatex'
+  icon: flatex.png # https://www.flatex.de/presse/bildmaterial/
+  hosts:
+  - www.flatex.de
+  - konto.flatex.de
+  categories:
+  - Banking
