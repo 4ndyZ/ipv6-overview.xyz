@@ -1792,3 +1792,13 @@ websites:
   - watch.dazn.com
   categories:
   - Streaming
+
+- name: Smartbroker
+  href: https://smartbroker.de
+  twitter: '@Smartbroker_de'
+  icon: smartbroker.png
+  hosts:
+  - smartbroker.de
+  - b2b.dab-bank.de
+  categories:
+  - Banking
