@@ -518,6 +518,17 @@ websites:
   categories:
   - Coding
 
+- name: Jitsi
+  href: https://jitsi.org/
+  hosts:
+  - meet.jit.si
+  - jitsi.org
+  icon: jitsi.jpg
+  twitter: '@jitsinews'
+  categories:
+  - Chat
+  - VoIP
+
 - name: LinkedIn
   href: https://www.linkedin.com
   hosts:
