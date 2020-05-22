@@ -139,8 +139,9 @@
 														<div class="col-12 mb-2">
 															{{ if ( ne $website.Description "" ) }}
 															{{ $website.Description }}
+															<br />
 															{{ end }}
-															<br />These results were gathered in {{ printf "%.1f" $website.CheckDurationInSeconds }} seconds:
+															These results were gathered in {{ printf "%.1f" $website.CheckDurationInSeconds }} seconds:
 														</div>
 														<div class="col-md-12 row">
 															<div class="col-md-3 text-center"><b>Domain</b></div>
