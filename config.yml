@@ -44,6 +44,9 @@ categories:
   description: |
     Single board computers (short: SBC) are small computer systems. Most of them are slightly bigger than a credit card, cost around 40 USD and are powerd with an USB charger. Most of them provide GPIO (General purpose input output) pins which can be used in your projects to control LEDs, servos and other stuff.
 - name: Government
+- name: TLD
+  description: |
+    Top level domains (short: TLD) represent the last part of a domain. For example: .de, .com, .xyz, etc. There are over 1500 of them. To many to list them all here. These are the only few "black sheeps" without any IPv6 support.
 - name: Uncategorized # Never ever delete this!
   description: |
     Everything that doesn't fit into another category goes here.
@@ -1823,3 +1826,67 @@ websites:
   - konto.flatex.de
   categories:
   - Banking
+
+- name: .ck
+  href: https://www.iana.org/domains/root/db/ck.html
+  hosts:
+  - circa.mcs.vuw.ac.nz
+  - parau.oyster.net.ck
+  - downstage.mcs.vuw.ac.nz
+  categories:
+  - TLD
+
+- name: .dj
+  href: https://www.iana.org/domains/root/db/dj.html
+  hosts:
+  - bow5.intnet.dj
+  - vps443605.ovh.net
+  - bow1.intnet.dj
+  categories:
+  - TLD
+
+- name: .fk
+  href: https://www.iana.org/domains/root/db/fk.html
+  hosts:
+  - ns1.horizon.net.fk
+  - ns2.horizon.net.fk
+  - ns3.horizon.net.fk
+  categories:
+  - TLD
+
+- name: .gf
+  href: https://www.iana.org/domains/root/db/gf.html
+  hosts:
+  - ns1-gp.mediaserv.net
+  - ns1-mq.mediaserv.net
+  categories:
+  - TLD
+
+- name: .to
+  href: https://www.iana.org/domains/root/db/to.html
+  hosts:
+  - tonic.to
+  - newyork.tonic.to
+  - colo.tonic.to
+  - sydney.tonic.to
+  categories:
+  - TLD
+
+- name: .uz
+  href: https://www.iana.org/domains/root/db/uz.html
+  hosts:
+  - ns.uz
+  - ns2.uz
+  - ns3.uz
+  - ns4.uz
+  categories:
+  - TLD
+
+- name: .ws
+  href: https://www.iana.org/domains/root/db/ws.html
+  hosts:
+  - ns2.dns.ws
+  - ns3.dns.ws
+  - ns4.dns.ws
+  categories:
+  - TLD
