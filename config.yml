@@ -472,6 +472,7 @@ websites:
   href: https://ifttt.com/
   hosts:
   - ifttt.com
+  - help.ifttt.com
   twitter: '@IFTTT'
 
 - name: IMDb
