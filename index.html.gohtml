@@ -181,18 +181,14 @@
 														{{ end }}
 														{{ if ne (len $website.Tags) 0 }}
 														<div class="col-md-12 mt-2 alert alert-secondary">
+															{{ if eq (len $website.Tags) 1 }}
+															<b>Heads up! This website/provider has a special perk:</b>
+															{{ else }}
 															<b>Heads up! This website/provider has some special perks:</b>
+															{{ end }}
 															<ul class="emojilist">
 																{{ range $tag := $website.Tags }}
-																{{ if eq $tag "isp-providing-ipv6-to-private-customers" }}
-																<li class="emojilist-item">ISP providing an IPv6 prefix to private customers</li>
-																{{ else if eq $tag "isp-providing-ipv6-to-business-customers" }}
-																<li class="emojilist-item">ISP providing an IPv6 prefix to business customers</li>
-																{{ else if eq $tag "isp-providing-fixed-ipv6-prefix-to-business-customers" }}
-																<li class="emojilist-item">ISP providing a fixed IPv6 prefix to business customers</li>
-																{{ else if eq $tag "cloud-provider-with-ipv6-support" }}
-																<li class="emojilist-item">Cloud provider with IPv6 support</li>
-																{{ end }}
+																<li class="emojilist-item">{{ $tag }}</li>
 																{{ end }}
 															</ul>
 														</div>

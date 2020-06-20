@@ -40,6 +40,7 @@ type YAMLConfig struct {
 	GithubRepo         string              `yaml:"github_repo"`
 	WebsiteDescription string              `yaml:"website_description"`
 	WebsiteURL         string              `yaml:"website_url"`
+	Tags map[string]string `yaml:tags"`
 }
 
 type Resolver struct {
@@ -265,6 +266,7 @@ func main() {
 	resolverProviders := ParseResolverProviders(yamlConfig)
 	SortCategories(yamlConfig.Categories)
 	ParseDomainsInsideWebsites(yamlConfig)
+	ConvertShortTagsToLongVersion(yamlConfig)
 
 	TestEveryWebsite(yamlConfig.Websites, resolverProviders, *categoryLimit)
 
@@ -496,6 +498,20 @@ func ParseDomainsInsideWebsites(yamlConfig *YAMLConfig) {
 			log.WithField("Domain", domain).WithField("Website", website.Name).Debug("Found domain for website")
 
 			website.Domains = append(website.Domains, &Domain{Domain: domain})
+		}
+	}
+}
+
+func ConvertShortTagsToLongVersion(yamlConfig *YAMLConfig) {
+	log.Info("Converting short tags to long versions")
+
+	for _, website := range yamlConfig.Websites {
+		for index, shortTag := range website.Tags {
+			if longVersion, exists := yamlConfig.Tags[shortTag]; exists {
+				website.Tags[index] = longVersion
+			} else {
+				log.WithField("Website", website.Name).WithField("Tag", shortTag).Fatal("Tag has no long version")
+			}
 		}
 	}
 }

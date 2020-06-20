@@ -17,6 +17,12 @@ resolvers:
   - 9.9.9.9
   - 2620:fe::fe:10
 
+tags:
+    isp-providing-ipv6-to-private-customers: ISP providing an IPv6 prefix to private customers
+    isp-providing-ipv6-to-business-customers: ISP providing an IPv6 prefix to business customers
+    isp-providing-fixed-ipv6-prefix-to-business-customers: ISP providing a fixed IPv6 prefix to business customers
+    cloud-provider-with-ipv6-support: Cloud provider with IPv6 support
+
 categories:
 - name: Social Network
 - name: Shopping
