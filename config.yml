@@ -600,6 +600,7 @@ websites:
   hosts:
   - n26.com
   - app.n26.com
+  - support.n26.com
   twitter: '@n26'
   categories:
   - Banking
