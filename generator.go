@@ -124,9 +124,9 @@ func (website *Website) GetSupportMessage() string {
 	case IPv6_SUPPORT_FULL:
 		return "Yay! Full IPv6 Support!"
 	case IPv6_SUPPORT_PARTIAL:
-		return "You can do better!"
+		return "Partial IPv6 support!"
 	default:
-		return "Shame on you!"
+		return "No IPv6 support!"
 	}
 }
 
