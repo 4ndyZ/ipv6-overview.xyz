@@ -724,15 +724,6 @@ websites:
   categories:
   - Chat
 
-- name: Snapchat
-  href: https://snapchat.com
-  hosts:
-  - www.snapchat.com
-  icon: fa-snapchat-ghost
-  twitter: '@snapchat'
-  categories:
-  - Social Network
-
 - name: SoundCloud
   href: https://soundcloud.com
   hosts:
