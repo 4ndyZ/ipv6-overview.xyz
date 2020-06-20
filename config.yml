@@ -305,6 +305,7 @@ websites:
   href: https://discordapp.com/
   hosts:
   - discordapp.com
+  - remote-auth-gateway.discord.gg
   icon: discord.svg # https://discordapp.com/branding
   twitter: '@discordapp'
   categories:
