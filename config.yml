@@ -598,8 +598,8 @@ websites:
     # Licence: https://de.wikipedia.org/wiki/Datei:N26_logo.svg
   icon: n26.svg
   hosts:
-  - my.number26.de
   - n26.com
+  - app.n26.com
   twitter: '@n26'
   categories:
   - Banking
