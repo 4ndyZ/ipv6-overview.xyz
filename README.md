@@ -8,11 +8,20 @@ You can report missing websites or domains by opening an issue. If you want to p
 
 ## Documentation for developers
 
-The whole application config (categories, websites, subdomains, resolvers, etc) is stored in `config.yml`. The application `generator.go` parses the config file and generates the HTML page.
+The application consists of three different parts:
+
+- `config.yml`: Application config like websites, resolvers, etc
+- `index.html.gohtml`: Template for the HTML page
+- `generator.go`: Application querying the resolvers, processing the results and rendering the HTML page
 
 ### Used DNS resolvers
 
-Each key under `resolvers` represents a different DNS resolver provider. Each of them contains a list with their publicly reachable resolver IPs. Some of them (mostly the primary IPs) are commented out. There is no advantage checking against a primary and a secondary resolver. Instead every resolver provider should've one IPv4 and one IPv6.
+The application uses public DNS resolvers by various providers. Rules for a provider:
+
+- Must provide at least one IPv4 and one IPv6 address
+- Must not filter queries. For example: Adblock, child filter, censorship etc
+
+If a provider has multiple addresses the secondary ones should be used. There is no need for more than four resolver providers without a good reason.
 
 ### Categories
 
@@ -35,7 +44,7 @@ The following keys are optional:
 
 ### Adding icons
 
-An icon helps to identify a website.
+An icon helps to identify a website. But please have the copyright laws in mind.
 
 #### By using FontAwesome
 
@@ -64,22 +73,19 @@ Most images can be reduced by more than 80% in file size.
 
 ### Formatting config.yml
 
-YAML files are sometimes hard to format properly. You can use `yamlfmt` to format `config.yml` it properly before checking it in: `yamlfmt -w config.yml`
+Please use `yamlfmt` to format `config.yml` before creating a commit: `yamlfmt -w config.yml` or `make format`.
 
 ### Minifying HTML
 
-When you generate the static page it's very huge. It consumes round about 1.3 MByte disk space and consists of many blank spaces which are good for a human developer working and debugging the generated HTML. A computer doesn't need them and only wastes ressources on it. That's why minifiers were developed. They remove unnecessary spaces, newlines etc to save up space.   
-Minifying the HTML reduces the HTML to round about 546 KByte. That's a reduction of 59%. The benefits are simple: The page loads faster and less CPU is needed for rendering it in the browser. On the other side debugging a minified HTML isn't fun.
-
-By default the HTML is not minified. If you pass `-minify` to the application the output will be minified. Use the normal version for developing and the minified version for production.
+After templating the resulting HTML page consumes roughly 1.3 MBytes disk space. It contains many white spaces and newline characters which are great for humans but useless for computers. Minifiers are stripping out the unnecessary bits speeding up the browser rendering. After minification the HTML page consumes only 546 KBytes (59% space saved). By default the HTML page is not minified. You can enable minification by passing `-minify` as application argument.
 
 ### Tags
 
-I found out that some german internet providers websites or services are not reachable over IPv6 but they provide IPv6 to customers. To lift the blame a bit I've implemented the tag system which acts like categories. With tags you can add additional informations. Websites with tags attached will get the 🏷️ emoji on the overview page. More details will be provided on the detail pane then. See the `config.yml` file to see it in action.
+Some providers website may not be able reachable over IPv6 but they provide it to their customers. A common example for this are ISPs or cloud providers. The tag system was implemented to counter this problem. You can attach tags in the `config.yml`. Attached tags are displayed by the 🏷️ emoji to the user. More details are displayed on the detail pane.
 
 ### Category limit
 
-By passing `-category-limit yourcategoryhere` you can limit the checks to a single category. Websites not part of the cateogry are rendered with a white background and a "not checked" message. This will speed up the development and reduces stress on the resolvers.
+To reduce load on the resolvers while developing you can limit execution to a specific category. For example `-category-limit Shopping` would only check the websites stored in the `Shopping` category.
 
 ## Updating third party sources
 
