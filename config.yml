@@ -828,15 +828,6 @@ websites:
   icon: trello.svg # https://trello.com/de/about/logo
   twitter: '@trello'
 
-- name: Tumblr
-  href: https://www.tumblr.com
-  hosts:
-  - www.tumblr.com
-  icon: fa-tumblr
-  twitter: '@tumblr'
-  categories:
-  - Social Network
-
 - name: Twitch
   href: https://www.twitch.tv
   hosts:
