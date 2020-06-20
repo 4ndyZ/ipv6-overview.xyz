@@ -154,7 +154,7 @@ websites:
   hosts:
   - amazon.com
   - www.amazon.com
-  icon: amazon.svg # https://de.wikipedia.org/wiki/Datei:Amazon_logo_plain.svg#/media/Datei:Amazon_logo.svg
+  icon: amazon.png # Source: https://press.aboutamazon.com/images-videos Usage: https://www.amazon.com/gp/feature.html/ref=amb_link_358049922_4?ie=UTF8&docId=1000756331&pf_rd_m=ATVPDKIKX0DER&pf_rd_s=center-1&pf_rd_r=07AZ117801JQZNZ59NDH&pf_rd_t=1401&pf_rd_p=1837635882&pf_rd_i=1000742871
   twitter: '@amazon'
   categories:
   - Shopping
