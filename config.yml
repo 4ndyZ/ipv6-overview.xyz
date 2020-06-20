@@ -672,6 +672,7 @@ websites:
   href: https://www.paypal.com
   hosts:
   - www.paypal.com
+  - api.paypal.com # Note: Did not include api.sandbox.paypal.com. Source: https://developer.paypal.com/docs/api/overview/#get-an-access-token
   icon: paypal.svg # https://commons.wikimedia.org/wiki/File:PayPal_logo.svg https://www.paypal.com/de/webapps/mpp/logo-center
   twitter: '@askpaypal'
   categories:
