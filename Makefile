@@ -1,5 +1,6 @@
 format:
 	yamlfmt -w config.yml
+	go fmt
 
 make:
 	GOOS=linux GOARCH=amd64 go build -o generator generator.go

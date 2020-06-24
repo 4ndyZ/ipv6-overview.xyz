@@ -40,7 +40,7 @@ type YAMLConfig struct {
 	GithubRepo         string              `yaml:"github_repo"`
 	WebsiteDescription string              `yaml:"website_description"`
 	WebsiteURL         string              `yaml:"website_url"`
-	Tags map[string]string `yaml:tags"`
+	Tags               map[string]string   `yaml:tags"`
 }
 
 type Resolver struct {
