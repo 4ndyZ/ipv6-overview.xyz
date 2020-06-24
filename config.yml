@@ -593,16 +593,6 @@ websites:
   categories:
   - Social Network
 
-- name: Mixer
-  href: https://mixer.com
-  hosts:
-  - mixer.com
-  - www.mixer.com
-  icon: mixer.png
-  twitter: '@WatchMixer'
-  categories:
-  - Streaming
-
 - name: N26
   href: https://n26.com
     # Licence: https://de.wikipedia.org/wiki/Datei:N26_logo.svg
