@@ -156,7 +156,7 @@ func (website *Website) GetTwitterMessage() string {
 		message = "Isn't it about time to provide IPv6 on your website?"
 	}
 
-	return fmt.Sprintf(".%s %s #ipv6 #whyipv6 @DerVeloc1ty", website.Twitter, message)
+	return fmt.Sprintf(".%s %s #ipv6 @DerVeloc1ty", website.Twitter, message)
 }
 
 func (website *Website) FigureOutIPv6SupportStatus() {
