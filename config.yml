@@ -161,7 +161,7 @@ websites:
   - amazon.com
   - www.amazon.com
   icon: amazon.png # Source: https://press.aboutamazon.com/images-videos Usage: https://www.amazon.com/gp/feature.html/ref=amb_link_358049922_4?ie=UTF8&docId=1000756331&pf_rd_m=ATVPDKIKX0DER&pf_rd_s=center-1&pf_rd_r=07AZ117801JQZNZ59NDH&pf_rd_t=1401&pf_rd_p=1837635882&pf_rd_i=1000742871
-  twitter: '@amazon'
+  twitter: '@AmazonHelp'
   categories:
   - Shopping
 
@@ -313,7 +313,7 @@ websites:
   - discordapp.com
   - remote-auth-gateway.discord.gg
   icon: discord.svg # https://discordapp.com/branding
-  twitter: '@discordapp'
+  twitter: '@Discord'
   categories:
   - Chat
   - VoIP
@@ -363,7 +363,7 @@ websites:
   hosts:
   - www.ebay.com
   - ebay.com
-  twitter: '@eBay'
+  twitter: '@AskeBay'
   categories:
   - Shopping
 
@@ -617,7 +617,7 @@ websites:
   icon: NetCologne.png   # Source: https://www.netcologne.de/ueber-uns/unternehmen/presse/downloads/logos
   hosts:
   - www.netcologne.de
-  twitter: '@NetCologne_GmbH'
+  twitter: '@NetCologneNEWS'
   categories:
   - Internet service provider
   tags:
@@ -664,7 +664,7 @@ websites:
   icon: origin.svg   # Source: https://commons.wikimedia.org/wiki/File:Origin.svg
   hosts:
   - www.origin.com
-  twitter: '@askeasupport'
+  twitter: '@EAHelp'
   categories:
   - Gaming
 
@@ -748,7 +748,7 @@ websites:
   hosts:
   - www.spotify.com
   icon: spotify.png # https://newsroom.spotify.com/media-kit/logo-and-brand-assets/
-  twitter: '@spotify'
+  twitter: '@SpotifyCares'
   categories:
   - Streaming
 
@@ -818,7 +818,7 @@ websites:
   hosts:
   - tidal.com
   - listen.tidal.com
-  twitter: '@TIDAL'
+  twitter: '@TIDAL @TIDALSupport'
   categories:
   - Streaming
 
