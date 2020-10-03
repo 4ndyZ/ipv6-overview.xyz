@@ -1875,3 +1875,25 @@ websites:
   - ns4.dns.ws
   categories:
   - TLD
+
+- name: Tomorrow.one
+  href: https://www.tomorrow.one
+    # Licence: https://www.tomorrow.one/img/logo.svg
+  icon: tomorrowone.svg
+  hosts:
+  - www.tomorrow.one
+  - community.tomorrow.one
+  - support.tomorrow.one
+  twitter: '@_tomorrow_one'
+  categories:
+  - Banking
+
+- name: Solaris Bank
+  href: https://www.solarisbank.com/
+    # Licence: https://www.solarisbank.com/de/press/
+  icon: solarisbank.png
+  hosts:
+  - www.solarisbank.com
+  twitter: '@solarisbank'
+  categories:
+  - Banking
