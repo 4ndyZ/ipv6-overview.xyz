@@ -4,3 +4,4 @@ generator
 bin/
 lib/
 pyvenv.cfg
+dist/lastchecked.txt

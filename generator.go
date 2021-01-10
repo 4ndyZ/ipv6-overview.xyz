@@ -281,6 +281,7 @@ func main() {
 	}
 
 	WritePageToDisk(renderedPage)
+	WriteCurrentTimestampToFile()
 
 	log.Info("Finished")
 }
@@ -297,6 +298,21 @@ func WritePageToDisk(page string) {
 		file.Close()
 
 		log.Info("Wrote page to index.html")
+	}
+}
+
+func WriteCurrentTimestampToFile() {
+	log.Info("Writing current timestamp to file")
+	filename := "dist/lastchecked.txt"
+
+	file, fileerr := os.Create(filename)
+
+	if fileerr != nil {
+		log.WithField("ErrorMessage", fileerr.Error()).Fatal("Was not able to create/open " + filename)
+	} else {
+		timezone, _ := time.LoadLocation("Europe/Berlin")
+		file.WriteString(time.Now().In(timezone).Format(time.RFC3339))
+		file.Close()
 	}
 }
 
