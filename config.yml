@@ -740,6 +740,7 @@ websites:
   href: https://www.spotify.com
   hosts:
   - www.spotify.com
+  - open.spotify.com
   icon: spotify.png # https://newsroom.spotify.com/media-kit/logo-and-brand-assets/
   twitter: '@SpotifyCares'
   categories:
