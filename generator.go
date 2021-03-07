@@ -25,8 +25,8 @@ type IPv6_Support int
 const (
 	IPv6_SUPPORT_FULL        int = 1
 	IPv6_SUPPORT_PARTIAL     int = 0
-	IPv6_SUPPORT_NONE            = -1
-	IPv6_SUPPORT_NOT_CHECKED     = 2
+	IPv6_SUPPORT_NONE        int = -1
+	IPv6_SUPPORT_NOT_CHECKED int = 2
 
 	RESOLVER_WORKER_GOROUTINE_COUNT int = 30
 	RESOLVER_RETRY_COUNTER          int = 5
