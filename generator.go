@@ -412,11 +412,7 @@ func SortCategories(categories []*Category) {
 	log.Info("Sorting categories")
 
 	sort.SliceStable(categories, func(i, j int) bool {
-		if strings.Compare(categories[i].Name, categories[j].Name) == -1 {
-			return true
-		} else {
-			return false
-		}
+		return strings.Compare(categories[i].Name, categories[j].Name) == -1
 	})
 
 	log.Info("Sorting categories finished")
@@ -427,11 +423,7 @@ func SortWebsitesInsideCategories(categories []*Category) {
 
 	for _, category := range categories {
 		sort.SliceStable(category.Websites, func(i, j int) bool {
-			if strings.Compare(category.Websites[i].Name, category.Websites[j].Name) == -1 {
-				return true
-			} else {
-				return false
-			}
+			return strings.Compare(category.Websites[i].Name, category.Websites[j].Name) == -1
 		})
 	}
 
