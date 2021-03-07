@@ -606,8 +606,8 @@ func ResolverWorker(websites <-chan *Website, resolverProviders []*ResolverProvi
 								queryErrorOccured = false
 
 								for _, record := range answer.Answer {
-									// Check if we really got AAAA records. Some websites provide CNAMEs
-									// They should of course not count
+									// Check if we really got AAAA records. Bigger websites use CNAMEs. But this should
+									// not be a problem. The resolver also returns corresponding AAAA records.
 									if _, ok := record.(*dns.AAAA); ok {
 										domainResolverResult.QuadAFound = true
 										break // one is enough
