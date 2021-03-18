@@ -1375,6 +1375,10 @@ websites:
   href: https://www.ecosia.org
   hosts:
   - www.ecosia.org
+  - info.ecosia.org
+  - cdn-indexpage.ecosia.org
+  - cdn-static.ecosia.org
+  - api.ecosia.org
   icon: Ecosia.png
   twitter: '@Ecosia'
   categories:
