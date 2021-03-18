@@ -3,19 +3,7 @@ website_title: ipv6-overview.xyz
 github_repo: https://github.com/vlcty/ipv6-overview.xyz
 website_description: Overview of websites and services showing their IPv6 support
 
-resolvers:
-  Google:
-  - 8.8.4.4
-  - 2001:4860:4860::8844
-  OpenDNS:
-  - 208.67.222.222
-  - 2620:119:53::53
-  Cloudflare:
-  - 1.1.1.1
-  - 2606:4700:4700::1001
-  Quad9:
-  - 9.9.9.9
-  - 2620:fe::fe:10
+resolver: "[2001:4860:4860::8844]"
 
 tags:
   isp-providing-ipv6-to-private-customers: ISP providing an IPv6 prefix to private

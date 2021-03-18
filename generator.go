@@ -33,24 +33,14 @@ const (
 )
 
 type YAMLConfig struct {
-	Resolvers          map[string][]string `yaml:"resolvers"`
-	Categories         []*Category         `yaml:"categories"`
-	Websites           []*Website          `yaml:"websites"`
-	WebsiteTitle       string              `yaml:"website_title"`
-	GithubRepo         string              `yaml:"github_repo"`
-	WebsiteDescription string              `yaml:"website_description"`
-	WebsiteURL         string              `yaml:"website_url"`
-	Tags               map[string]string   `yaml:tags"`
-}
-
-type Resolver struct {
-	Address          string
-	ResolverProvider *ResolverProvider
-}
-
-type ResolverProvider struct {
-	Name      string
-	Resolvers []*Resolver
+	Resolver           string            `yaml:"resolver"`
+	Categories         []*Category       `yaml:"categories"`
+	Websites           []*Website        `yaml:"websites"`
+	WebsiteTitle       string            `yaml:"website_title"`
+	GithubRepo         string            `yaml:"github_repo"`
+	WebsiteDescription string            `yaml:"website_description"`
+	WebsiteURL         string            `yaml:"website_url"`
+	Tags               map[string]string `yaml:tags"`
 }
 
 type Category struct {
@@ -165,16 +155,12 @@ func (website *Website) FigureOutIPv6SupportStatus() {
 	countNotChecked := 0
 
 	for _, domain := range website.Domains {
-		for _, results := range domain.ResolverResults {
-			for _, result := range results.ResolverResults {
-				if result.ActuallyChecked == false {
-					countNotChecked++
-				} else if result.QuadAFound {
-					countIPv6Found++
-				} else {
-					countIPv6NotFOund++
-				}
-			}
+		if domain.ActuallyChecked == false {
+			countNotChecked++
+		} else if domain.QuadAFound {
+			countIPv6Found++
+		} else {
+			countIPv6NotFOund++
 		}
 	}
 
@@ -201,19 +187,8 @@ func (website *Website) IsInCategory(category string) bool {
 
 type Domain struct {
 	Domain          string
-	ResolverResults []DomainResolverResults
-}
-
-type DomainResolverResults struct {
-	ResolverProvider *ResolverProvider
-	ResolverResults  []DomainResolverResult
-}
-
-type DomainResolverResult struct {
-	Resolver        *Resolver
 	QuadAFound      bool
 	ActuallyChecked bool
-	// Result string
 }
 
 type WebsiteTemplate struct {
@@ -263,12 +238,11 @@ func main() {
 
 	yamlConfig := LoadYAML()
 
-	resolverProviders := ParseResolverProviders(yamlConfig)
 	SortCategories(yamlConfig.Categories)
 	ParseDomainsInsideWebsites(yamlConfig)
 	ConvertShortTagsToLongVersion(yamlConfig)
 
-	TestEveryWebsite(yamlConfig.Websites, resolverProviders, *categoryLimit)
+	TestEveryWebsite(yamlConfig.Websites, yamlConfig.Resolver, *categoryLimit)
 
 	SortEveryWebsiteIntoCategory(yamlConfig.Websites, yamlConfig.Categories)
 	GenerateCategoryCounters(yamlConfig.Categories)
@@ -440,7 +414,7 @@ func GenerateCategoryCounters(categories []*Category) {
 	log.Info("Finished generating category overall counters")
 }
 
-func TestEveryWebsite(websites []*Website, resolverProviders []*ResolverProvider, categoryLimit string) {
+func TestEveryWebsite(websites []*Website, resolver string, categoryLimit string) {
 	log.Info("Testing websites")
 
 	channel := make(chan *Website, 2*RESOLVER_WORKER_GOROUTINE_COUNT)
@@ -449,7 +423,7 @@ func TestEveryWebsite(websites []*Website, resolverProviders []*ResolverProvider
 
 	for i := 0; i < RESOLVER_WORKER_GOROUTINE_COUNT; i++ {
 		waitForResolve.Add(1)
-		go ResolverWorker(channel, resolverProviders, waitForResolve, categoryLimit)
+		go ResolverWorker(channel, resolver, waitForResolve, categoryLimit)
 		log.WithField("WorkerID", i).Info("Started worker goroutine")
 	}
 
@@ -464,34 +438,6 @@ func TestEveryWebsite(websites []*Website, resolverProviders []*ResolverProvider
 	waitForResolve.Wait()
 
 	log.Info("Workers finished their tasks")
-}
-
-func ParseResolverProviders(yamlConfig *YAMLConfig) []*ResolverProvider {
-	resolverProviders := make([]*ResolverProvider, 0)
-
-	for name, addresses := range yamlConfig.Resolvers {
-		resolverProvider := &ResolverProvider{}
-		resolverProvider.Name = name
-		resolverProvider.Resolvers = make([]*Resolver, 0)
-
-		for _, address := range addresses {
-			resolver := &Resolver{}
-
-			if strings.Contains(address, ":") {
-				resolver.Address = "[" + address + "]"
-			} else {
-				resolver.Address = address
-			}
-
-			resolver.ResolverProvider = resolverProvider
-
-			resolverProvider.Resolvers = append(resolverProvider.Resolvers, resolver)
-		}
-
-		resolverProviders = append(resolverProviders, resolverProvider)
-	}
-
-	return resolverProviders
 }
 
 func ParseDomainsInsideWebsites(yamlConfig *YAMLConfig) {
@@ -542,7 +488,7 @@ func LoadYAML() *YAMLConfig {
 	}
 }
 
-func ResolverWorker(websites <-chan *Website, resolverProviders []*ResolverProvider, waitGroup *sync.WaitGroup, categoryLimit string) {
+func ResolverWorker(websites <-chan *Website, resolver string, waitGroup *sync.WaitGroup, categoryLimit string) {
 
 	client := new(dns.Client)
 
@@ -562,79 +508,59 @@ func ResolverWorker(websites <-chan *Website, resolverProviders []*ResolverProvi
 				continue
 			}
 
-			domain.ResolverResults = make([]DomainResolverResults, 0)
+			domain.QuadAFound = false
+			domain.ActuallyChecked = true
 
-			for _, resolverProvider := range resolverProviders {
-				domainResolverResults := DomainResolverResults{}
-				domainResolverResults.ResolverProvider = resolverProvider
-				domainResolverResults.ResolverResults = make([]DomainResolverResult, 0)
+			if categoryLimit != "none" && !website.IsInCategory(categoryLimit) {
+				domain.ActuallyChecked = false
+			} else {
+				message := new(dns.Msg)
+				message.RecursionDesired = true
+				message.SetQuestion(punicodeEncodedDomain+".", dns.TypeAAAA)
 
-				for _, resolver := range resolverProvider.Resolvers {
+				resolverLogger := log.WithField("Domain", domain.Domain)
 
-					domainResolverResult := DomainResolverResult{}
-					domainResolverResult.Resolver = resolver
-					domainResolverResult.QuadAFound = false
-					domainResolverResult.ActuallyChecked = true
+				queryErrorOccured := true
 
-					if categoryLimit != "none" && !website.IsInCategory(categoryLimit) {
-						domainResolverResult.ActuallyChecked = false
-					} else {
-						message := new(dns.Msg)
-						message.RecursionDesired = true
-						message.SetQuestion(punicodeEncodedDomain+".", dns.TypeAAAA)
+				for queryTry := 0; queryTry < RESOLVER_RETRY_COUNTER && queryErrorOccured; queryTry++ {
+					// Increment sleep time every time a resolver try is done. First try is undelayed
+					// tanks to simple math
+					time.Sleep(time.Duration(queryTry*100) * time.Millisecond)
 
-						resolverLogger := log.WithFields(log.Fields{
-							"ResolverIP": resolver.Address,
-							"Domain":     domain.Domain})
+					tryLogger := resolverLogger.WithField("Try", queryTry)
+					tryLogger.Debug("Sending query")
 
-						queryErrorOccured := true
+					answer, _, err := client.Exchange(message, resolver+":53")
 
-						for queryTry := 0; queryTry < RESOLVER_RETRY_COUNTER && queryErrorOccured; queryTry++ {
-							// Increment sleep time every time a resolver try is done. First try is undelayed
-							// tanks to simple math
-							time.Sleep(time.Duration(queryTry*100) * time.Millisecond)
+					if err != nil {
+						queryErrorOccured = true
+						tryLogger.WithField("ErrorMessage", err.Error()).Debug("Failed to query resolver")
+					} else if answer.Rcode == dns.RcodeSuccess {
+						queryErrorOccured = false
 
-							tryLogger := resolverLogger.WithField("Try", queryTry)
-							tryLogger.Debug("Sending query")
-
-							answer, _, err := client.Exchange(message, resolver.Address+":53")
-
-							if err != nil {
-								queryErrorOccured = true
-								tryLogger.WithField("ErrorMessage", err.Error()).Debug("Failed to query resolver")
-							} else if answer.Rcode == dns.RcodeSuccess {
-								queryErrorOccured = false
-
-								for _, record := range answer.Answer {
-									// Check if we really got AAAA records. Bigger websites use CNAMEs. But this should
-									// not be a problem. The resolver also returns corresponding AAAA records.
-									if _, ok := record.(*dns.AAAA); ok {
-										domainResolverResult.QuadAFound = true
-										break // one is enough
-									}
-								}
-
-								if domainResolverResult.QuadAFound {
-									tryLogger.Debug("Domain resolved to AAAA record")
-								} else {
-									tryLogger.Debug("Domain did not resolve to AAAA record. Shame!")
-								}
-							} else {
-								queryErrorOccured = false
-								tryLogger.Error("No transport error occured but dns answer wasn't successfull. Is the domain still active?")
+						for _, record := range answer.Answer {
+							// Check if we really got AAAA records. Bigger websites use CNAMEs. But this should
+							// not be a problem. The resolver also returns corresponding AAAA records.
+							if _, ok := record.(*dns.AAAA); ok {
+								domain.QuadAFound = true
+								break // one is enough
 							}
 						}
 
-						if queryErrorOccured {
-							resolverLogger.WithField("Tries", RESOLVER_RETRY_COUNTER).Error("Giving up resolving domain")
+						if domain.QuadAFound {
+							tryLogger.Debug("Domain resolved to AAAA record")
+						} else {
+							tryLogger.Debug("Domain did not resolve to AAAA record. Shame!")
 						}
+					} else {
+						queryErrorOccured = false
+						tryLogger.Error("No transport error occured but dns answer wasn't successfull. Is the domain still active?")
 					}
-
-					domainResolverResults.ResolverResults = append(domainResolverResults.ResolverResults,
-						domainResolverResult)
 				}
 
-				domain.ResolverResults = append(domain.ResolverResults, domainResolverResults)
+				if queryErrorOccured {
+					resolverLogger.WithField("Tries", RESOLVER_RETRY_COUNTER).Error("Giving up resolving domain")
+				}
 			}
 		}
 

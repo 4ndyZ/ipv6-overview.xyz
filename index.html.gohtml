@@ -144,37 +144,19 @@
 															These results were gathered in {{ printf "%.1f" $website.CheckDurationInSeconds }} seconds:
 														</div>
 														<div class="col-md-12 row">
-															<div class="col-md-3 text-center"><b>Domain</b></div>
-															<div class="col-md-3 text-center"><b>Resolver provider</b></div>
-															<div class="col-md-4 text-center"><b>Resolver IPs</b></div>
-															<div class="col-md-2 text-center"><b>Found AAAA?</b></div>
+															<div class="col-md-3"><b>Domain</b></div>
+															<div class="col-md-4 text-center"><b>Found AAAA?</b></div>
 														</div>
 														{{ range $domain := $website.Domains }}
-														<div class="col-md-12 row">
-															<div class="col-md-3 border-top text-center">
+														<div class="col-md-12 row mt-2">
+															<div class="col-md-3">
 																{{ $domain.Domain }}
 															</div>
-															<div class="col-md-9">
-																{{ range $resolverResult := $domain.ResolverResults }}
-																<div class="row border-top">
-																	<div class="col-md-4 text-center">
-																		{{ $resolverResult.ResolverProvider.Name }}
-																	</div>
-																	<div class="col-md-8 text-center">
-																		{{ range $resolver := $resolverResult.ResolverResults }}
-																		<div class="row">
-																			<div class="col-md-8 text-center">{{ $resolver.Resolver.Address }}</div>
-																			<div class="col-md-4 text-center">
-																				{{ if $resolver.QuadAFound }}
-																				<span class="badge badge-success">Yes</span>
-																				{{ else }}
-																				<span class="badge badge-danger">No</span>
-																				{{ end }}
-																			</div>
-																		</div>
-																		{{ end }}
-																	</div>
-																</div>
+															<div class="col-md-4 text-center">
+																{{ if $domain.QuadAFound }}
+																<span class="badge badge-success">Yes</span>
+																{{ else }}
+																<span class="badge badge-danger">No</span>
 																{{ end }}
 															</div>
 														</div>
