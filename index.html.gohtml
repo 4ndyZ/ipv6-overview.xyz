@@ -119,10 +119,10 @@
 																<p style="opacity: 0.0;">Logo</p>
 															</div>
 															{{ end }}
-															<div class="col-md-3 text-center my-auto font-weight-bold">
+															<div class="col-md-3 offset-md-1 my-auto text-center font-weight-bold">
 																<a href="{{ $website.URL }}" rel="nofollow" target="_blank">{{ $website.Name }}</a>
 															</div>
-															<div class="col-md-5 text-center my-auto">
+															<div class="col-md-4 text-center my-auto">
 																{{ $website.GetSupportMessage }}
 															</div>
 															<div class="col-md-1 text-center my-auto">
@@ -136,10 +136,9 @@
 														</div>
 													</div>
 													<div class="collapse card-body mb-2" id="result-{{ $website.GetHTMLAnchor }}-{{ $category.GetHTMLAnchor }}">
-														<div class="col-12 mb-2">
+														<div class="col-md-10 offset-md-2 mb-4 row">
 															{{ if ( ne $website.Description "" ) }}
 															{{ $website.Description }}
-															<br />
 															{{ end }}
 														</div>
 														<div class="col-md-10 offset-md-2 row">
