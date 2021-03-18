@@ -84,7 +84,6 @@ type Website struct {
 	Tags        []string
 
 	IPv6SupportStatus      int
-	CheckDurationInSeconds float64
 }
 
 func (website *Website) GetHTMLAnchor() string {
@@ -493,8 +492,6 @@ func ResolverWorker(websites <-chan *Website, resolver string, waitGroup *sync.W
 	client := new(dns.Client)
 
 	for website := range websites {
-		startTime := time.Now()
-
 		for _, domain := range website.Domains {
 
 			punicodeEncodedDomain, punicodeError := idna.ToASCII(domain.Domain)
@@ -563,8 +560,6 @@ func ResolverWorker(websites <-chan *Website, resolver string, waitGroup *sync.W
 				}
 			}
 		}
-
-		website.CheckDurationInSeconds = time.Now().Sub(startTime).Seconds()
 
 		website.FigureOutIPv6SupportStatus()
 	}
