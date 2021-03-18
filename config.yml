@@ -1374,7 +1374,7 @@ websites:
 - name: Ecosia
   href: https://www.ecosia.org
   hosts:
-  - ecosia.org
+  - www.ecosia.org
   icon: Ecosia.png
   twitter: '@Ecosia'
   categories:
