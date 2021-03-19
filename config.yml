@@ -31,7 +31,7 @@ categories:
 - name: Cloud
   description: |
     Cloud is a very vague term. Cloud providers mostly divided into three groups: Infrastructure as a Service (Iaas), Plattform as a Service (Paas) and Software as a Service (SaaS).
-- name: Banking
+- name: Finance
   description: |
     Banks are known to be slow and complicated. The old ones core components are still written in COBOL and run on big mainframes. Some of them even called in retired engineers to create the punch card fixing the systems. Moving on to IPv6 is a pain in the ass when your core system doesn't even speak IPv4. But the cloud native hipser banks have no excuse to neglect IPv6.
 - name: Streaming
@@ -591,7 +591,7 @@ websites:
   - support.n26.com
   twitter: '@n26'
   categories:
-  - Banking
+  - Finance
 
 - name: Netcologne
   href: https://www.netcologne.de
@@ -665,7 +665,7 @@ websites:
   icon: paypal.svg # https://commons.wikimedia.org/wiki/File:PayPal_logo.svg https://www.paypal.com/de/webapps/mpp/logo-center
   twitter: '@askpaypal'
   categories:
-  - Banking
+  - Finance
 
 - name: Pinterest
   href: https://www.pinterest.com
@@ -1013,7 +1013,7 @@ websites:
   - webfonts.sparkasse.de
   twitter: '@sparkasse'
   categories:
-  - Banking
+  - Finance
 
 - name: Postbank
   href: https://www.postbank.de
@@ -1022,7 +1022,7 @@ websites:
   - www.postbank.de
   twitter: '@postbank'
   categories:
-  - Banking
+  - Finance
 
 - name: Raiffeisenbank
   href: https://www.bvr.de
@@ -1031,7 +1031,7 @@ websites:
   - www.bvr.de
   twitter: '@BVRPresse'
   categories:
-  - Banking
+  - Finance
 
 - name: Mastercard
   href: https://www.mastercard.com
@@ -1040,7 +1040,7 @@ websites:
   - www.mastercard.com
   twitter: '@Mastercard'
   categories:
-  - Banking
+  - Finance
 
 - name: Visa
   href: https://www.visa.com
@@ -1049,7 +1049,7 @@ websites:
   - www.visa.com
   twitter: '@Visa'
   categories:
-  - Banking
+  - Finance
 
 - name: TeamSpeak
   href: https://teamspeak.com
@@ -1680,7 +1680,7 @@ websites:
   - api.bunq.com
   twitter: '@bunq'
   categories:
-  - Banking
+  - Finance
 
 - name: Commerzbank
   href: https://www.commerzbank.de
@@ -1690,7 +1690,7 @@ websites:
   - kunden.commerzbank.de
   twitter: '@commerzbank'
   categories:
-  - Banking
+  - Finance
 
 - name: Zalando
   href: https://www.zalando.de/
@@ -1792,7 +1792,7 @@ websites:
   - smartbroker.de
   - b2b.dab-bank.de
   categories:
-  - Banking
+  - Finance
 
 - name: Flatex
   href: https://www.flatex.de
@@ -1802,7 +1802,7 @@ websites:
   - www.flatex.de
   - konto.flatex.de
   categories:
-  - Banking
+  - Finance
 
 - name: .ck
   href: https://www.iana.org/domains/root/db/ck.html
@@ -1878,7 +1878,7 @@ websites:
   - support.tomorrow.one
   twitter: '@_tomorrow_one'
   categories:
-  - Banking
+  - Finance
 
 - name: Solaris Bank
   href: https://www.solarisbank.com/
@@ -1888,4 +1888,4 @@ websites:
   - www.solarisbank.com
   twitter: '@solarisbank'
   categories:
-  - Banking
+  - Finance
