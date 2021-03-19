@@ -14,15 +14,6 @@ The application consists of three different parts:
 - `index.html.gohtml`: Template for the HTML page
 - `generator.go`: Application querying the resolvers, processing the results and rendering the HTML page
 
-### Used DNS resolvers
-
-The application uses public DNS resolvers by various providers. Rules for a provider:
-
-- Must provide at least one IPv4 and one IPv6 address
-- Must not filter queries. For example: Adblock, child filter, censorship etc
-
-If a provider has multiple addresses the secondary ones should be used. There is no need for more than four resolver providers without a good reason.
-
 ### Categories
 
 The variable `categories` contains a list. Each item represents a category. If you want to add a new category just extend the list. Each category should have at least three websites. Never delte the categoroy `Uncategorized`. It's used as fallback when a website is not part of any category.   
