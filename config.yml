@@ -3,7 +3,7 @@ website_title: ipv6-overview.xyz
 github_repo: https://github.com/vlcty/ipv6-overview.xyz
 website_description: Overview of websites and services showing their IPv6 support
 
-resolver: "[2001:4860:4860::8844]"
+resolver: '[2001:4860:4860::8844]'
 
 tags:
   isp-providing-ipv6-to-private-customers: ISP providing an IPv6 prefix to private
@@ -1889,3 +1889,15 @@ websites:
   twitter: '@solarisbank'
   categories:
   - Finance
+
+- name: rockylinux.org
+  href: https://rockylinux.org
+  icon: rockylinux.svg # Source: https://commons.wikimedia.org/wiki/File:Rocky_Linux_wordmark.svg
+  description: |
+    Rocky linux wants to be the next CentOS after RedHat shifted directions.
+  hosts:
+  - rockylinux.org
+  - wiki.rockylinux.org
+  twitter: '@rocky_linux'
+  categories:
+  - Operating System
