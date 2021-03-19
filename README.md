@@ -1,4 +1,4 @@
-This repository contains the backend code for [ipv6-overview.xyz](https://ipv6-overview.xyz). The application checks multiple websites and their subdomains agains public DNS resolvers for AAAA records. Afterwards a static HTML page is generated to display the result.
+This repository contains the backend code for [ipv6-overview.xyz](https://ipv6-overview.xyz). The application checks multiple websites and their subdomains agains a public DNS resolver for AAAA records. Afterwards a static HTML page is generated to display the result.
 
 ## Contributing + Dev info
 
@@ -10,9 +10,9 @@ You can report missing websites or domains by opening an issue. If you want to p
 
 The application consists of three different parts:
 
-- `config.yml`: Application config like websites, resolvers, etc
+- `config.yml`: Application config
 - `index.html.gohtml`: Template for the HTML page
-- `generator.go`: Application querying the resolvers, processing the results and rendering the HTML page
+- `generator.go`: Application querying the resolver, processing the results and rendering the HTML page
 
 ### Categories
 
@@ -76,7 +76,7 @@ Some providers website may not be able reachable over IPv6 but they provide it t
 
 ### Category limit
 
-To reduce load on the resolvers while developing you can limit execution to a specific category. For example `-category-limit Shopping` would only check the websites stored in the `Shopping` category.
+To reduce load on the resolver while developing you can limit execution to a specific category. For example `-category-limit Shopping` would only check the websites stored in the `Shopping` category.
 
 ## Updating third party sources
 
